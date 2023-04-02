@@ -1,0 +1,23 @@
+/* nav {
+    font-family: "Helevtica", sans-serif;
+  }
+  
+  nav a {
+    font-family: "Helevtica", sans-serif;
+  } */
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+  }

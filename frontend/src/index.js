@@ -25,7 +25,7 @@ function Root() {
           <App />
         </BrowserRouter>
       </Provider>
-    // </ModalProvider>
+    </ModalProvider>
   );
 }
 
