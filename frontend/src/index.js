@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-// import { ModalProvider } from './context/Modal';
+import { ModalProvider } from './context/Modal';
 import './index.css';
 import App from './App';
 import configureStore from './store';
@@ -17,19 +17,12 @@ if (process.env.NODE_ENV !== "production") {
   window.sessionActions = sessionActions;
 }
 
-// const Carrot = () => (
-//   <div style={{ color: "orange", fontSize: "100px" }}>
-//     <i className="fa-solid fa-carrot"></i>
-//   </div>
-// );
-
 function Root() {
   return (
-    // <ModalProvider>
+    <ModalProvider>
       <Provider store={store}>
         <BrowserRouter>
           <App />
-          {/* <Carrot /> */}
         </BrowserRouter>
       </Provider>
     // </ModalProvider>
