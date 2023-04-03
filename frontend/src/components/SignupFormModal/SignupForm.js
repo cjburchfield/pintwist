@@ -13,6 +13,7 @@ function SignupForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
+
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
@@ -39,6 +40,7 @@ function SignupForm() {
   return (
     <>
       <img src="../../../assets/Pinterest_icon.png" alt="Logo" className="logo"/>
+      <img src="../../../assets/x-solid.svg" alt="Close-Button" className="close-button" />
       <h1>Welcome to Pintwist</h1>
       <h2>Find new ideas to try</h2>
       <form onSubmit={handleSubmit}>
@@ -54,7 +56,7 @@ function SignupForm() {
             required
           />
         </label>
-        {/* <label>
+        <label>
           Username
           <input
             type="text"
@@ -62,7 +64,7 @@ function SignupForm() {
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-        </label> */}
+        </label>
         <label>
           Password
           <input
@@ -85,7 +87,7 @@ function SignupForm() {
       </form>
       <p className="terms"> By continuing, you agree to Pintwist's Terms of Service and acknowledge you've read 
         our Privacy Policy. Notice at collection.</p>
-      <hr class="solid"/>
+      <hr className="solid"/>
       <p>Already a member? Log in</p>
     </>
   );

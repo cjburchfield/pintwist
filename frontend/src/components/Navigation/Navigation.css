@@ -11,6 +11,8 @@
     padding-right: 16px;
     padding-bottom: 16px;
     padding-top: 16px;
+    font-weight: 600;
+    font-size: 16px;
   }
   
   .nav-left {
@@ -23,9 +25,9 @@
     align-items: center;
   }
 
-  .nav-right button:first-child {
+  /* .nav-right button:first-child {
     margin-right: 1em;
-  }
+  } */
 
   
   .logo {
@@ -37,7 +39,6 @@
   .brand-name {
     text-align: left;
     color: #CC0000;
-    /* font-weight: 600; */
     font-size: 20px;
     margin-bottom: 0;
     margin-left: 4px;

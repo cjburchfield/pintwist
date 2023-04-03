@@ -1,6 +1,10 @@
 .login-button {
     background-color: #e60023;
     color: white;
+    margin-right: 8px;
+    display: inline-block;
+    border: 0;
+    min-width: 60px;
   }
 
 .login-button:hover{
