@@ -1,14 +1,13 @@
 /* TODO Add site wide styles */
 
 body {
-    /* font-family: "Lato", sans-serif; */
-    /* font-family: "Helvetica", sans-serif; */
-    /* font-family: 'Lato'; */
-    font-family: "Segoe-UI";
+    font-family: "Roboto";
+    /* font-family: "Montserrat"; */
     color: #111111
   }
 
-  @font-face {
+
+  /* @font-face {
     font-family: "Segoe-UI";
     src: url("../public/assets/Segoe\ UI.ttf");
   }
@@ -31,4 +30,4 @@ body {
   @font-face {
     font-family: "Helvetica-Neue";
     src: url("../public/assets/Helvetica\ Neue\ Regular.otf");
-  }
+  } */

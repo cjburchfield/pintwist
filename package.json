@@ -1,17 +1,26 @@
 {
-    "name": "pintwist",
-    "version": "1.0.0",
-    "description": "A clone of Pinterest",
-    "engines": {
-      "node": "16.x"
-    },
-    "directories": {
-      "lib": "lib"
-    },
-    "scripts": {
-      "build": "npm install --prefix frontend && npm run build --prefix frontend"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
-  }
+  "name": "pintwist",
+  "version": "1.0.0",
+  "description": "A clone of Pinterest",
+  "engines": {
+    "node": "16.19.0"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjburchfield/pintwist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cjburchfield/pintwist/issues"
+  },
+  "homepage": "https://github.com/cjburchfield/pintwist#readme"
+}
