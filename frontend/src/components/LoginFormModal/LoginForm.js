@@ -29,31 +29,41 @@ function LoginForm() {
 
   return (
     <>
-      <h1>Log In</h1>
+      <img src="../../../assets/Pinterest_icon.png" alt="Logo" className="logo"/>
+      <h1>Welcome to Pintwist</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map(error => <li key={error}>{error}</li>)}
         </ul>
         <label>
-          Username or Email
+          Email
+          <div></div>
           <input
             type="text"
+            Placeholder="Email"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
           />
         </label>
+        <div></div>
         <label>
           Password
+          <div></div>
           <input
             type="password"
+            Placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit" className="form-button">Log In</button>
       </form>
+      <p className="terms"> By continuing, you agree to Pintwist's Terms of Service and acknowledge you've read 
+        our Privacy Policy. Notice at collection.</p>
+      <hr class="solid"/>
+      <p>Not on Pintwist yet? Sign up</p>
     </>
   );
 }

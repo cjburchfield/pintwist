@@ -2,5 +2,33 @@
 
 body {
     /* font-family: "Lato", sans-serif; */
-    font-family: "Helvetica", san-serif;
+    /* font-family: "Helvetica", sans-serif; */
+    /* font-family: 'Lato'; */
+    font-family: "Segoe-UI";
+    color: #111111
+  }
+
+  @font-face {
+    font-family: "Segoe-UI";
+    src: url("../public/assets/Segoe\ UI.ttf");
+  }
+
+  @font-face {
+    font-family: "Segoe-UI-Bold-Italic";
+    src: url("../public/assets/Segoe\ UI\ Bold\ Italic.ttf");
+  }
+
+  @font-face {
+    font-family: "Segoe-UI-Bold";
+    src: url("../public/assets/Segoe\ UI\ Bold.ttf");
+  }
+
+  @font-face {
+    font-family: "Segoe-UI-Italic";
+    src: url("../public/assets/Segoe\ UI\ Italic.ttf")
+  }
+
+  @font-face {
+    font-family: "Helvetica-Neue";
+    src: url("../public/assets/Helvetica\ Neue\ Regular.otf");
   }

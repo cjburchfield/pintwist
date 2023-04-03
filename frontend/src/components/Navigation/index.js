@@ -19,25 +19,19 @@ function Navigation() {
       <>
         <LoginFormModal />
         <SignupFormModal />
-        {/* <NavLink to="/signup">Sign Up</NavLink> */}
       </>
     );
   }
 
-//   return (
-//     <ul>
-//       <li>
-//         <NavLink exact to="/">Home</NavLink>
-//         {sessionLinks}
-//       </li>
-//     </ul>
-//   );
-// }
-
-return (
+  return (
     <nav>
       <div className="nav-left">
-        <NavLink exact to="/">Pintwist</NavLink>
+        <NavLink exact to="/">
+            <img src="../../../assets/Pinterest_icon.png" alt="Logo" className="logo"/>
+        </NavLink>
+        <NavLink exact to="/" className="brand-name">
+            Pintwist 
+        </NavLink>
       </div>
       <div className="nav-right">
         {sessionLinks}

@@ -8,9 +8,6 @@ function App() {
     <>
       <Navigation />
         <Switch>
-          {/* <Route path="/signup">
-            <SignupFormPage />
-          </Route> */}
         </Switch>
     </>
   );

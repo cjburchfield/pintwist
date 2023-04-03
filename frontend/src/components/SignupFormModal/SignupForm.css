@@ -1,0 +1,7 @@
+.signup-button {
+    background-color: #efefef;
+  }
+
+.signup-button:hover{
+    background-color: #e2e2e2;
+}

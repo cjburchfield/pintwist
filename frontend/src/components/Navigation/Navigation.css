@@ -1,15 +1,16 @@
-/* nav {
-    font-family: "Helevtica", sans-serif;
-  }
-  
-  nav a {
-    font-family: "Helevtica", sans-serif;
-  } */
 
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
+    flex-direction: row;
+    height: 80px;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    padding-top: 16px;
   }
   
   .nav-left {
@@ -21,3 +22,52 @@
     display: flex;
     align-items: center;
   }
+
+  .nav-right button:first-child {
+    margin-right: 1em;
+  }
+
+  
+  .logo {
+    width: 32px; /* Need to fix */
+    height: 32px; /* Need to fix */
+    /* vertical-align: middle; */
+  }
+
+  .brand-name {
+    text-align: left;
+    color: #CC0000;
+    /* font-weight: 600; */
+    font-size: 20px;
+    margin-bottom: 0;
+    margin-left: 4px;
+    box-sizing: border-box;
+    margin-top: 0;
+    /* margin: 0; */
+    /* display: block; */
+    /* margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px; */
+    letter-spacing: -1px;
+    font-family: "Segoe-UI-Bold";
+  }
+
+  .brand-name:link {
+    text-decoration: none;
+  }
+
+  .brand-name:visited {
+    text-decoration: none;
+  }
+
+  .brand-name:hover {
+    text-decoration: none;
+  }
+
+  .brand-name:active {
+    text-decoration: none;
+  }
+
+  
+  
