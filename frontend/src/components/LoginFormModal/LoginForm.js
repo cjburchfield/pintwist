@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import "./LoginForm.css";
+import { NavLink } from "react-router-dom";
 
 function LoginForm({ onClose }) {
   const dispatch = useDispatch();
@@ -99,7 +100,14 @@ function LoginForm({ onClose }) {
       <hr className="solid" />
       <p>
         Not on Pintwist yet?{" "}
-        <span className="other-modal-link">Sign up</span>
+        {/* <a href="https://policy.pinterest.com/en/terms-of-service">
+          {" "}
+          <span className="other-modal-link">Sign up</span>
+        </a>{" "} */}
+      {/* </p> */}
+      <NavLink exact to="/signup" className="other-modal-link" onClick={onClose}>
+            Sign Up 
+      </NavLink>
       </p>
     </>
   );

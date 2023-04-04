@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import { NavLink } from "react-router-dom";
 
 function SignupForm({ onClose }) {
   const dispatch = useDispatch();
@@ -106,7 +107,12 @@ function SignupForm({ onClose }) {
         .
       </p>
       <hr className="solid"/>
-      <p>Already a member? Log in</p>
+      <p>
+        Already a member?{" "}
+        <NavLink exact to="/login" className="other-modal-link" onClick={onClose}>
+            Log in
+        </NavLink>
+      </p>
     </>
   );
 }
