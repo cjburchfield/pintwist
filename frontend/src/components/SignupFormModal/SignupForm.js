@@ -17,7 +17,7 @@ function SignupForm({ onClose }) {
 
 
 
-  if (sessionUser) return <Redirect to="/" />;
+  // if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();

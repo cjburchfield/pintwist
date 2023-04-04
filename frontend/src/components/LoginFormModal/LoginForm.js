@@ -9,7 +9,6 @@ function LoginForm({ onClose }) {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const [showModal, setShowModal] = useState(false);
   const session = useSelector(state => state.session)
 
 
@@ -100,14 +99,9 @@ function LoginForm({ onClose }) {
       <hr className="solid" />
       <p>
         Not on Pintwist yet?{" "}
-        {/* <a href="https://policy.pinterest.com/en/terms-of-service">
-          {" "}
-          <span className="other-modal-link">Sign up</span>
-        </a>{" "} */}
-      {/* </p> */}
-      <NavLink exact to="/signup" className="other-modal-link" onClick={onClose}>
-            Sign Up 
-      </NavLink>
+        <NavLink exact to="/signup" className="other-modal-link" onClick={onClose}>
+            Sign up
+        </NavLink>
       </p>
     </>
   );
@@ -117,6 +111,14 @@ export default LoginForm;
 
 
 
+        {/* <a href="https://policy.pinterest.com/en/terms-of-service">
+          {" "}
+          <span className="other-modal-link">Sign up</span>
+        </a>{" "} */}
+      {/* </p> */}
+      {/* <NavLink exact to="/signup" className="other-modal-link" onClick={() => setShowSignup(true)}>
+            Sign Up 
+      </NavLink> */}
 
 
 
