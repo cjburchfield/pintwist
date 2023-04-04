@@ -3,10 +3,6 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import "./LoginForm.css";
 
-
-
-
-
 function LoginForm({ onClose }) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
@@ -14,19 +10,17 @@ function LoginForm({ onClose }) {
   const [errors, setErrors] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
-
-
-
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault(); 
+  
     setErrors([]);
-    return dispatch(sessionActions.login({ credential, password }))
-    .catch(async (res) => {
+    dispatch(sessionActions.login({ credential, password }))
+      .catch(async (res) => {
         let data;
         try {
           data = await res.clone().json();
         } catch {
-          data = await res.text(); 
+          data = await res.text();
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
@@ -34,16 +28,26 @@ function LoginForm({ onClose }) {
       });
   };
 
-
+  function handleDemoLogin(e) {
+    e.preventDefault();
+    dispatch(sessionActions.login({ credential: 'demo-user@pintwist.com', password: 'password' }));
+  }
 
   return (
     <>
-      <img src="../../../assets/Pinterest_icon.png" alt="Logo" className="logo"/>
-      <img src="../../../assets/x-solid.svg" alt="Close-Button" className="close-button" onClick={onClose}/>
+      <img src="../../../assets/Pinterest_icon.png" alt="Logo" className="logo" />
+      <img
+        src="../../../assets/x-solid.svg"
+        alt="Close-Button"
+        className="close-button"
+        onClick={onClose}
+      />
       <h1>Welcome to Pintwist</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map(error => <li key={error}>{error}</li>)}
+          {errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
         </ul>
         <label>
           Email
@@ -68,17 +72,32 @@ function LoginForm({ onClose }) {
             required
           />
         </label>
-        <button type="submit" className="form-button">Log In</button>
+        <button type="submit" className="form-button">
+          Log In
+        </button>
+        <div></div>
+        <button type="button" className="demo-button" onClick={handleDemoLogin}>
+          Demo Login
+        </button>
       </form>
-      <p className="terms"> By continuing, you agree to Pintwist's non-existant 
-        <a href="https://policy.pinterest.com/en/terms-of-service"> <span className="terms-link">Terms of Service</span></a> 
-        &nbsp;and acknowledge you've read 
-        anyone else's&nbsp;
-        <a href="https://policy.pinterest.com/en/privacy-policy"> <span className="terms-link">Privacy Policy</span></a>
-        .</p>
-      <hr className="solid"/>
-      <p>Not on Pintwist yet?
-      <span className="other-modal-link">Sign up</span>
+      <p className="terms">
+        {" "}
+        By continuing, you agree to Pintwist's non-existant{" "}
+        <a href="https://policy.pinterest.com/en/terms-of-service">
+          {" "}
+          <span className="terms-link">Terms of Service</span>
+        </a>{" "}
+        &nbsp;and acknowledge you've read anyone else's&nbsp;
+        <a href="https://policy.pinterest.com/en/privacy-policy">
+          {" "}
+          <span className="terms-link">Privacy Policy</span>
+        </a>
+        .
+      </p>
+      <hr className="solid" />
+      <p>
+        Not on Pintwist yet?{" "}
+        <span className="other-modal-link">Sign up</span>
       </p>
     </>
   );

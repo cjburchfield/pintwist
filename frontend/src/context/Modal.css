@@ -200,6 +200,10 @@ a:active {
   width: 268px;
 }
 
+.form-button:hover{
+  background-color: #ad081b;
+}
+
 /* Sign up button subheader */
 h2 {
   margin-top: -16px;

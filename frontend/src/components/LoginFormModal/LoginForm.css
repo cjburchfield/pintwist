@@ -11,4 +11,24 @@
   background-color: #ad081b;
 }
 
+.demo-button {
+  border: 0px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 20px;
+  -webkit-font-smoothing: antialiased;
+  padding: 0px 18px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #ad081b;
+  color: rgb(255, 255, 255);
+  width: 268px;
+}
 
+.demo-button:hover{
+  background-color: #e60023;
+}
