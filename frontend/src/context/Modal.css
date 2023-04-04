@@ -107,7 +107,6 @@
   }
 
 label {
-
   font-size: 14px;
   font-weight: 400;
   text-align: left;
@@ -117,9 +116,10 @@ label {
   margin-bottom: 4px;
   width: 268px;
   box-sizing: border-box;
+  position: relative;
+  margin: auto;
 }
 
-/* To edit below */
 input {
   /* font-size: 14px;
   border: 1px solid #ccc;
@@ -142,6 +142,10 @@ input {
   margin: 0px auto;
   margin-bottom: 7px;
   width: 100%;
+}
+
+input:hover{
+  border-color: #878787;
 }
 
 .terms {
@@ -232,4 +236,12 @@ h2 {
   padding-top: 0;
   padding-bottom: 0;
   cursor: pointer;
+}
+
+.errors{
+  color:#c00;
+  list-style: none;
+  box-sizing: border-box;
+  margin-top: 8px;
+  text-align: left;
 }

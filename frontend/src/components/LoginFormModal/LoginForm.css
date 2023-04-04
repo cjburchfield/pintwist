@@ -24,11 +24,12 @@
   margin-top: 8px;
   vertical-align: middle;
   text-align: center;
-  background-color: #ad081b;
-  color: rgb(255, 255, 255);
+  background-color: #ddd;
+  /* color: rgb(255, 255, 255); */
+  
   width: 268px;
 }
 
 .demo-button:hover{
-  background-color: #e60023;
+  background-color: #d0d0d0;
 }

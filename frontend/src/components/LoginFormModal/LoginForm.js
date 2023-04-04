@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./LoginForm.css";
 
 function LoginForm({ onClose }) {
@@ -9,6 +9,8 @@ function LoginForm({ onClose }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const session = useSelector(state => state.session)
+
 
   const handleSubmit = (e) => {
     if (e) e.preventDefault(); 
@@ -44,11 +46,6 @@ function LoginForm({ onClose }) {
       />
       <h1>Welcome to Pintwist</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul>
         <label>
           Email
           <div></div>
@@ -60,6 +57,11 @@ function LoginForm({ onClose }) {
             required
           />
         </label>
+        <ul className="errors">
+          {errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
         <div></div>
         <label>
           Password
@@ -104,6 +106,8 @@ function LoginForm({ onClose }) {
 }
 
 export default LoginForm;
+
+
 
 
 

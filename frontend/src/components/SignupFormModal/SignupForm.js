@@ -46,7 +46,7 @@ function SignupForm({ onClose }) {
       <h1>Welcome to Pintwist</h1>
       <h2>Find new ideas to try</h2>
       <form onSubmit={handleSubmit}>
-        <ul>
+        <ul className="errors">
           {errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
         <label>
@@ -54,6 +54,7 @@ function SignupForm({ onClose }) {
           <input
             type="text"
             value={email}
+            placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -62,6 +63,7 @@ function SignupForm({ onClose }) {
           Username
           <input
             type="text"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -71,6 +73,7 @@ function SignupForm({ onClose }) {
           Password
           <input
             type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -80,6 +83,7 @@ function SignupForm({ onClose }) {
           Confirm Password
           <input
             type="password"
+            placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
@@ -87,8 +91,20 @@ function SignupForm({ onClose }) {
         </label>
         <button type="submit" className="form-button">Continue</button>
       </form>
-      <p className="terms"> By continuing, you agree to Pintwist's Terms of Service and acknowledge you've read 
-        our Privacy Policy. Notice at collection.</p>
+      <p className="terms">
+        {" "}
+        By continuing, you agree to Pintwist's non-existant{" "}
+        <a href="https://policy.pinterest.com/en/terms-of-service">
+          {" "}
+          <span className="terms-link">Terms of Service</span>
+        </a>{" "}
+        &nbsp;and acknowledge you've read anyone else's&nbsp;
+        <a href="https://policy.pinterest.com/en/privacy-policy">
+          {" "}
+          <span className="terms-link">Privacy Policy</span>
+        </a>
+        .
+      </p>
       <hr className="solid"/>
       <p>Already a member? Log in</p>
     </>
