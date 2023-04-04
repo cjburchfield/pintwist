@@ -4,11 +4,18 @@ import { useDispatch } from "react-redux";
 import "./LoginForm.css";
 
 
-function LoginForm( ) {
+
+
+
+function LoginForm({ onClose }) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,10 +35,11 @@ function LoginForm( ) {
   };
 
 
+
   return (
     <>
       <img src="../../../assets/Pinterest_icon.png" alt="Logo" className="logo"/>
-      <img src="../../../assets/x-solid.svg" alt="Close-Button" className="close-button" />
+      <img src="../../../assets/x-solid.svg" alt="Close-Button" className="close-button" onClick={onClose}/>
       <h1>Welcome to Pintwist</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -77,7 +85,6 @@ function LoginForm( ) {
 }
 
 export default LoginForm;
-
 
 
 

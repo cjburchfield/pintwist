@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
-function SignupForm() {
+function SignupForm({ onClose }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState("");
@@ -12,6 +12,8 @@ function SignupForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
 
 
   if (sessionUser) return <Redirect to="/" />;
@@ -40,7 +42,7 @@ function SignupForm() {
   return (
     <>
       <img src="../../../assets/Pinterest_icon.png" alt="Logo" className="logo"/>
-      <img src="../../../assets/x-solid.svg" alt="Close-Button" className="close-button" />
+      <img src="../../../assets/x-solid.svg" alt="Close-Button" className="close-button" onClick={onClose}/>
       <h1>Welcome to Pintwist</h1>
       <h2>Find new ideas to try</h2>
       <form onSubmit={handleSubmit}>
@@ -74,7 +76,7 @@ function SignupForm() {
             required
           />
         </label>
-        {/* <label>
+        <label>
           Confirm Password
           <input
             type="password"
@@ -82,7 +84,7 @@ function SignupForm() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-        </label> */}
+        </label>
         <button type="submit" className="form-button">Continue</button>
       </form>
       <p className="terms"> By continuing, you agree to Pintwist's Terms of Service and acknowledge you've read 

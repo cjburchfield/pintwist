@@ -10,7 +10,7 @@ function SignupFormModal() {
       <button className="signup-button" onClick={() => setShowModal(true)}>Sign up</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <SignupForm />
+          <SignupForm onClose={() => setShowModal(false)}/>
         </Modal>
       )}
     </>
@@ -18,3 +18,20 @@ function SignupFormModal() {
 }
 
 export default SignupFormModal;
+
+// function LoginFormModal() {
+//   const [showModal, setShowModal] = useState(false);
+
+//   return (
+//     <>
+//       <button className="login-button" onClick={() => setShowModal(true)}>Log in</button>
+//       {showModal && (
+//         <Modal onClose={() => setShowModal(false)}>
+//           <LoginForm onClose={() => setShowModal(false)} />
+//         </Modal>
+//       )}
+//     </>
+//   );
+// }
+
+// export default LoginFormModal;
