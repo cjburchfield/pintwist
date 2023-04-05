@@ -6,11 +6,24 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login!(@user)
-      # render :show
       render 'api/users/show'
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
+
+    if @user 
+      render 'api/users/show'
+    else 
+      render json: { errors: ['This user does not exist'] }
+  end
+
+  def index 
+    @users = User.all 
+    render 'api/users/index'
   end
 
   private
@@ -19,3 +32,8 @@ class Api::UsersController < ApplicationController
     params.require(:user).permit(:email, :username, :password)
   end
 end
+
+
+
+
+

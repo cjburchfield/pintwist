@@ -49,7 +49,7 @@ function SettingsMenu({ user }) {
             </div>
             <div className="drop-down-checkmark-container">
             <div className="drop-down-checkmark">
-              <i class="fa-solid fa-check"></i>
+              <i className="fa-solid fa-check"></i>
               </div>
             </div>
           </div>
