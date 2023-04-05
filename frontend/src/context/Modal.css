@@ -184,6 +184,7 @@ a:active {
   color: rgb(51, 51, 51);
   margin-left: 5px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .form-button {

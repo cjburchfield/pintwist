@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import "./LoginForm.css";
-import { NavLink } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import SignUpForm from "../SignupFormModal/SignupForm"
 
 function LoginForm({ onClose }) {
   const dispatch = useDispatch();
@@ -10,6 +11,8 @@ function LoginForm({ onClose }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const session = useSelector(state => state.session)
+  const [showLogin, setShowLogin] = useState(true);
+  const [showSignup, setShowSignup] = useState(false);
 
 
   const handleSubmit = (e) => {
@@ -30,19 +33,26 @@ function LoginForm({ onClose }) {
       });
   };
 
-  function handleDemoLogin(e) {
+  const handleDemoLogin = (e) => {
     e.preventDefault();
     dispatch(sessionActions.login({ credential: 'demo-user@pintwist.com', password: 'password' }));
   }
 
+  const formSwap = async (e) => {
+    setShowLogin(false);
+    setShowSignup(true);
+  }
+
   return (
     <>
+    { showLogin && (
+      <>
       <img src="../../../assets/Pinterest_icon.png" alt="Logo" className="logo" />
       <img
         src="../../../assets/x-solid.svg"
         alt="Close-Button"
         className="close-button"
-        onClick={onClose}
+        onClick={ onClose }
       />
       <h1>Welcome to Pintwist</h1>
       <form onSubmit={handleSubmit}>
@@ -97,28 +107,17 @@ function LoginForm({ onClose }) {
         .
       </p>
       <hr className="solid" />
-      <p>
-        Not on Pintwist yet?{" "}
-        <NavLink exact to="/signup" className="other-modal-link" onClick={onClose}>
-            Sign up
-        </NavLink>
-      </p>
+    <p> Not on Pintwist yet? <span onClick={formSwap} className="other-modal-link">Sign up</span> </p>
     </>
-  );
+      )} {
+        showSignup && (
+          <SignUpForm />
+        )
+      }
+    </>
+  )
 }
 
 export default LoginForm;
-
-
-
-        {/* <a href="https://policy.pinterest.com/en/terms-of-service">
-          {" "}
-          <span className="other-modal-link">Sign up</span>
-        </a>{" "} */}
-      {/* </p> */}
-      {/* <NavLink exact to="/signup" className="other-modal-link" onClick={() => setShowSignup(true)}>
-            Sign Up 
-      </NavLink> */}
-
 
 

@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 import { NavLink } from "react-router-dom";
+import LoginForm from "../LoginFormModal/LoginForm";
 
 function SignupForm({ onClose }) {
   const dispatch = useDispatch();
@@ -13,8 +14,9 @@ function SignupForm({ onClose }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(true);
+  
 
 
   // if (sessionUser) return <Redirect to="/" />;
@@ -27,10 +29,9 @@ function SignupForm({ onClose }) {
         .catch(async (res) => {
         let data;
         try {
-          // .clone() essentially allows you to read the response body twice
           data = await res.clone().json();
         } catch {
-          data = await res.text(); // Will hit this case if, e.g., server is down
+          data = await res.text(); 
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
@@ -40,8 +41,15 @@ function SignupForm({ onClose }) {
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
+  const formSwap = async (e) => {
+    setShowLogin(true);
+    setShowSignup(false);
+  }
+
   return (
     <>
+    { showSignup && (
+      <>
       <img src="../../../assets/Pinterest_icon.png" alt="Logo" className="logo"/>
       <img src="../../../assets/x-solid.svg" alt="Close-Button" className="close-button" onClick={onClose}/>
       <h1>Welcome to Pintwist</h1>
@@ -107,14 +115,15 @@ function SignupForm({ onClose }) {
         .
       </p>
       <hr className="solid"/>
-      <p>
-        Already a member?{" "}
-        <NavLink exact to="/login" className="other-modal-link" onClick={onClose}>
-            Log in
-        </NavLink>
-      </p>
+      <p> Already a member? <span onClick={formSwap} className="other-modal-link">Log in</span> </p>
     </>
-  );
+)} {
+  showLogin && (
+    <LoginForm />
+  )
+}
+</>
+)
 }
 
 export default SignupForm;
