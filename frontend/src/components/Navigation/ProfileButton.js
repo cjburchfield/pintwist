@@ -7,7 +7,9 @@ function ProfileButton({ user }) {
   return (
     <div>
       <Link to="/">
-        <button className="profile-picture"><i className="fa-solid fa-user-circle" /></button>
+        <div className="nav_profile_container">
+          <p className="nav_profile">{user.email.slice(0, 1).toUpperCase()}</p>
+        </div>
       </Link>
     </div>
   );
