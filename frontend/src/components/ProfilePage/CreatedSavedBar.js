@@ -2,7 +2,7 @@ import React from "react";
 
 const CreatedSavedBar = () => {
     return (
-        <div>Helo from Created Saved Bar</div>
+        <h1>Created Saved Bar</h1>
     )
 
 }
