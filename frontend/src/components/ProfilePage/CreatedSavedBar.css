@@ -1,0 +1,27 @@
+.profile-pin-bar-holder {
+    top: 80px;
+    z-index: 1;
+    position: sticky;
+    padding-bottom: 16px;
+    width: 17%;
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.profile-pin-bar-created {
+    cursor: pointer;
+
+}
+
+.profile-pin-bar-saved {
+    cursor: pointer;
+}

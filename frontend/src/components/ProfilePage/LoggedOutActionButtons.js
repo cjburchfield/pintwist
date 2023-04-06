@@ -1,9 +1,15 @@
 import React from "react";
+import "./LoggedOutActionButton.css"
 
 const LoggedOutActionButtons = () => {
     return (
-        <h1>Logged Out Action Buttons</h1>
+        <>
+        <div className="profile-follow-button-holder">
+            <div className="profile-follow-button">Follow Forthcoming</div>
+        </div>
+        </>    
     )
 }
 
 export default LoggedOutActionButtons
+
