@@ -1,8 +1,7 @@
 .user-details-section {
-    border: 1px solid black;
     justify-content: center;
     box-sizing: border-box;
-    margin-bottom: 32px;
+    /* margin-bottom: 32px; */
     display: flex;
     flex-direction: column;
     /* max-width: 488px; */
@@ -71,6 +70,7 @@
     display: block;
     text-align: center;
     box-sizing: border-box;
+    max-width: 488px;
 }
 
 .profile-page-website {
@@ -81,8 +81,66 @@
     color: #111;
 }
 
+.profile-page-website:link {
+    color: #111;
+    text-decoration: none;
+}
+
+.profile-page-website:visited {
+    color: #111;
+    text-decoration: none;
+}
+
+.profile-page-website:hover {
+    color: #111;
+    text-decoration: none;
+}
+
+.profile-page-website:active {
+    color: #111;
+    text-decoration: none;
+}
+
 .profile-page-about {
+    margin-top: 2px;
     font-weight: 400;
+    font-size: 16px;
+    color: #111;
+}
+
+.profile-page-followers-holder {
+    margin-bottom: 4px;
+    margin-top: 4px;
+    margin-left: 0;
+    margin-right: 0;
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+}
+
+.profile-page-followers {
+    box-sizing: border-box;
+    display: inline-block;
+    cursor: pointer;
+    text-align: left;
+    font-weight: 600;
+    font-size: 16px;
+    color: #111;
+}
+
+.profile-page-follower-divider {
+    padding: 0px 4px;
+    text-align: left;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.profile-page-followings {
+    box-sizing: border-box;
+    display: inline-block;
+    cursor: pointer;
+    text-align: left;
+    font-weight: 600;
     font-size: 16px;
     color: #111;
 }

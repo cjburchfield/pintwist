@@ -33,14 +33,17 @@ const UserDetails = () => {
                 <div className ="profile-page-username">@{ user.username }</div>
             </div>
             <div className="profile-page-about-holder">
-                <a href="https://www.linkedin.com/in/jamieburchfield/">
-                    <span className ="profile-page-website"></span>{ user.website }</a>
+                <a className ="profile-page-website" href="https://www.linkedin.com/in/jamieburchfield/">{ user.website }</a>
                 <div className ="profile-page-about">{ user.about }</div>
+            </div>
+            <div className="profile-page-followers-holder">
+                <div className="profile-page-followers">0 followers</div>
+                <div className="profile-page-follower-divider">.</div>
+                <div className="profile-page-followings">0 following</div>
             </div>
         </div>
         </>
     )
-
 }
 
 export default UserDetails

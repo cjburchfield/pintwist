@@ -22,13 +22,13 @@ ApplicationRecord.transaction do
     # More users
     10.times do 
       User.create!({
-        # username: Faker::Internet.unique.username(specifier: 3),
-        username: Faker::Artist.unique.name,
+        username: Faker::Internet.unique.username(specifier: 3),
+        # username: Faker::Artist.unique.name,
         email: Faker::Internet.unique.safe_email,
         password: 'password',
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
-        about: Faker::Company.catch_phrase,
+        about: Faker::Lorem.paragraph(sentence_count: 3),
         website: Faker::Internet.url,
       }) 
     end

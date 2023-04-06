@@ -15,11 +15,12 @@ const UserProfile = () => {
     const sessionUser = useSelector(state => state.session.user);
 
 
+
     useEffect(() => {
         dispatch(fetchUser(userId))
     }, [dispatch, userId])
 
-    
+
     if (!user) {
         return null;
     }
@@ -31,6 +32,7 @@ const UserProfile = () => {
     } else {
         ProfilePage = <LoggedOutProfile />
     }
+
 
     return (
         <>
