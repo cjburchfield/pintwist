@@ -35,7 +35,7 @@ function LoginForm({ onClose }) {
 
   const handleDemoLogin = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.login({ credential: 'demo-user@pintwist.com', password: 'password' }));
+    dispatch(sessionActions.login({ credential: 'demo@pintwist.io', password: 'password' }));
   }
 
   const formSwap = async (e) => {

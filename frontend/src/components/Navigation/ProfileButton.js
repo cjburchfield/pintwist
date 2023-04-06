@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
 function ProfileButton({ user }) {
   return (
     <div>
-      <Link to="/">
+      <Link to="/users/:userId">
         <div className="nav_profile_container">
-          <p className="nav_profile">{user.email.slice(0, 1).toUpperCase()}</p>
+          <p className="nav_profile">{user.username.slice(0, 1).toUpperCase()}</p>
         </div>
       </Link>
     </div>
@@ -16,3 +16,4 @@ function ProfileButton({ user }) {
 }
 
 export default ProfileButton;
+
