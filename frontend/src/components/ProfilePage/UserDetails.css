@@ -77,7 +77,9 @@
     cursor: pointer;
     font-weight: 600;
     font-size: 16px;
-    color: #111;}
+    text-decoration: none;
+    color: #111;
+}
 
 .profile-page-about {
     font-weight: 400;

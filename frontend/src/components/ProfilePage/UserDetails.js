@@ -33,7 +33,8 @@ const UserDetails = () => {
                 <div className ="profile-page-username">@{ user.username }</div>
             </div>
             <div className="profile-page-about-holder">
-                <div className ="profile-page-website">{ user.website }</div>
+                <a href="https://www.linkedin.com/in/jamieburchfield/">
+                    <span className ="profile-page-website"></span>{ user.website }</a>
                 <div className ="profile-page-about">{ user.about }</div>
             </div>
         </div>
@@ -43,3 +44,6 @@ const UserDetails = () => {
 }
 
 export default UserDetails
+
+
+
