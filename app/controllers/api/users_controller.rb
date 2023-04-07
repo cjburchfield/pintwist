@@ -19,8 +19,8 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if current_user != @user
-      # render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
-      console.log(error testing)
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      # console.log(error testing)
     elsif @user.update(user_params)
       render 'api/users/edit'
     else

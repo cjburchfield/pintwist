@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser, fetchUser } from "../../store/users"
 import LoggedInProfile from "./LoggedInProfile";
 import LoggedOutProfile from "./LoggedOutProfile";
+import { Redirect } from "react-router-dom";
 
 
 //Need CSS files for both logged in and out
@@ -24,6 +25,10 @@ const UserProfile = () => {
     if (!user) {
         return null;
     }
+
+    if (!sessionUser) {
+        return <Redirect to="/" />;
+      }
 
     let ProfilePage;
 
