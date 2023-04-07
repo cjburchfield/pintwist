@@ -1,13 +1,14 @@
 .user-details-section {
     justify-content: center;
     box-sizing: border-box;
-    /* margin-bottom: 32px; */
+    margin-bottom: 32px;
     display: flex;
     flex-direction: column;
     /* max-width: 488px; */
     width: 100%; 
     margin-top: 12px;
     align-items: center;
+    padding-top: 80px;
 }
 
 .profile-page-picture-holder {
@@ -57,7 +58,7 @@
     box-sizing: border-box;
     margin-top: 8px;
     text-align: left;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
     color: #5f5f5f;
 }
@@ -67,7 +68,7 @@
     margin-top: 4px;
     margin-left: 0;
     margin-right: 0;
-    display: block;
+    /* display: block; */
     text-align: center;
     box-sizing: border-box;
     max-width: 488px;
@@ -79,6 +80,7 @@
     font-size: 16px;
     text-decoration: none;
     color: #111;
+    display: inline-block;
 }
 
 .profile-page-website:link {
@@ -106,6 +108,8 @@
     font-weight: 400;
     font-size: 16px;
     color: #111;
+    display: inline-block;
+
 }
 
 .profile-page-followers-holder {
@@ -129,10 +133,14 @@
 }
 
 .profile-page-follower-divider {
-    padding: 0px 4px;
+    /* padding: 0px 4px; */
     text-align: left;
     font-weight: 400;
     font-size: 14px;
+    margin-right: 2px;
+    margin-left: 2px;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 .profile-page-followings {

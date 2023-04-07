@@ -15,7 +15,7 @@ ApplicationRecord.transaction do
       password: 'password',
       first_name: 'Pin',
       last_name: 'Twist',
-      about: 'This is a demo page',
+      about: 'This is where a user would input information about themselves or their company.',
       website: 'https://www.linkedin.com/in/jamieburchfield/'
     )
   

@@ -37,7 +37,6 @@ const UserProfile = () => {
     return (
         <>
         <div>{ProfilePage}</div>
-        <h1>This is where pins and boards will go</h1>
         </>
     )
 }

@@ -52,15 +52,16 @@ function SignupForm({ onClose }) {
       <>
       <img src="../../../assets/Pinterest_icon.png" alt="Logo" className="logo"/>
       <img src="../../../assets/x-solid.svg" alt="Close-Button" className="close-button" onClick={onClose}/>
-      <h1>Welcome to Pintwist</h1>
-      <h2>Find new ideas to try</h2>
+      <h1 className="modal-h1">Welcome to Pintwist</h1>
+      <h2 className="modal-h2">Find new ideas to try</h2>
       <form onSubmit={handleSubmit}>
         <ul className="errors">
           {errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
-        <label>
+        <label className="modal-label">
           Email
           <input
+            className="modal-input"
             type="text"
             value={email}
             placeholder="Email"
@@ -68,9 +69,10 @@ function SignupForm({ onClose }) {
             required
           />
         </label>
-        <label>
+        <label className="modal-label">
           Username
           <input
+            className="modal-input"
             type="text"
             placeholder="Username"
             value={username}
@@ -78,9 +80,10 @@ function SignupForm({ onClose }) {
             required
           />
         </label>
-        <label>
+        <label className="modal-label">
           Password
           <input
+            className="modal-input"
             type="password"
             placeholder="Password"
             value={password}
@@ -88,9 +91,10 @@ function SignupForm({ onClose }) {
             required
           />
         </label>
-        <label>
+        <label className="modal-label">
           Confirm Password
           <input
+            className="modal-input"
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}

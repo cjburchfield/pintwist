@@ -54,12 +54,13 @@ function LoginForm({ onClose }) {
         className="close-button"
         onClick={ onClose }
       />
-      <h1>Welcome to Pintwist</h1>
+      <h1 className="modal-h1">Welcome to Pintwist</h1>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="modal-label">
           Email
           <div></div>
           <input
+            className="modal-input"
             type="text"
             placeholder="Email"
             value={credential}
@@ -69,14 +70,15 @@ function LoginForm({ onClose }) {
         </label>
         <ul className="errors">
           {errors.map((error) => (
-            <li key={error}>{error}</li>
+            <li className="errors" key={error}>{error}</li>
           ))}
         </ul>
         <div></div>
-        <label>
+        <label className="modal-label">
           Password
           <div></div>
           <input
+            className="modal-input"
             type="password"
             placeholder="Password"
             value={password}

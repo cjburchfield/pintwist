@@ -13,16 +13,20 @@
     padding-top: 16px;
     font-weight: 600;
     font-size: 16px;
+    /* z-index: 9999; */
+    position: fixed;
   }
   
   .nav-left {
     display: flex;
     align-items: center;
+    margin-left: 12px;
   }
   
   .nav-right {
     display: flex;
     align-items: center;
+    margin-right: 12px;
   }
   
   .logo {
