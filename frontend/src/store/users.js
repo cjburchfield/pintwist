@@ -1,7 +1,7 @@
 import csrfFetch from "./csrf";
 
 const RECEIVE_USERS = 'users/RECEIVE_USERS';
-const RECEIVE_USER = 'users/RECEIVE_USER'
+const RECEIVE_USER = 'users/RECEIVE_USER';
 
 export const receiveUsers = (users) => ({
     type: RECEIVE_USERS,
@@ -12,6 +12,7 @@ export const receiveUser = (user) => ({
     type: RECEIVE_USER,
     user
 })
+
 
 export const getUser = (userId) => state => {
     if (state && state.users) {
@@ -46,6 +47,20 @@ export const fetchUser = (userId) => async(dispatch) => {
         dispatch(receiveUser(user))
     }
 }
+
+export const updateUser = (user) => async(dispatch) => {
+    const response = await csrfFetch(`/api/users/${user.id}`, {
+        method: "PATCH",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(user)
+    })
+
+    if (response.ok) {
+        const updatedUser = await response.json();
+        dispatch(receiveUser(updatedUser));
+    }
+};
+
 
 const usersReducer = (state = {}, action) => {
     switch (action.type) {
