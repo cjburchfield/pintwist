@@ -23,7 +23,6 @@ const ProfileButton = ({ user }) => {
   //     return null;
   // }
 
-  const sessionUser = useSelector(state => state.session.user);
 
   return (
     <div>

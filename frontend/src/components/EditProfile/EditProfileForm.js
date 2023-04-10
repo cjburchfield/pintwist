@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { getUser, fetchUser, updateUser } from "../../store/users";
 import "./EditProfileForm.css"
 import EditProfileButtons from "./EditProfileButtons";
@@ -18,6 +18,7 @@ const EditProfile = () => {
     const [username, setUsername] = useState(user ? user.username : '');
     const [website, setWebsite] = useState(user ? user.website : '');
     const [about, setAbout] = useState(user ? user.about : '');
+    const [redirectToUserPage, setRedirectToUserPage] = useState(false);
 
 useEffect(() => {
   if (!user) {
@@ -53,6 +54,12 @@ useEffect(() => {
 
     const handleClick = (e) => {
         e.preventDefault();
+
+        if (!username) {
+          alert("Your profile needs a username.");
+          return;
+        }
+
         const updatedUser = {
           id: userId,
           first_name: firstName,
@@ -61,7 +68,9 @@ useEffect(() => {
           website,
           about,
         };
-        dispatch(updateUser(updatedUser));
+        dispatch(updateUser(updatedUser)).then(() => {
+          setRedirectToUserPage(true)
+        });
       };
 
       const handleReset = (e) => {
@@ -75,6 +84,10 @@ useEffect(() => {
     
       if (!user) {
         return null;
+      }
+
+      if (redirectToUserPage) {
+        return <Redirect to={`/users/${userId}`} />;
       }
 
     return (

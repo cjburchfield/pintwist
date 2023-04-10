@@ -26,6 +26,7 @@ const UserDetails = () => {
           <div className="user-details-section">
             <div className="profile-page-picture-holder">
               <div className="profile-page-picture">{user.username.slice(0,1).toUpperCase()}</div>
+              {/* <img src={user.photoUrl} alt="" className="profile-picture"/> */}
             </div>
             <div className="profile-page-names-holder">
               <div className="profile-page-full-name">{userFullName}</div>
@@ -48,6 +49,4 @@ const UserDetails = () => {
 }
 
 export default UserDetails
-
-
 
