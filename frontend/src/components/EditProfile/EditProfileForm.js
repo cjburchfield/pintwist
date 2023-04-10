@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getUser, fetchUser, updateUser } from "../../store/users";
 import "./EditProfileForm.css"
+import EditProfileButtons from "./EditProfileButtons";
 
 const EditProfile = () => {
     const dispatch = useDispatch();
@@ -54,13 +55,22 @@ useEffect(() => {
         e.preventDefault();
         const updatedUser = {
           id: userId,
-          firstName,
-          lastName,
+          first_name: firstName,
+          last_name: lastName,
           username,
           website,
           about,
         };
         dispatch(updateUser(updatedUser));
+      };
+
+      const handleReset = (e) => {
+        e.preventDefault();
+        setFirstName(user.firstName);
+        setLastName(user.lastName);
+        setUsername(user.username);
+        setWebsite(user.website);
+        setAbout(user.about);
       };
     
       if (!user) {
@@ -68,31 +78,42 @@ useEffect(() => {
       }
 
     return (
+        <>
         <form className="edit-profile-form">
-            <div className="edit-profile-form-header-holder">
-                <div className="edit-profile-form-header">Public profile</div>
-                <div className="edit-profile-form-subheader">People visiting your profile will see the following info</div>
+          <div className="edit-profile-form-header-holder">
+            <div className="edit-profile-form-header">Public profile</div>
+            <div className="edit-profile-form-subheader">People visiting your profile will see the following info</div>
+          </div>
+          <div className="edit-profile-form-fields-holder">
+            <div className="edit-profile-form-name-holder">
+              <label className="edit-profile-form-labels-name">First name
+                <input type="text" onChange={changeFirstName} value={firstName} className="edit-profile-form-inputs-name" />
+              </label>
+              <label className="edit-profile-form-labels-name" style={{ marginLeft: '8px'}}>Last name
+                <input type="text" onChange={changeLastName} value={lastName} className="edit-profile-form-inputs-name" />
+              </label>
             </div>
-            <div className="edit-profile-form-fields-holder">
-                <label className="edit-profile-form-labels-name">First name
-                    <input type="text" onChange={changeFirstName} value={firstName} className="edit-profile-form-inputs-name" />
-                </label>
-                <label className="edit-profile-form-labels">Last name
-                    <input type="text" onChange={changeLastName} value={lastName} className="edit-profile-form-inputs"/>
-                </label>
-                <label className="edit-profile-form-labels">About
-                    <input type="text" onChange={changeAbout} value={about} className="edit-profile-form-inputs"/>
-                </label>
-                <label className="edit-profile-form-labels">Website
-                    <input type="text" onChange={changeWebsite} value={website} className="edit-profile-form-inputs"/>
-                </label>
-                <label className="edit-profile-form-labels">Username
-                    <input type="text" onChange={changeUsername} value={username} className="edit-profile-form-inputs"/>
-                </label>
-            </div>
-            <button className="edit-form-form-submit-button" onClick={handleClick}>Save</button>
+            <label className="edit-profile-form-labels">About
+              <input type="text" onChange={changeAbout} value={about} className="edit-profile-form-inputs"/>
+            </label>
+            <label className="edit-profile-form-labels">Website
+              <input type="text" onChange={changeWebsite} value={website} className="edit-profile-form-inputs"/>
+            </label>
+            <label className="edit-profile-form-labels">Username
+              <input type="text" onChange={changeUsername} value={username} className="edit-profile-form-inputs"/>
+            </label>
+          </div>
         </form>
-    )
+
+        <EditProfileButtons 
+            handleClick={handleClick}
+            handleReset={handleReset}
+            />
+        </>
+      )
+
+
+      
 
 }
 

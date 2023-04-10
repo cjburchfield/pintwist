@@ -1,13 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { getUser, fetchUser } from "../../store/users"
 
 
 const ProfileButton = ({ user }) => {
+  // const ProfileButton = () => {
 
 
-  // const sessionUser = useSelector(state => state.session.user);
+  // const dispatch = useDispatch();
+  // const { userId } = useParams();
+  // const user = useSelector(getUser(userId))
+
+  // useEffect(() => {
+  //     dispatch(fetchUser(userId))
+  // }, [dispatch, userId])
+
+  
+  // if (!user) {
+  //     return null;
+  // }
+
+  const sessionUser = useSelector(state => state.session.user);
 
   return (
     <div>

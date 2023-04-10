@@ -1,0 +1,7 @@
+.edit-full-holder {
+    display: flex;
+    flex-direction: row;
+    padding-top: 80px;
+    padding-left: 20px;
+    /* margin-top: 20px; */
+}

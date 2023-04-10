@@ -1,0 +1,79 @@
+
+  .edit-form-form-submit-button {
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: 0;
+    min-width: 60px;
+    display: inline-block;
+    border-radius: 24px;
+    cursor: pointer;
+    line-height: normal;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: 48px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #e60023;
+    color: white;
+    margin-left: 8px;
+  }
+  .edit-form-form-reset-button {
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: 0;
+    min-width: 60px;
+    display: inline-block;
+    border-radius: 24px;
+    cursor: pointer;
+    line-height: normal;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: 48px;
+    background-color: #efefef ;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    color: #111;
+  }
+  
+  .edit-form-form-submit-button:hover {
+    background-color: #ad081b;
+  }
+  .edit-form-form-reset-button:hover {
+    background-color: #e2e2e2;
+    color: #111;
+  }
+
+  
+  .edit-form-button-holder {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 9999;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    background-color: #FFF;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: row;
+    margin-right: 0;
+    margin-left: 0;
+    justify-content: flex-end;
+    align-items: center;
+    box-sizing: border-box;
+    max-width: 488px;
+  }
