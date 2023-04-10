@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  email           :string           not null
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  about           :text
+#  website         :string
+#  first_name      :string
+#  last_name       :string
+#
 class User < ApplicationRecord
   has_secure_password
 
@@ -13,6 +29,7 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..255 }, allow_nil: true
 
   has_one_attached :photo;
+  has_many :pins;
 
   before_validation :ensure_session_token
 
