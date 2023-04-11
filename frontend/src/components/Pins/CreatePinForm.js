@@ -3,8 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCurrentUser } from "../../store/session";
 import { createPin } from "../../store/pins";
 import "./CreatePinForm.css";
+import { useHistory } from "react-router-dom";
 
 const CreatePinForm = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+
     const user = useSelector(getCurrentUser)
     const userFullName = user.firstName + " " + user.lastName
 
@@ -12,34 +17,13 @@ const CreatePinForm = () => {
     const [description, setDescription] = useState("");
     const [destination_link, setDestinationLink] = useState("");
     const [pin_photo, setPinPhoto] = useState(null);
-
-    // const handleFileChange = (e) => {
-    //     setPinPhoto(e.target.files[0]);
-    //   };
-
-    const dispatch = useDispatch();
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createPin({ title, description, destination_link }));
+        dispatch(createPin({ title, description, destination_link, pin_photo }));
+        history.push(`/users/${user.id}`);
     };
-
-
-
-
-    //         {/* <div>
-    //           <label htmlFor="pin_photo">Pin Photo:</label>
-    //           <input
-    //             type="file"
-    //             id="pin_photo"
-    //             name="pin_photo"
-    //             onChange={handleFileChange}
-    //           />
-    //         </div> */}
-    //         <button type="submit">Create Pin</button>
-    //       </form>
-    //     </div>
-    //   );
     
 
     return (
@@ -51,7 +35,7 @@ const CreatePinForm = () => {
                     <div className="pin-create-ellisis">...</div>
                     <div className="pin-create-save-holder">
                         <div className="pin-create-board-holder">
-                            <div className="pin-create-board-text">Board Coming!</div>
+                            <div className="pin-create-board-text">Boards En Route</div>
                         </div>
                         <button className="pin-create-save-button" type="submit">Save</button>
                     </div>
@@ -63,25 +47,31 @@ const CreatePinForm = () => {
 
                 <div className="pin-create-top-nav-bar"></div>
                 <div className="pin-create-body-holder">
-                    <div className="pin-create-body-left">
+                        <div className="pin-create-body-left">
                         <div className="pin-create-media-holder">
                             <div className="pin-media-upload-holder">
-                                <div className="pin-media-upload-icon">
-                                    <i className="fa-solid fa-circle-arrow-up"></i> 
-                                </div>
-                                <div className="pin-media-upload-header">
-                                    <div>Click to upload</div>
-                                </div>
-                                <div className="pin-media-upload-footer">
-                                    <div>Recommendation: Use high-quality .jpg files less than 20MB</div>
-                                </div>
+                            <div className="pin-media-upload-icon" onClick={() => document.getElementById('pin_photo').click()}>
+                                <i className="fa-solid fa-circle-arrow-up"></i> 
+                            </div>
+                            <input
+                                type="file"
+                                id="pin_photo"
+                                name="pin_photo"
+                                onChange={(e) => setPinPhoto(e.target.files[0])}
+                                style={{ display: 'none' }} 
+                            />
+                            <div className="pin-media-upload-header">
+                                <div>Click to upload</div>
+                            </div>
+                            <div className="pin-media-upload-footer">
+                                <div>Recommendation: Use high-quality .jpg files less than 20MB</div>
+                            </div>
                             </div>
                         </div>
+                        </div>
 
-                    </div>
                     <div className="pin-create-body-right">
                         <div className="pin-create-body-right-upper">
-                            {/* <div className="pin-create-title">Add your title</div> */}
                             <div>
                                 <label htmlFor="title"></label>
                                 <input
@@ -135,7 +125,6 @@ const CreatePinForm = () => {
                 </div>
             </div>
         </div>
-        {/* <button type="submit">Save</button> */}
         </form>
         </>
     )
