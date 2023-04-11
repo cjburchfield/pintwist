@@ -48,7 +48,7 @@ export const fetchPin = (pinId) => async(dispatch) => {
     const response = await csrfFetch(`/api/pins/${pinId}`)
 
     if (response.ok) {
-        const pin = await response.json();
+        const {pin} = await response.json();
         dispatch(receivePin(pin))
     }
 }

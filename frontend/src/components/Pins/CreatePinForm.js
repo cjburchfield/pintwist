@@ -33,7 +33,7 @@ const CreatePinForm = () => {
         <div className="full-pin-create-page">
             <div className="full-pin-create-holder">
                 <div className="pin-create-nav-header">
-                    <div className="pin-create-ellisis">...</div>
+                    <div className="pin-create-ellisis"></div>
                     <div className="pin-create-save-holder">
                         <div className="pin-create-board-holder">
                             <div className="pin-create-board-text">Boards En Route</div>
@@ -49,33 +49,32 @@ const CreatePinForm = () => {
                 <div className="pin-create-top-nav-bar"></div>
                 <div className="pin-create-body-holder">
 
-<div className="pin-create-body-left">
-                <div className="pin-create-media-holder">
-                  {preview ? (
-                    <img src={preview} alt="Preview" className="pin-media-preview" />
-                  ) : (
-                    <div className="pin-media-upload-holder">
-                      <div className="pin-media-upload-icon" onClick={() => document.getElementById('pin_photo').click()}>
-                        <i className="fa-solid fa-circle-arrow-up"></i> 
-                      </div>
-                      <input
-                        type="file"
-                        id="pin_photo"
-                        name="pin_photo"
-                        onChange={(e) => setPinPhoto(e.target.files[0])}
-                        style={{ display: 'none' }} 
-                      />
-                      <div className="pin-media-upload-header">
-                        <div>Click to upload</div>
-                      </div>
-                      <div className="pin-media-upload-footer">
-                        <div>Recommendation: Use high-quality .jpg files less than 20MB</div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
+                <div className="pin-create-body-left">
+    <div className="pin-create-media-holder">
+      {preview ? (
+        <img src={preview} alt="Preview" className="pin-media-preview" />
+      ) : (
+        <div className="pin-media-upload-holder">
+          <div className="pin-media-upload-icon" onClick={() => document.getElementById('pin_photo').click()}>
+            <i className="fa-solid fa-circle-arrow-up"></i>
+          </div>
+          <input
+            type="file"
+            id="pin_photo"
+            name="pin_photo"
+            onChange={(e) => setPinPhoto(e.target.files[0])}
+            style={{ display: 'none' }}
+          />
+          <div className="pin-media-upload-header">
+            <div>Click to upload</div>
+          </div>
+          <div className="pin-media-upload-footer">
+            <div>Recommendation: Use high-quality .jpg files less than 20MB</div>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
                     <div className="pin-create-body-right">
                         <div className="pin-create-body-right-upper">
                             <div>

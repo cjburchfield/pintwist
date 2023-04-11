@@ -23,6 +23,11 @@ const LoggedInNavigation = () => {
               <div className="login_nav_button">Home</div>
             </div>
           </NavLink>
+          <NavLink exact to="/pin-builder">
+            <div className="nav-home-container">
+              <div className="login_nav_button">Create Pin</div>
+            </div>
+          </NavLink>
         </div>
         <div className="nav-right">
             <ProfileButton user={sessionUser} />

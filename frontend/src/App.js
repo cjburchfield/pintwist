@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation";
 import UserProfile from "./components/ProfilePage";
 import EditProfile from "./components/EditProfile";
 import CreatePinForm from "./components/Pins/CreatePinForm";
+import PinShowPage from "./components/Pins/PinShowPage";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route exact path="/pin-builder">
             <CreatePinForm />
+          </Route>
+          <Route exact path="/pin/:pinId">
+            <PinShowPage />
           </Route>
         </Switch>
     </>
