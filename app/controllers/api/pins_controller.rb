@@ -16,17 +16,19 @@ class Api::PinsController < ApplicationController
     # end
 
     def create
-      debugger
-      if params[:pin].present?
+      # debugger
+      # if params[:pin].present?
         @pin = Pin.new(pin_params)
-        if @pin.save
+        @pin.user_id = current_user.id
+
+        if @pin.save!
           render json: @pin, status: :created
         else
           render json: @pin.errors, status: :unprocessable_entity
         end
-      else
-        render json: { error: "Missing pin parameter" }, status: :unprocessable_entity
-      end
+      # else
+      #   render json: { error: "Missing pin parameter" }, status: :unprocessable_entity
+      # end
     end
 
     def show
@@ -57,7 +59,7 @@ class Api::PinsController < ApplicationController
     private
   
     def pin_params
-      params.require(:pin).permit(:title, :description, :destination_link, :user_id, :pin_photo)
+      params.require(:pin).permit(:title, :description, :destination_link, :pin_photo)
     end
   
   end

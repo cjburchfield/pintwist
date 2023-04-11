@@ -38,9 +38,9 @@ const UserDetails = () => {
                 <div className ="profile-page-about">{ user.about }</div>
             </div>
             <div className="profile-page-followers-holder">
-              <div className="profile-page-followers">0 followers</div>
+              {/* <div className="profile-page-followers">0 followers</div>
               <div className="profile-page-follower-divider">.</div>
-              <div className="profile-page-followings">0 following</div>
+              <div className="profile-page-followings">0 following</div> */}
             </div>
           </div>
         </>

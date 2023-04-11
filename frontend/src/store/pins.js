@@ -53,108 +53,18 @@ export const fetchPin = (pinId) => async(dispatch) => {
     }
 }
 
-// export const createPin = (userId, pin) => async(dispatch) => {
-//     const response = await csrfFetch(`/api/users/${userId}/pins/`, {
-//         method: "POST",
-//         // headers: {"Content-Type": "application/json"},
-//         // body: JSON.stringify(pin)
-//         body: pin
-//     })
-
-//     if (response.ok) {
-//         const newPin = await response.json();
-//         dispatch(receivePin(newPin))
-//     }
-// }
-
-// export const createPin = (userId, pin) => async (dispatch) => {
-//     const formData = new FormData();
-//     formData.append("title", pin.title);
-//     formData.append("description", pin.description);
-//     formData.append("destination_link", pin.destination_link);
-//     formData.append("pin_photo", pin.photo);
-  
-//     const response = await csrfFetch(`/api/users/${userId}/pins/`, {
-//       method: "POST",
-//       body: formData,
-//     });
-  
-//     if (response.ok) {
-//       const newPin = await response.json();
-//       dispatch(receivePin(newPin));
-//     }
-//   };
-  
-// export const createPin = (pin) => async (dispatch) => {
-//     const formData = new FormData();
-//     formData.append("title", pin.title);
-//     formData.append("description", pin.description);
-//     formData.append("destination_link", pin.destination_link);
-//     formData.append("pin_photo", pin.pin_photo);
-  
-//     const response = await csrfFetch(`/api/pins/`, {
-//       method: "POST",
-//       body: formData,
-//     });
-  
-//     if (response.ok) {
-//       const newPin = await response.json();
-//       dispatch(receivePin(newPin));
-//       return newPin;
-//     } else {
-//       console.log("Failed to create pin");
-//     }
-//   };
-  
-// export const createPin = ({ title, description, destination_link }) => async dispatch => {
-    // console.log(title)
-    // console.log(description)
-    // console.log(destination_link)
-//     export const createPin = (pin) => async dispatch => {
-
-//     const formData = new FormData();
-//     formData.append('pin[title]', pin.title)
-//     formData.append('pin[description]', pin.description);
-//     formData.append('pin[destination_link]', pin.destination_link);
-    
-//     const response = await csrfFetch(`/api/pins`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "multipart/form-data", // set content type to multipart form data
-//       },
-//       body: formData
-//     });
-//     console.log(response)
-//     debugger
-//     if (response.ok) {
-//         const newPin = await response.json();
-//         dispatch(receivePin(newPin));
-//     }
-//   };
 export const createPin = ({ title, description, destination_link, user_id}) => async dispatch => {
-
-// export const createPin = (pin) => async dispatch => {
-    console.log(title)
-    // console.log(pin.title)
-    // debugger
 
     const formData = new FormData();
     formData.append('pin[title]', title)
-    // console.log(formData)
-    // debugger
     formData.append('pin[description]', description);
     formData.append('pin[destination_link]', destination_link);
-    formData.append('user_id', user_id); // add user_id to form data
-    // formData.append('pin[title]', pin.title)
-    // formData.append('pin[description]', pin.description);
-    // formData.append('pin[destination_link]', pin.destination_link);
-    // formData.append('user_id', pin.user_id); // add user_id to form data
-    
+
     const response = await csrfFetch(`/api/pins`, {
       method: "POST",
-      headers: {
-        "Content-Type": "multipart/form-data", // set content type to multipart form data
-      },
+    //   headers: {
+    //     "Content-Type": "multipart/form-data", // set content type to multipart form data
+    //   },
       body: formData
     });
 
