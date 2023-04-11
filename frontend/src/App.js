@@ -13,11 +13,10 @@ function App() {
           <Route exact path="/users/:userId">
             <UserProfile />
           </Route>
-          <Route path="/users/:userId/edit">
-            {/* <h1>Testing edit profile</h1> */}
+          <Route exact path="/users/:userId/edit">
             <EditProfile />
           </Route>
-          <Route path="/pin-builder">
+          <Route exact path="/pin-builder">
             <CreatePinForm />
           </Route>
         </Switch>

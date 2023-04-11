@@ -56,7 +56,7 @@ export const fetchPin = (pinId) => async(dispatch) => {
 export const createPin = (userId, pin) => async(dispatch) => {
     const response = await csrfFetch(`/api/users/${userId}/pins/`, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        // headers: {"Content-Type": "application/json"},
         // body: JSON.stringify(pin)
         body: pin
     })
