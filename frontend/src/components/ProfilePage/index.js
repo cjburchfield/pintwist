@@ -6,9 +6,6 @@ import LoggedInProfile from "./LoggedInProfile";
 import LoggedOutProfile from "./LoggedOutProfile";
 import { Redirect } from "react-router-dom";
 
-
-//Need CSS files for both logged in and out
-
 const UserProfile = () => {
     const dispatch = useDispatch();
     const { userId } = useParams();

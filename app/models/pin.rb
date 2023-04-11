@@ -11,8 +11,9 @@
 #  updated_at       :datetime         not null
 #
 class Pin < ApplicationRecord
-    has_one_attached :pin_photo;
-    belongs_to :user 
-    
     validates :title, presence: true
+    
+    belongs_to :user 
+    has_one_attached :pin_photo
+    
 end

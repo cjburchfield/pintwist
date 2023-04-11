@@ -23,6 +23,7 @@ class Api::UsersController < ApplicationController
       # console.log(error testing)
     elsif @user.update(user_params)
       render 'api/users/edit'
+      # try potentially render 'api/sessions/show' - why the username isn't saving
     else
       render 'api/users/edit'
     end

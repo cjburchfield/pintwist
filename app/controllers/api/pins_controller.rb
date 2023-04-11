@@ -1,18 +1,32 @@
 class Api::PinsController < ApplicationController
-    wrap_parameters include: Pin.attribute_names + ['photo']
+    wrap_parameters include: Pin.attribute_names + ['pin_photo']
 
     # before_action :require_logged_in, only: [:create, :edit, :update, :destroy]
 
   
-    def create
-        @pin = Pin.new(pin_params)
-        @pin.user_id = params[:user_id]
+    # def create
+    #     @pin = Pin.new(pin_params)
+    #     @pin.user_id = params[:user_id]
     
+    #     if @pin.save
+    #       render 'api/pins/show'
+    #     else
+    #       render json: { errors: @pin.errors.full_messages }, status: :unprocessable_entity
+    #     end
+    # end
+
+    def create
+      debugger
+      if params[:pin].present?
+        @pin = Pin.new(pin_params)
         if @pin.save
-          render 'api/pins/show'
+          render json: @pin, status: :created
         else
-          render json: { errors: @pin.errors.full_messages }, status: :unprocessable_entity
+          render json: @pin.errors, status: :unprocessable_entity
         end
+      else
+        render json: { error: "Missing pin parameter" }, status: :unprocessable_entity
+      end
     end
 
     def show
@@ -28,6 +42,7 @@ class Api::PinsController < ApplicationController
     def index 
         @pins = Pin.all
         render 'api/pins/index'
+    end
   
 #   Forthcoming
 #     def update
