@@ -62,9 +62,6 @@ export const createPin = ({ title, description, destination_link, user_id}) => a
 
     const response = await csrfFetch(`/api/pins`, {
       method: "POST",
-    //   headers: {
-    //     "Content-Type": "multipart/form-data", // set content type to multipart form data
-    //   },
       body: formData
     });
 

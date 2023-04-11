@@ -21,8 +21,6 @@ const CreatePinForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(title)
-        // debugger
         dispatch(createPin({ title, description, destination_link, user_id: user.id }));
     };
 
@@ -107,16 +105,15 @@ const CreatePinForm = () => {
                                     {/* <div className="pin-create-user-follows">0 followers</div> */}
                                 </div>
                             </div>
+                            <div className="pin-description-holder">Tell everyone what your Pin is about 😃 </div>
+                                <div className="pin-create-div-line"></div>
                         </div>
-                        <div className="pin-create-body-right-footer">
-                            {/* <div>Add a destination link</div> */}
-                        </div>
+                        <div className="pin-create-body-right-footer">Add a destination link</div>
+                        <div className="pin-create-div-line"></div>
                     </div>
                 </div>
             </div>
         </div>
-
-                <p>Tell everyone what your Pin is about 😃 </p>
         </>
     )
 }

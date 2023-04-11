@@ -3,21 +3,7 @@ class Api::PinsController < ApplicationController
 
     # before_action :require_logged_in, only: [:create, :edit, :update, :destroy]
 
-  
-    # def create
-    #     @pin = Pin.new(pin_params)
-    #     @pin.user_id = params[:user_id]
-    
-    #     if @pin.save
-    #       render 'api/pins/show'
-    #     else
-    #       render json: { errors: @pin.errors.full_messages }, status: :unprocessable_entity
-    #     end
-    # end
-
     def create
-      # debugger
-      # if params[:pin].present?
         @pin = Pin.new(pin_params)
         @pin.user_id = current_user.id
 
@@ -26,9 +12,6 @@ class Api::PinsController < ApplicationController
         else
           render json: @pin.errors, status: :unprocessable_entity
         end
-      # else
-      #   render json: { error: "Missing pin parameter" }, status: :unprocessable_entity
-      # end
     end
 
     def show
