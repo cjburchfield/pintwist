@@ -21,42 +21,12 @@ const CreatePinForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createPin({ title, description, destination_link, user_id: user.id }));
+        dispatch(createPin({ title, description, destination_link }));
     };
 
 
-    // return (
-    //     <div className="pin-test">
-    //       <form onSubmit={handleSubmit}>
-    //         <div>
-    //           <label htmlFor="title">Title:</label>
-    //           <input
-    //             type="text"
-    //             id="title"
-    //             name="title"
-    //             value={title}
-    //             onChange={(e) => setTitle(e.target.value)}
-    //           />
-    //         </div>
-    //         <div>
-    //           <label htmlFor="description">Description:</label>
-    //           <textarea
-    //             id="description"
-    //             name="description"
-    //             value={description}
-    //             onChange={(e) => setDescription(e.target.value)}
-    //           ></textarea>
-    //         </div>
-    //         <div>
-    //           <label htmlFor="destination_link">Destination Link:</label>
-    //           <input
-    //             type="text"
-    //             id="destination_link"
-    //             name="destination_link"
-    //             value={destination_link}
-    //             onChange={(e) => setDestinationLink(e.target.value)}
-    //           />
-    //         </div>
+
+
     //         {/* <div>
     //           <label htmlFor="pin_photo">Pin Photo:</label>
     //           <input
@@ -74,8 +44,23 @@ const CreatePinForm = () => {
 
     return (
         <>
+        <form onSubmit={handleSubmit}>
         <div className="full-pin-create-page">
             <div className="full-pin-create-holder">
+                <div className="pin-create-nav-header">
+                    <div className="pin-create-ellisis">...</div>
+                    <div className="pin-create-save-holder">
+                        <div className="pin-create-board-holder">
+                            <div className="pin-create-board-text">Board Coming!</div>
+                        </div>
+                        <button className="pin-create-save-button" type="submit">Save</button>
+                    </div>
+                </div>
+
+
+
+
+
                 <div className="pin-create-top-nav-bar"></div>
                 <div className="pin-create-body-holder">
                     <div className="pin-create-body-left">
@@ -96,7 +81,19 @@ const CreatePinForm = () => {
                     </div>
                     <div className="pin-create-body-right">
                         <div className="pin-create-body-right-upper">
-                            <div className="pin-create-title">Add your title</div>
+                            {/* <div className="pin-create-title">Add your title</div> */}
+                            <div>
+                                <label htmlFor="title"></label>
+                                <input
+                                    className="pin-create-title-input"
+                                    type="text"
+                                    id="title"
+                                    placeholder="Add your title"
+                                    name="title"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                />
+                            </div>
                             <div className="pin-create-div-line"></div>
                             <div className="pin-user-info-holder">
                                 <div className="pin-user-profile-pic">{(user.username).slice(0,1).toUpperCase()}</div>
@@ -104,16 +101,42 @@ const CreatePinForm = () => {
                                     <div className="pin-create-user-name">{userFullName}</div>
                                     {/* <div className="pin-create-user-follows">0 followers</div> */}
                                 </div>
-                            </div>
-                            <div className="pin-description-holder">Tell everyone what your Pin is about 😃 </div>
+                            </div>                                
+                                <div>
+                                    <label htmlFor="description"></label>
+                                    <textarea
+                                        id="description"
+                                        className="pin-description-holder"
+                                        name="description"
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                        placeholder="Tell everyone what your Pin is about                                      😃 "
+                                    ></textarea>
+                                </div>
+                                
+                                
+                                
                                 <div className="pin-create-div-line"></div>
                         </div>
-                        <div className="pin-create-body-right-footer">Add a destination link</div>
+                        <div>
+                            <label htmlFor="destination_link"></label>
+                            <input
+                                type="text"
+                                id="destination_link"
+                                name="destination_link"
+                                placeholder="Add a destination link"
+                                className="pin-create-body-right-footer"
+                                value={destination_link}
+                                onChange={(e) => setDestinationLink(e.target.value)}
+                            />
+                        </div>
                         <div className="pin-create-div-line"></div>
                     </div>
                 </div>
             </div>
         </div>
+        {/* <button type="submit">Save</button> */}
+        </form>
         </>
     )
 }
