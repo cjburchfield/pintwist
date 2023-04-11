@@ -85,7 +85,17 @@
     width: 100%;
     flex-direction: column;
     display: flex;
+
+    padding: 0;
+    position: relative;
 }
+
+.pin-media-preview {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
 
 .pin-media-upload-icon{
     box-sizing: border-box;
@@ -477,6 +487,3 @@
     color: white;
 }
 
-/* input[type="file"] {
-    display: none;
-} */
