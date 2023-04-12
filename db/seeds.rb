@@ -1,3 +1,5 @@
+require 'open-uri'
+
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
@@ -32,6 +34,39 @@ ApplicationRecord.transaction do
         website: Faker::Internet.url,
       }) 
     end
+
+    puts "Destroying pins..."
+    Pin.destroy_all 
+
+    puts "Resetting primary keys..."
+    ApplicationRecord.connection.reset_pk_sequence!('pins')
+
+    puts "Creating pins..."
+    15.times do
+      Pin.create!({
+        title: Faker::Lorem.sentence(word_count: 3),
+        description: Faker::Lorem.paragraph(sentence_count: 3),
+        user_id: 1,
+        destination_link: Faker::Internet.url
+      })
+    end
+
+    15.times do
+      Pin.create!({
+      title: Faker::Lorem.sentence(word_count: 3),
+      description: Faker::Lorem.paragraph(sentence_count: 3),
+      user_id: rand(2..11),
+      destination_link: Faker::Internet.url
+    })
+      end
+    end
+
+    puts "Seeding pin photos..."
+    Pin.first(30).each_with_index do |pin, index|
+      pin.pin_photo.attach(
+        io: URI.open("https://pintwist-seeds.s3.amazonaws.com/#{index + 1}.jpg"),
+        filename: "#{index + 1}.jpg"
+      )
+    end
   
     puts "Done!"
-  end

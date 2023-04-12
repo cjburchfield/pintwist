@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import "./EditPinForm.css";
 import { useSelector, useDispatch } from "react-redux";
-import { getPin, fetchPin, updatePin } from "../../../store/pins";
+import { getPin, fetchPin, updatePin, deletePin } from "../../../store/pins";
 import { useParams } from "react-router-dom";
 import { getCurrentUser } from "../../../store/session";
+import DeletePinModal from "./DeletePinModal";
 
 const EditPinForm = ({onClose}) => {
 
@@ -17,7 +18,18 @@ const EditPinForm = ({onClose}) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [pin_photo, setPinPhoto] = useState("");
-    const [destination_link, setDestinationLink] = useState("");
+    const [destination_link, setDestinationLink] = useState(pin?.destination_link || '');
+    // const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+    const handleDelete = () => {
+    //   setShowDeleteModal(true);
+    dispatch(deletePin(pin.id))
+    };
+  
+    // const handleCloseDeleteModal = () => {
+    //   setShowDeleteModal(false);
+    // };
+
 
     useEffect(() => {
         if (!pin) {
@@ -45,6 +57,7 @@ const EditPinForm = ({onClose}) => {
         setDestinationLink(e.target.value);
     };
 
+
     const handleSave = (e) => {
         e.preventDefault();
 
@@ -63,12 +76,7 @@ const EditPinForm = ({onClose}) => {
         };
         dispatch(updatePin(updatedPin)).then(() => dispatch(fetchPin(pinId))).then(onClose);
 
-    }
-
-    const handleDelete = (e) => {
-    }
-
-
+    }      
 
     if (!pin) {
         return null;
@@ -76,41 +84,46 @@ const EditPinForm = ({onClose}) => {
 
   return (
     <>
-        <form className="edit-pin-form">
-            <div className="edit-pin-form-image"></div>
+        <form id="edit-pin-modal-bg">
             <div className="edit-pin-form-header">Edit this Pin</div>
             <div className="edit-pin-form-body">
-                <div className="edit-pin-title-holder">
+                <div className="edit-pin-form-content">
+                <div className="edit-pin-text-holder">
                     <label className="edit-pin-label-text">Title
                         <input type="text" onChange={changeTitle} value={title} className="edit-pin-text-input" />
                     </label>
                 </div>
                 <div className="edit-pin-form-divider"></div>
-                <div className="edit-pin-description-holder">
+                <div className="edit-pin-text-holder">
                     <label className="edit-pin-label-text">Description
-                        <input type="text" onChange={changeDescription} value={description} className="edit-pin-description-input" />
+                        <input type="text" onChange={changeDescription} value={description} className="edit-pin-text-input" />
                     </label>
                 </div>
                 <div className="edit-pin-form-divider"></div>
-                <div className="edit-pin-website-holder">
+                <div className="edit-pin-text-holder">
                     <label className="edit-pin-label-text">Website
                         <input type="text" onChange={changeDestinationLink} value={destination_link} className="edit-pin-text-input" />
                     </label>
                 </div>
+                </div>
+                <div className="edit-pin-form-image-holder">
+                    <img src={pin?.pinPhoto} className="edit-pin-form-image"/>
+                </div>
             </div>
             <div className="edit-pin-form-footer">
                 <div className="edit-pin-form-footer-left">
-                    <button className="edit-pin-form-delete-button" onClick={handleDelete}>Delete</button>
+                <button className="edit-pin-form-delete-button" onClick={handleDelete}>Delete</button>
                 </div>
                 <div className="edit-pin-form-footer-right">
                     <button className="edit-pin-form-cancel-button" onClick={onClose}>Cancel</button>
                     <button className="edit-pin-form-save-button" onClick={handleSave}>Save</button>
-                </div>
+                </div>  
 
 
 
             </div>
         </form>
+        {/* {showDeleteModal && <DeletePinModal onClose={handleCloseDeleteModal} />} */}
     </>
   );
 }

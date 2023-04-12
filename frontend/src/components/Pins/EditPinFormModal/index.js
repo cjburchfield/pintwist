@@ -36,7 +36,7 @@ const EditPinFormModal = ({ pin, onClose }) => {
   return (
     <>
       {showModal && (
-        <Modal onClose={handleCloseModal}>
+        <Modal onClose={handleCloseModal} className="edit-pin-modal-bg">
           <EditPinForm pinId={pin.id} onClose={handleCloseModal}/>
         </Modal>
       )}
@@ -45,3 +45,7 @@ const EditPinFormModal = ({ pin, onClose }) => {
 };
 
 export default EditPinFormModal;
+
+
+
+
