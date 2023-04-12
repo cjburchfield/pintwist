@@ -1,5 +1,5 @@
 
-  nav {
+  /* nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,9 +14,9 @@
     font-weight: 600;
     font-size: 16px;
     /* z-index: 9999; */
-    position: fixed;
-  }
-  
+    /* position: fixed; */
+  /* } */
+   
   .nav-left {
     display: flex;
     align-items: center;

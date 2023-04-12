@@ -13,12 +13,12 @@ const LoggedInNavigation = () => {
     return (
         <nav>
         <div className="nav-left">
-          <NavLink exact to="/">
+          <NavLink exact to="/home">
             <div className="nav-logo-container">
               <img src="../../../assets/Pinterest_icon.png" alt="Logo" className="logo_loggedin"/>
               </div>
           </NavLink>
-          <NavLink exact to="/">
+          <NavLink exact to="/home">
             <div className="nav-home-container">
               <div className="login_nav_button">Home</div>
             </div>
