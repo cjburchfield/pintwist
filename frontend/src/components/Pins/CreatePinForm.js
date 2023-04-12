@@ -4,10 +4,12 @@ import { getCurrentUser } from "../../store/session";
 import { createPin } from "../../store/pins";
 import "./CreatePinForm.css";
 import { useHistory } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const CreatePinForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    // const navigate = useNavigate();
 
 
     const user = useSelector(getCurrentUser)
@@ -23,6 +25,7 @@ const CreatePinForm = () => {
         e.preventDefault();
         dispatch(createPin({ title, description, destination_link, pin_photo }));
         history.push(`/users/${user.id}`);
+        // history.push(`/pin/${pinId}`)
     };
     
     const preview = pin_photo ? URL.createObjectURL(pin_photo) : null;
@@ -33,7 +36,9 @@ const CreatePinForm = () => {
         <div className="full-pin-create-page">
             <div className="full-pin-create-holder">
                 <div className="pin-create-nav-header">
-                    <div className="pin-create-ellisis"></div>
+                    <div className="pin-create-ellisis">
+                        <i className="fa-solid fa-ellipsis"></i>
+                    </div>
                     <div className="pin-create-save-holder">
                         <div className="pin-create-board-holder">
                             <div className="pin-create-board-text">Boards En Route</div>
