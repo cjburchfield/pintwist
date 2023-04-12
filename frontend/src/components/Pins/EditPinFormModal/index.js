@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
+import EditPinForm from './EditPinForm';
 
-const EditPinForm = ({ pinId }) => {
+const EditPinFormModal = ({ pin }) => {
   const [showModal, setShowModal] = useState(false);
 
   console.log("you hit the editpinformmodal index page")
@@ -11,11 +12,12 @@ const EditPinForm = ({ pinId }) => {
       <button className="edit-pin-button" onClick={() => setShowModal(true)}>Edit Pin</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditPinForm pinId={pinId} onClose={() => setShowModal(false)}/>
+          <EditPinForm pinId={pin.id} onClose={() => setShowModal(false)}/>
         </Modal>
       )}
 </>
 )
       }
 
-export default EditPinForm;
+export default EditPinFormModal;
+
