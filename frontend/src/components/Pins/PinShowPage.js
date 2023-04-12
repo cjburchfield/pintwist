@@ -7,7 +7,7 @@ import { getCurrentUser } from "../../store/session";
 // import {EditPinForm} from "../Pins/EditPinFormModal/EditPinForm";
 // import EditPinFormModal from "./EditPinFormModal/EditPinFormModal";
 import EditPinFormModal from "./EditPinFormModal";
-import EditPinForm from "./EditPinFormModal/EditPinForm";
+// import EditPinForm from "./EditPinFormModal/EditPinForm";
 
 const PinShowPage = () => {
 

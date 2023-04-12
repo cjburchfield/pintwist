@@ -72,28 +72,28 @@ export const createPin = ({ title, description, destination_link, pin_photo}) =>
     }
   };
 
-// export const updatePin = (pin) => async(dispatch) => {
-//     const response = await csrfFetch(`/api/pins/${pin.id}`, {
-//         method: "PATCH",
-//         headers: {"Content-Type": "application/json"},
-//         body: JSON.stringify(pin)
-//     })
+export const updatePin = (pin) => async(dispatch) => {
+    const response = await csrfFetch(`/api/pins/${pin.id}`, {
+        method: "PATCH",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(pin)
+    })
 
-//     if (response.ok) {
-//         const updatedPin = await response.json();
-//         dispatch(receivePin(updatedPin));
-//     }
-// }
+    if (response.ok) {
+        const updatedPin = await response.json();
+        dispatch(receivePin(updatedPin));
+    }
+}
 
-// export const deletePin = (pinId) => async(dispatch) => {
-//     const response = await csrfFetch(`/api/pins/${pinId}`, {
-//         method: "DELETE"
-//     })
+export const deletePin = (pinId) => async(dispatch) => {
+    const response = await csrfFetch(`/api/pins/${pinId}`, {
+        method: "DELETE"
+    })
 
-//     if (response.ok) {
-//         dispatch(removePin(pinId));
-//     }
-// }
+    if (response.ok) {
+        dispatch(removePin(pinId));
+    }
+}
 
 const pinsReducer = (state = {}, action) => {
     switch (action.type) {

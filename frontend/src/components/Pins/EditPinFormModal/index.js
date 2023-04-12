@@ -28,8 +28,6 @@ import EditPinForm from './EditPinForm';
 const EditPinFormModal = ({ pin, onClose }) => {
   const [showModal, setShowModal] = useState(true);
 
-  console.log("you hit the editpinformmodal index page");
-
   const handleCloseModal = () => {
     setShowModal(false);
     onClose();

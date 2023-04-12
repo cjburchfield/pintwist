@@ -37,11 +37,11 @@ const CreatePinForm = () => {
             <div className="full-pin-create-holder">
                 <div className="pin-create-nav-header">
                     <div className="pin-create-ellisis">
-                        <i className="fa-solid fa-ellipsis"></i>
+                        {/* <i className="fa-solid fa-ellipsis"></i> */}
                     </div>
                     <div className="pin-create-save-holder">
                         <div className="pin-create-board-holder">
-                            <div className="pin-create-board-text">Boards En Route</div>
+                            <div className="pin-create-board-text"></div>
                         </div>
                         <button className="pin-create-save-button" type="submit">Save</button>
                     </div>

@@ -234,6 +234,7 @@
     margin-top: 8px;
     flex-direction: column;
     color: #fff;
+    background-color: white;
 }
 
 .pin-show-dropdown-option{

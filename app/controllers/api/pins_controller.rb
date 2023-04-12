@@ -30,15 +30,27 @@ class Api::PinsController < ApplicationController
         render 'api/pins/index'
     end
   
-#   Forthcoming
-#     def update
+    def update
+      @pin = Pin.find_by(id: params[:id])
+
+      if @pin.update(pin_params)
+        render 'api/pins/show'
+      else
+        render 'api/pins/show', status: :unprocessable_entity
+      end
+
+    end
   
-#     end
-  
-#     Forthcoming
-#     def destroy
-  
-#     end
+    def destroy
+      @pin = Pin.find_by(id: params[:id])
+      if @pin 
+        @pin.destroy
+        render 'api/pins/show'
+      else
+        render json: { errors: ["This pin does not exist"]}
+      end
+
+    end
   
     private
   
