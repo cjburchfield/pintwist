@@ -28,7 +28,7 @@ function App() {
           <Route exact path="/home">
             <PinIndex />
           </Route>
-          <Route exact path="/test">
+          <Route exact path="/">
             <HomePage />
           </Route>
         </Switch>

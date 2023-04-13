@@ -51,7 +51,7 @@ ApplicationRecord.transaction do
       })
     end
 
-    15.times do
+    30.times do
       Pin.create!({
       title: Faker::Lorem.sentence(word_count: 3),
       description: Faker::Lorem.paragraph(sentence_count: 3),
@@ -62,7 +62,7 @@ ApplicationRecord.transaction do
     end
 
     puts "Seeding pin photos..."
-    Pin.first(30).each_with_index do |pin, index|
+    Pin.first(40).each_with_index do |pin, index|
       pin.pin_photo.attach(
         io: URI.open("https://pintwist-seeds.s3.amazonaws.com/#{index + 1}.jpg"),
         filename: "#{index + 1}.jpg"

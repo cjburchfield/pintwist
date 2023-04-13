@@ -17,7 +17,7 @@
     margin-top: auto;
 }
 
-.profile-pin-bar-created {
+/* .profile-pin-bar-created {
     cursor: pointer;
     margin-right: -4px;
     margin-left: -4px;
@@ -32,14 +32,13 @@
     border-radius: 8px;
     width: 100%;
     align-items: center;
-    /* flex-direction: row; */
     position: relative;
     justify-content: center;
     text-align: left;
     font-size: 16px;
     font-weight: 600;
     color: #111;
-}
+} */
 
 .profile-pin-bar-saved {
     cursor: pointer;
@@ -98,3 +97,28 @@
     border-radius: 1.5px;
     background-color: #111;
 }
+
+.profile-pin-bar-created {
+    cursor: pointer;
+    margin-right: -4px;
+    margin-left: -4px;
+    margin-bottom: 0;
+    margin-top: 0;
+    display: flex;
+    box-sizing: border-box;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 8px;
+    width: 100%;
+    align-items: center;
+    position: relative; /* added */
+    justify-content: center;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    z-index: 5; /* added */
+  }
+  
