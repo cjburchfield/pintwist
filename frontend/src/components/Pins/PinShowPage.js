@@ -60,7 +60,9 @@ const PinShowPage = () => {
                     <div className="pin-show-nav-bar-right"></div>
                 </div>
                 <div className="pin-show-details-holder">
-                <div className="pin-show-url">{pin.destinationLink}</div>
+                <div className="pin-show-url">{pin.destinationLink}
+                    
+                </div>
                 <div className="pin-show-title">{pin.title}</div>
                 <div className="pin-show-description">{pin.description}</div>
                 <div className="pin-show-user-holder">

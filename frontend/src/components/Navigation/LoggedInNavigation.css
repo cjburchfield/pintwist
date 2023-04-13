@@ -49,6 +49,11 @@
   color: #111;
 }
 
+.nav-home-container:hover{
+  background-color: #111;
+  color: white;
+}
+
 .nav-home-container:active{
   background-color: #111;
 }
@@ -58,6 +63,9 @@
   color: white;
 }
 
+.login_nav_button:hover {
+  color: white;
+}
 
   /* Profile Pic */
 .nav_profile_container {
@@ -75,12 +83,11 @@
 }
 
 .nav_profile_container:hover {
-  background-color: rgba(0,0,0,0.06);
+  background-color: #efefef;
 }
 
 .nav_profile{
   font-size: 12px;
-  background-color: rgba(0,0,0,0.06);
   width: 24px;
   height: 24px;
   color: #211922;
@@ -94,7 +101,7 @@
   text-anchor: middle;
   box-sizing: border-box;
   flex-direction: row;
-  /* background: #e9e9e9; */
+  background-color: #efefef;
 }
 
 .nav_profile:active {
