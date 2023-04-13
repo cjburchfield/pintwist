@@ -24,11 +24,25 @@
     opacity: 1;
   }
   
+
+
   .image {
     object-fit: cover;
     height: 500px;
     width: calc(100% / 3);
     flex-basis: calc(100% / 3);
+
+    display: inline-flex;
+    padding : 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 236px;
+    border-radius: 16px;
+    object-fit: cover;
+    opacity: 1;
   }
   
   .dot-container {

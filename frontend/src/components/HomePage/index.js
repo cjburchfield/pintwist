@@ -21,7 +21,7 @@ const batchTwoImages = [
   "https://pintwist-seeds.s3.amazonaws.com/12.jpg",
 ];
 
-const imageSets = [chunkArray(batchOneImages, 3), chunkArray(batchTwoImages, 3)];
+const imageSets = [chunkArray(batchOneImages,3), chunkArray(batchTwoImages,3)];
 
 function chunkArray(array, size) {
   const chunkedArray = [];

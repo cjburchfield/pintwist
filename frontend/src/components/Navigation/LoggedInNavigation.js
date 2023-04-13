@@ -4,6 +4,7 @@ import './LoggedInNavigation.css';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton'
 import SettingsMenu from './SettingsMenu';
+import LoggedInSocialLinks from './LoggedInSocialLinks';
 
 
 const LoggedInNavigation = () => {
@@ -30,6 +31,7 @@ const LoggedInNavigation = () => {
           </NavLink>
         </div>
         <div className="nav-right">
+            <LoggedInSocialLinks />
             <ProfileButton user={sessionUser} />
             <SettingsMenu user={sessionUser} />
         </div>

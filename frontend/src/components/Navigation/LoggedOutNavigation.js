@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './LoggedOutNavigation.css';
+import LoggedOutSocialLinks from './LoggedOutSocialLinks';
 
 const LoggedOutNavigation = () => {
     return (
@@ -16,6 +17,7 @@ const LoggedOutNavigation = () => {
           </NavLink>
         </div>
         <div className="nav-right">
+            <LoggedOutSocialLinks />
             <LoginFormModal />
             <SignupFormModal/>
         </div>
