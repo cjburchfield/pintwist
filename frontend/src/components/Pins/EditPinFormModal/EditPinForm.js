@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import "./EditPinForm.css";
 import { useSelector, useDispatch } from "react-redux";
-import { getPin, fetchPin, updatePin, deletePin } from "../../../store/pins";
+import { getPin, fetchPin, fetchAllPins, updatePin, deletePin } from "../../../store/pins";
 import { useParams, useHistory } from "react-router-dom";
 import { getCurrentUser } from "../../../store/session";
-import DeletePinModal from "./DeletePinModal";
+// import DeletePinModal from "./DeletePinModal";
 
 const EditPinForm = ({onClose}) => {
 
@@ -23,14 +23,28 @@ const EditPinForm = ({onClose}) => {
 
     // const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-    const handleDelete = () => {
-    //   setShowDeleteModal(true);
-    dispatch(deletePin(pin.id)).then(history.replace("/home"))
-    };
+    // const handleDelete = () => {
+    // //   setShowDeleteModal(true);
+    // dispatch(deletePin(pin.id)).then(history.push("/home"))
+    // };
+
+    
   
     // const handleCloseDeleteModal = () => {
     //   setShowDeleteModal(false);
     // };
+
+//     const handleDelete = () => {
+//     dispatch(deletePin(pin.id)).then(() => {
+//         dispatch(fetchAllPins());
+//         history.push("/home");
+//     });
+// };
+
+const handleDelete = () => {
+    dispatch(deletePin(pin.id)).then(dispatch(fetchAllPins())).then(history.push("/home"));
+}
+
 
 
     useEffect(() => {

@@ -12,7 +12,7 @@ const LoggedInProfile = () => {
         <UserDetails />
         <LoggedInActionButtons />
         {/* <CreatedSavedBar /> */}
-        <PinIndex />
+        {/* <PinIndex /> */}
         </>
     )
 }
