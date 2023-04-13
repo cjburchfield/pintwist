@@ -55,15 +55,15 @@ ApplicationRecord.transaction do
       Pin.create!({
       title: Faker::Lorem.sentence(word_count: 3),
       description: Faker::Lorem.paragraph(sentence_count: 3),
-      user_id: rand(2..11),
+      user_id: rand(3..11),
       destination_link: Faker::Internet.url
     })
       end
 
       5.times do
         Pin.create!({
-        title: "London Flats",
-        description: "Pinspiration for my London flat search.",
+        title: "London Flat",
+        description: "Pinspiration for my London flat search",
         user_id: 2,
         destination_link: "https://nylottery.ny.gov/"
       })
