@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import "./LoginForm.css";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import SignUpForm from "../SignupFormModal/SignupForm"
 
 function LoginForm({ onClose }) {
@@ -13,13 +13,14 @@ function LoginForm({ onClose }) {
   const session = useSelector(state => state.session)
   const [showLogin, setShowLogin] = useState(true);
   const [showSignup, setShowSignup] = useState(false);
+  const history = useHistory();
 
 
   const handleSubmit = (e) => {
     if (e) e.preventDefault(); 
   
     setErrors([]);
-    dispatch(sessionActions.login({ credential, password }))
+    dispatch(sessionActions.login({ credential, password })).then(history.replace("/home"))
       .catch(async (res) => {
         let data;
         try {
@@ -35,7 +36,7 @@ function LoginForm({ onClose }) {
 
   const handleDemoLogin = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.login({ credential: 'demo@pintwist.io', password: 'password' }));
+    dispatch(sessionActions.login({ credential: 'demo@pintwist.io', password: 'password' })).then(history.replace("/home"));
   }
 
   const formSwap = async (e) => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 import { NavLink } from "react-router-dom";
@@ -19,7 +19,7 @@ function SignupForm({ onClose }) {
   
 
 
-  if (sessionUser) return <Redirect to="/home" />;
+  // if (sessionUser) return <Redirect to="/home" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,6 +40,8 @@ function SignupForm({ onClose }) {
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
+
+
 
   const formSwap = async (e) => {
     setShowLogin(true);

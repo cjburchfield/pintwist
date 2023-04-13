@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 // import "./SettingsMenu.css"
 import "./LoggedInNavigation.css"
 
 function SettingsMenu({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const history = useHistory();
   
   const openMenu = () => {
     if (showMenu) return;
@@ -28,7 +29,7 @@ function SettingsMenu({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout());
+    dispatch(sessionActions.logout()).then(history.replace("/"));
   };
 
   return (
