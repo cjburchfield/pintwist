@@ -23,8 +23,8 @@ const CreatePinForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createPin({ title, description, destination_link, pin_photo }));
-        history.push(`/users/${user.id}`);
+        dispatch(createPin({ title, description, destination_link, pin_photo })).then(history.push("/home"));
+        // history.push(`/users/${user.id}`);
     };
     
     const preview = pin_photo ? URL.createObjectURL(pin_photo) : null;

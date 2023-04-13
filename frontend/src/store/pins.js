@@ -108,6 +108,19 @@ const pinsReducer = (state = {}, action) => {
         default:
             return state;
     }
+// const pinsReducer = (state = {}, action) => {
+//     switch (action.type) {
+//         case RECEIVE_PIN:
+//             return {...state, [action.pin.id]: action.pin}
+//         case RECEIVE_PINS:
+//             return {...state, ...action.pins}
+//         case REMOVE_PIN:
+//             const { [action.pinId]: deletedPin, ...restOfState } = state;
+//             return restOfState;
+//         default:
+//             return state;
+//     }
 }
 
 export default pinsReducer;
+
