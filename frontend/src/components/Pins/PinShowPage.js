@@ -60,9 +60,10 @@ const PinShowPage = () => {
                     <div className="pin-show-nav-bar-right"></div>
                 </div>
                 <div className="pin-show-details-holder">
-                <div className="pin-show-url">{pin.destinationLink}
-                    
-                </div>
+                <a href="https://www.linkedin.com/in/jamieburchfield/" target="_blank">
+                    <div className="pin-show-url">{pin.destinationLink}</div>
+                </a>
+
                 <div className="pin-show-title">{pin.title}</div>
                 <div className="pin-show-description">{pin.description}</div>
                 <div className="pin-show-user-holder">

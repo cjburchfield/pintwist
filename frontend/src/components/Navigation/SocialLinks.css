@@ -17,7 +17,7 @@
 
 }
 
-.sl-button-circle{
+.sl-button-circle-li{
     font-size: 12px;
     background-color: #efefef;
     width: 24px;
@@ -35,14 +35,13 @@
     flex-direction: row;
 }
 
-.sl-button-circle:hover{
+.sl-button-circle-li:hover{
     background-color: transparent;
     border: none;
 }
 
 .sl-button-li {
     font-size: 12px;
-    background-color: rgba(0,0,0,0.06);
     width: 24px;
     height: 24px;
     color: #211922;
@@ -65,26 +64,6 @@
 }
 
 
-/* .sl-button-container-lo {
-    height: 32px;
-    width: 32px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    background-color: transparent;
-    perspective: 1px;
-    cursor: pointer;
-    border-radius: 50px;
-    box-sizing: border-box;
-    flex-direction: row;
-    background-color: blue;
-} */
-
-/* .sl-button-container-lo:hover{
-    background-color: #efefef;
-
-} */
-
 .sl-button-circle-lo{
     font-size: 12px;
     background-color: #efefef;
@@ -105,23 +84,10 @@
 }
 
 .sl-button-circle-lo:hover{
+    background-color: #e2e2e2;
+}
+
+.sl-button-circle-li:hover{
     background-color: #efefef;
 }
 
-/* .sl-button-lo {
-    font-size: 12px;
-    background-color: rgba(0,0,0,0.06);
-    width: 32px;
-    height: 32px;
-    color: #211922;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    font-weight: 600;
-    text-anchor: middle;
-    box-sizing: border-box;
-    flex-direction: row;
-} */

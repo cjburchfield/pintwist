@@ -241,7 +241,7 @@
 .pin-show-dropdown-menu{
     max-width: 90vh;
     max-height: 90vh;
-    position: relative;
+    /* position: relative; */
     min-height: 40px;
     min-width: 180px;
     border: 1px solid;

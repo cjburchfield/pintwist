@@ -25,7 +25,6 @@ const CreatePinForm = () => {
         e.preventDefault();
         dispatch(createPin({ title, description, destination_link, pin_photo }));
         history.push(`/users/${user.id}`);
-        // history.push(`/pin/${pinId}`)
     };
     
     const preview = pin_photo ? URL.createObjectURL(pin_photo) : null;
@@ -61,7 +60,9 @@ const CreatePinForm = () => {
       ) : (
         <div className="pin-media-upload-holder">
           <div className="pin-media-upload-icon" onClick={() => document.getElementById('pin_photo').click()}>
+        <div className="pin-media-upload-circle">
             <i className="fa-solid fa-circle-arrow-up"></i>
+            </div>
           </div>
           <input
             type="file"
@@ -71,10 +72,10 @@ const CreatePinForm = () => {
             style={{ display: 'none' }}
           />
           <div className="pin-media-upload-header">
-            <div>Click to upload</div>
+            Click to upload
           </div>
           <div className="pin-media-upload-footer">
-            <div>Recommendation: Use high-quality .jpg files less than 20MB</div>
+            Recommendation: Use high-quality .jpg files less than 20MB
           </div>
         </div>
       )}

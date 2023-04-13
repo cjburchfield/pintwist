@@ -5,6 +5,37 @@ import { fetchAllPins, getPins } from "../../store/pins";
 import { Link } from "react-router-dom";
 
 
+// const PinIndex = () => {
+//     const dispatch = useDispatch();
+
+//     useEffect(() => {
+//         dispatch(fetchAllPins());
+//     }, [dispatch]);
+
+//     const pins = useSelector(getPins);
+
+//     return (
+//         <div id="pins-home-page">
+//             <div id="pins-holder">
+//                 {pins.map((pin) => 
+//                     <div className="pin-index-item">
+//                         <Link to={`/pin/${pin.id}`}>
+//                             <img 
+//                                 className="pin-index-item-image"
+//                                 src={pin?.pinPhoto}
+//                             />
+//                         </Link>
+//                     </div>
+//                 )}
+//             </div>
+//         </div>
+//     )
+// }    
+
+
+
+// export default PinIndex;
+
 const PinIndex = () => {
     const dispatch = useDispatch();
 
@@ -18,7 +49,7 @@ const PinIndex = () => {
         <div id="pins-home-page">
             <div id="pins-holder">
                 {pins.map((pin) => 
-                    <div className="pin-index-item">
+                    <div className="pin-index-item" key={pin.id}>
                         <Link to={`/pin/${pin.id}`}>
                             <img 
                                 className="pin-index-item-image"
@@ -30,8 +61,6 @@ const PinIndex = () => {
             </div>
         </div>
     )
-}    
-
-
+} 
 
 export default PinIndex;

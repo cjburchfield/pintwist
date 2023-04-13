@@ -35,6 +35,7 @@
     position: absolute;
     background-color:white;
     width: 484px;
+    /* min-width: 484px; */
     background-color: rgb(255, 255, 255);
     border-radius: 32px;
     position: relative;

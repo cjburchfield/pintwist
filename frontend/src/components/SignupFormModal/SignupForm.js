@@ -16,6 +16,7 @@ function SignupForm({ onClose }) {
   const [errors, setErrors] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(true);
+  const history = useHistory();
   
 
 
@@ -25,7 +26,7 @@ function SignupForm({ onClose }) {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signup({ email, username, password })).then(history.replace("/home"))
         .catch(async (res) => {
         let data;
         try {

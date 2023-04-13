@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./EditPinForm.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getPin, fetchPin, updatePin, deletePin } from "../../../store/pins";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { getCurrentUser } from "../../../store/session";
 import DeletePinModal from "./DeletePinModal";
 
@@ -10,7 +10,8 @@ const EditPinForm = ({onClose}) => {
 
     const { pinId } = useParams();
     const pin = useSelector(getPin(pinId));
-    const user = useSelector(getCurrentUser)
+    const user = useSelector(getCurrentUser);
+    const history = useHistory();
 
     const dispatch = useDispatch();
 
@@ -18,12 +19,13 @@ const EditPinForm = ({onClose}) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [pin_photo, setPinPhoto] = useState("");
-    const [destination_link, setDestinationLink] = useState(pin?.destination_link || '');
+    const [destination_link, setDestinationLink] = useState(pin?.destinationLink || '');
+
     // const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     const handleDelete = () => {
     //   setShowDeleteModal(true);
-    dispatch(deletePin(pin.id))
+    dispatch(deletePin(pin.id)).then(history.replace("/home"))
     };
   
     // const handleCloseDeleteModal = () => {
@@ -84,25 +86,26 @@ const EditPinForm = ({onClose}) => {
 
   return (
     <>
+    <div id="testing-edit">
         <form id="edit-pin-modal-bg">
             <div className="edit-pin-form-header">Edit this Pin</div>
             <div className="edit-pin-form-body">
                 <div className="edit-pin-form-content">
                 <div className="edit-pin-text-holder">
-                    <label className="edit-pin-label-text">Title
-                        <input type="text" onChange={changeTitle} value={title} className="edit-pin-text-input" />
+                    <label className="modal-label">Title
+                        <input type="text" onChange={changeTitle} value={title} className="modal-input" />
                     </label>
                 </div>
                 <div className="edit-pin-form-divider"></div>
                 <div className="edit-pin-text-holder">
-                    <label className="edit-pin-label-text">Description
-                        <input type="text" onChange={changeDescription} value={description} className="edit-pin-text-input" />
+                    <label className="modal-label">Description
+                        <input type="text" onChange={changeDescription} value={description} className="modal-input" />
                     </label>
                 </div>
                 <div className="edit-pin-form-divider"></div>
                 <div className="edit-pin-text-holder">
-                    <label className="edit-pin-label-text">Website
-                        <input type="text" onChange={changeDestinationLink} value={destination_link} className="edit-pin-text-input" />
+                    <label className="modal-label">Website
+                        <input type="text" onChange={changeDestinationLink} value={destination_link} className="modal-input" />
                     </label>
                 </div>
                 </div>
@@ -124,6 +127,7 @@ const EditPinForm = ({onClose}) => {
             </div>
         </form>
         {/* {showDeleteModal && <DeletePinModal onClose={handleCloseDeleteModal} />} */}
+        </div>
     </>
   );
 }

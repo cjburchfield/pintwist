@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./EditPinForm.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getPin, fetchPin, updatePin, deletePin } from "../../../store/pins";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { getCurrentUser } from "../../../store/session";
 import { Modal } from '../../../context/Modal';
 
@@ -11,6 +11,7 @@ const DeletePinModal = ({onClose}) => {
     const { pinId } = useParams();
     const pin = useSelector(getPin(pinId));
     const user = useSelector(getCurrentUser)
+    const history = useHistory();
 
     const dispatch = useDispatch();
 
