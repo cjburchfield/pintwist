@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton'
 import SettingsMenu from './SettingsMenu';
 import LoggedInSocialLinks from './LoggedInSocialLinks';
+import SearchBar from './SearchBar';
 
 
 const LoggedInNavigation = () => {
@@ -29,6 +30,9 @@ const LoggedInNavigation = () => {
               <div className="login_nav_button">Create Pin</div>
             </div>
           </NavLink>
+        </div>
+        <div className="nav-middle">
+          <SearchBar />
         </div>
         <div className="nav-right">
             <LoggedInSocialLinks />

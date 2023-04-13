@@ -8,7 +8,6 @@ class Api::PinsController < ApplicationController
         @pin.user_id = current_user.id
 
         if @pin.save!
-          # render json: @pin, status: :created
           render 'api/pins/show'
         else
           render json: @pin.errors, status: :unprocessable_entity
@@ -50,6 +49,10 @@ class Api::PinsController < ApplicationController
         render json: { errors: ["This pin does not exist"]}
       end
 
+    end
+
+    def search 
+      @pins = Pin.where("lower(title) LIKE ?", "%#{params[:q]}%")
     end
   
     private

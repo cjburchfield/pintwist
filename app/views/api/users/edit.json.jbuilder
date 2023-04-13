@@ -1,6 +1,4 @@
-# json.editUser do
-#     json.extract! @user, :id, :email, :username, :first_name, :last_name, :about, :website
-  
-#     json.partial! 'form', user: @user
-#   end
-  
+json.user do
+    json.extract! @user, :id, :email, :username, :first_name, :last_name, :about, :website, :created_at, :updated_at
+    json.photoUrl @user.photo.attached? ? @user.photo.url : nil
+end

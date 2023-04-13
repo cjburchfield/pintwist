@@ -55,7 +55,7 @@ const handleDelete = () => {
         setDescription(pin.description);
         setPinPhoto(pin.pin_photo);
         setDestinationLink(pin.destination_link);
-    }}, [dispatch, pinId]);
+    }}, [dispatch, pinId, pin]);
 
     const changeTitle = (e) => {
         setTitle(e.target.value);

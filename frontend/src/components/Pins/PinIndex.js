@@ -49,7 +49,7 @@ const PinIndex = () => {
         <div id="pins-home-page">
             <div id="pins-holder">
                 {pins.map((pin) => 
-                    <div className="pin-index-item" key={pin.id}>
+                    <div className="pin-index-item" key={`${pin.id}-${Date.now()}`}>
                         <Link to={`/pin/${pin.id}`}>
                             <img 
                                 className="pin-index-item-image"
