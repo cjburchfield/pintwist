@@ -17,7 +17,7 @@ const batchTwoImages = [
   "https://pintwist-seeds.s3.amazonaws.com/11.jpg",
 ];
 
-const imageSets = [chunkArray(batchOneImages, 5), chunkArray(batchTwoImages, 5)];
+const imageSets = [batchOneImages, batchTwoImages];
 
 function chunkArray(array, size) {
   const chunkedArray = [];
@@ -32,14 +32,16 @@ function chunkArray(array, size) {
 const HomePage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [imageSet, setImageSet] = useState(0);
+  const [header, setHeader] = useState("home decor idea");
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((activeIndex + 1) % imageSets[imageSet].length);
       if (activeIndex === imageSets[imageSet].length - 1) {
         setImageSet((imageSet + 1) % imageSets.length);
+        setHeader(imageSet === 0 ? "home decor idea" : "daydream material");
       }
-    }, 3000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [activeIndex, imageSet]);
@@ -47,27 +49,25 @@ const HomePage = () => {
   return (
     <>
       <div className="landing-header-holder">
-        <div className="landing-header">Get inspired</div>
+        <div className="landing-fixed-header">Get your next</div>
+        <div className={`landing-header ${header === "home decor idea" ? "home-header" : "daydream-header"}`}>
+  {header}
+</div>
+
+        {/* <div className="landing-header">{header}</div> */}
       </div>
       <div className="image-slider-container">
-        {imageSets[imageSet].map((imageSet, setIndex) => (
-          <div
-            key={setIndex}
-            className={`image-container ${
-              setIndex === activeIndex ? "active" : ""
-            }`}
-          >
-            {imageSet.map((image, index) => (
-  <img
-    key={index}
-    src={image}
-    alt={`image-${index}`}
-    className={`image ${setIndex === activeIndex ? "active" : ""}`}
-  />
-            ))}
-          </div>
-        ))}
-      </div>
+  <div className="image-container">
+    {imageSets[imageSet].map((image, index) => (
+      <img
+        key={index}
+        src={image}
+        alt={`image-${index}`}
+        className={`image ${index === activeIndex ? "active" : ""}`}
+      />
+    ))}
+  </div>
+</div>
     </>
   );
 };
