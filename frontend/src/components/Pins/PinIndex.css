@@ -11,7 +11,7 @@
   margin: 0 auto;
   column-gap: 10px;
   background-color: white;
-  columns: 6;
+  columns: 5;
 }
 
 @media (min-width: 0px) and (max-width: 755px) {

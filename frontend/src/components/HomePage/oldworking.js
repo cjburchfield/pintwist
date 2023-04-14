@@ -1,3 +1,5 @@
+
+ //just need to revert back to 3 instead of 5 for batch images 
 import React, { useState, useEffect } from "react";
 import "./HomePage.css";
 
@@ -17,7 +19,9 @@ const batchTwoImages = [
   "https://pintwist-seeds.s3.amazonaws.com/11.jpg",
 ];
 
+// const imageSets = [chunkArray(batchOneImages, 5), chunkArray(batchTwoImages), 5];
 const imageSets = [chunkArray(batchOneImages, 5), chunkArray(batchTwoImages, 5)];
+
 
 function chunkArray(array, size) {
   const chunkedArray = [];
@@ -33,12 +37,14 @@ const HomePage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [imageSet, setImageSet] = useState(0);
 
+  const handleDotClick = (index) => {
+    setActiveIndex(index);
+    setImageSet(index % 2);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((activeIndex + 1) % imageSets[imageSet].length);
-      if (activeIndex === imageSets[imageSet].length - 1) {
-        setImageSet((imageSet + 1) % imageSets.length);
-      }
     }, 3000);
 
     return () => clearInterval(interval);
@@ -46,28 +52,35 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="landing-header-holder">
-        <div className="landing-header">Get inspired</div>
-      </div>
-      <div className="image-slider-container">
-        {imageSets[imageSet].map((imageSet, setIndex) => (
+    <div className="landing-header-holder">
+      <div className="landing-header">Get inspired</div>
+    </div>
+    <div className="image-slider-container">
+      {imageSets[imageSet].map((imageSet, setIndex) => (
+        <div
+          key={setIndex}
+          className={`image-container ${setIndex === activeIndex ? "active" : ""}`}
+        >
+          {imageSet.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={`image-${index}`}
+              className={`image ${setIndex === activeIndex ? "active" : ""}`}
+            />
+          ))}
+        </div>
+      ))}
+      <div className="dot-container">
+        {imageSets.map((_, index) => (
           <div
-            key={setIndex}
-            className={`image-container ${
-              setIndex === activeIndex ? "active" : ""
-            }`}
-          >
-            {imageSet.map((image, index) => (
-  <img
-    key={index}
-    src={image}
-    alt={`image-${index}`}
-    className={`image ${setIndex === activeIndex ? "active" : ""}`}
-  />
-            ))}
-          </div>
+            key={index}
+            className={`dot ${index === activeIndex % 2 ? "active" : ""}`}
+            onClick={() => handleDotClick(index)}
+          />
         ))}
       </div>
+    </div>
     </>
   );
 };
