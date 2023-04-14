@@ -48,15 +48,12 @@ const Search = () => {
   return (
     <div id="search-result-page">
         <div id="search-results-holder">
-      {/* {searchResults.map((pin) =>  */}
       {Array.isArray(searchResults) && searchResults.map((pin) => 
-
           <div className="search-result" key={`${pin.id}-${Date.now()}`}>
             <Link to={`/pin/${pin.id}`}>
               <img 
                 className="search-result-image"
                 src={pin?.pinPhoto}
-                // alt={pin.title}
               />
             </Link>
           </div>
