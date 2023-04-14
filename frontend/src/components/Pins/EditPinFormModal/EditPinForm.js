@@ -42,7 +42,7 @@ const EditPinForm = ({onClose}) => {
 // };
 
 const handleDelete = () => {
-    dispatch(deletePin(pin.id)).then(dispatch(fetchAllPins())).then(history.push("/home"));
+    dispatch(deletePin(pin.id)).then(dispatch(fetchAllPins())).then(history.push(`/users/${user.id}`));
 }
 
 

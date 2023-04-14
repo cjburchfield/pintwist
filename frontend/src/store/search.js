@@ -13,7 +13,11 @@ export const fetchSearchResults = (query) => async dispatch => {
 const searchReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_SEARCH_RESULTS:
-            return action.searchResults.search
+            if(action.searchResults.search){
+                return action.searchResults.search
+            } else{
+                return {}
+            }
         default:
             return state;
     }
