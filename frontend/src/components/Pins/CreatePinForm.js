@@ -4,34 +4,46 @@ import { getCurrentUser } from "../../store/session";
 import { createPin } from "../../store/pins";
 import "./CreatePinForm.css";
 import { useHistory } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
 
 const CreatePinForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const navigate = useNavigate();
 
 
     const user = useSelector(getCurrentUser)
-    const userFullName = user.firstName + " " + user.lastName
-
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [destination_link, setDestinationLink] = useState("");
     const [pin_photo, setPinPhoto] = useState(null);
+    const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // dispatch(createPin({ title, description, destination_link, pin_photo })).then(history.push("/home"));
-        dispatch(createPin({ title, description, destination_link, pin_photo }))
-        history.push(`/users/${user.id}`);
-    };
-    
+        try {
+          await dispatch(createPin({
+            title,
+            description,
+            destination_link,
+            pin_photo,
+            user_id: user.id 
+          }));
+          setSuccessMessage("Pin created successfully!");
+          setErrorMessage("");
+        } catch (error) {
+          setErrorMessage("Error creating pin. Please try again.");
+          setSuccessMessage("");
+        }
+      };
+      
+
     const preview = pin_photo ? URL.createObjectURL(pin_photo) : null;
 
     return (
         <>
+         {successMessage && <div className="success-message">{successMessage}</div>}
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
         <form onSubmit={handleSubmit}>
         <div className="full-pin-create-page">
             <div className="full-pin-create-holder">
@@ -101,7 +113,6 @@ const CreatePinForm = () => {
                                 <div className="pin-user-profile-pic">{(user.username).slice(0,1).toUpperCase()}</div>
                                 <div className="pin-user-name-and-followers">
                                     <div className="pin-create-user-name">{user.username}</div>
-                                    {/* <div className="pin-create-user-follows">0 followers</div> */}
                                 </div>
                             </div>                                
                                 <div>

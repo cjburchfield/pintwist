@@ -53,7 +53,7 @@ export const fetchPin = (pinId) => async(dispatch) => {
     }
 }
 
-export const createPin = ({ title, description, destination_link, pin_photo}) => async dispatch => {
+export const createPin = ({ title, description, destination_link, pin_photo }) => async dispatch => {
 
     const formData = new FormData();
     formData.append('pin[title]', title)

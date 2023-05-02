@@ -6,6 +6,7 @@ class ApplicationController < ActionController::API
       with: :invalid_authenticity_token
     
     protect_from_forgery with: :exception
+    # protect_from_forgery with: :null_session
     before_action :snake_case_params, :attach_authenticity_token
 
     def current_user

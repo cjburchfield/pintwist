@@ -1,11 +1,10 @@
 class Api::PinsController < ApplicationController
     wrap_parameters include: Pin.attribute_names + ['pin_photo']
 
-    # before_action :require_logged_in, only: [:create, :edit, :update, :destroy]
-
     def create
+        # debugger
         @pin = Pin.new(pin_params)
-        @pin.user_id = current_user.id
+        # @pin.user_id = current_user.id
 
         if @pin.save!
           render 'api/pins/show'
@@ -58,7 +57,7 @@ class Api::PinsController < ApplicationController
     private
   
     def pin_params
-      params.require(:pin).permit(:title, :description, :destination_link, :pin_photo)
+      params.require(:pin).permit(:title, :description, :destination_link, :pin_photo, :user_id)
     end
   
   end
