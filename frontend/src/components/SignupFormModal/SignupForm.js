@@ -17,6 +17,8 @@ function SignupForm({ onClose }) {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(true);
   const history = useHistory();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   
 
 
@@ -61,6 +63,28 @@ function SignupForm({ onClose }) {
         <ul className="errors">
           {errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
+        {/* <label className="modal-label">
+          First Name
+          <input
+            className="modal-input"
+            type="text"
+            placeholder="First name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </label>
+        <label className="modal-label">
+          Last Name
+          <input
+            className="modal-input"
+            type="text"
+            placeholder="Last name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </label> */}
         <label className="modal-label">
           Email
           <input

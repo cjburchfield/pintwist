@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { setCurrentUser } from "./session";
 
 const RECEIVE_USERS = 'users/RECEIVE_USERS';
 const RECEIVE_USER = 'users/RECEIVE_USER';

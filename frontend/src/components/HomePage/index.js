@@ -22,7 +22,7 @@ const HomePage = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [imageSet, setImageSet] = useState(0);
-  const [header, setHeader] = useState("home decor idea");
+  const [header, setHeader] = useState("home decor idea...");
   const [title, setTitle] = useState("Get your next");
 
   useEffect(() => {
@@ -30,13 +30,14 @@ const HomePage = () => {
       setActiveIndex((activeIndex + 1) % imageSets[imageSet].length);
       if (activeIndex === imageSets[imageSet].length - 1) {
         setImageSet((imageSet + 1) % imageSets.length);
-        setHeader(imageSet === 0 ? "home decor idea" : "daydream material");
-        setTitle(imageSet === 0 ? "Get your next" : "...at least your new");
+        setHeader(imageSet === 0 ? "home decor idea..." : "daydream material");
+        setTitle(imageSet === 0 ? "Get your next" : "...at least new");
       }
     }, 1000);
 
     return () => clearInterval(interval);
   }, [activeIndex, imageSet]);
+  
 
   return (
     <>
@@ -50,7 +51,7 @@ const HomePage = () => {
         </div>
         <div
           className={`landing-header ${
-            header === "home decor idea" ? "home-header" : "daydream-header"
+            header === "home decor idea..." ? "home-header" : "daydream-header"
           }`}
         >
           {header}

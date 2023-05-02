@@ -18,14 +18,14 @@ class Api::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if current_user != @user
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
-      # console.log(error testing)
-    elsif @user.update(user_params)
+    # if current_user != @user
+    #   debugger
+    #   render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+    # elsif @user.update(user_params)
+    if @user.update(user_params)
       render 'api/users/edit'
-      # try potentially render 'api/sessions/show' - why the username isn't saving
     else
-      render 'api/users/edit'
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

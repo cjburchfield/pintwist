@@ -2,48 +2,38 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Redirect } from "react-router-dom";
 import { getUser, fetchUser, updateUser } from "../../store/users";
+import { updateSession} from "../../store/session";
 import "./EditProfileForm.css"
 import EditProfileButtons from "./EditProfileButtons";
+
+
 
 const EditProfile = () => {
     const dispatch = useDispatch();
     const { userId } = useParams();
     let user = useSelector(getUser(userId));
 
-
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
-
-    const [firstName, setFirstName] = useState(user ? user.firstName : '');
-    const [lastName, setLastName] = useState(user ? user.lastName : '');
-    const [username, setUsername] = useState(user ? user.username : '');
-    const [website, setWebsite] = useState(user ? user.website : '');
-    const [about, setAbout] = useState(user ? user.about : '');
+    const [username, setUsername] = useState('');
+    const [website, setWebsite] = useState('');
+    const [about, setAbout] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const [redirectToUserPage, setRedirectToUserPage] = useState(false);
+    const [showMessage, setShowMessage] = useState(false); 
+
 
 useEffect(() => {
   if (!user) {
     dispatch(fetchUser(userId));
   } else {
-    setFirstName(user.firstName);
-    setLastName(user.lastName);
     setUsername(user.username);
     setWebsite(user.website);
     setAbout(user.about);
   }
 }, [dispatch, userId, user]);
 
-    const changeFirstName = (e) => {
-        setFirstName(e.target.value);
-    }
-
-    const changeLastName = (e) => {
-        setLastName(e.target.value);
-    }
-
-    const changeUsername = (e) => {
-        setUsername(e.target.value);
-    }
-
+const changeUsername = (e) => {
+  setUsername(e.target.value);
+}
     const changeWebsite = (e) => {
         setWebsite(e.target.value);
     }
@@ -62,21 +52,27 @@ useEffect(() => {
 
         const updatedUser = {
           id: userId,
-          first_name: firstName,
-          last_name: lastName,
           username,
           website,
           about,
         };
-        dispatch(updateUser(updatedUser)).then(() => {
-          setRedirectToUserPage(true)
+        dispatch(updateUser(updatedUser))
+        .then(() => {
+          setShowMessage(true);
+          dispatch(updateSession(updatedUser));
+  
+          setTimeout(() => {
+            setShowMessage(false);
+          }, 3000);
+        })
+        .catch((error) => {
+          setErrorMessage("There was an error saving your changes.");
         });
-      };
+    };
+
 
       const handleReset = (e) => {
         e.preventDefault();
-        setFirstName(user.firstName);
-        setLastName(user.lastName);
         setUsername(user.username);
         setWebsite(user.website);
         setAbout(user.about);
@@ -98,24 +94,17 @@ useEffect(() => {
             <div className="edit-profile-form-subheader">People visiting your profile will see the following info</div>
           </div>
           <div className="edit-profile-form-fields-holder">
-            <div className="edit-profile-form-name-holder">
-              <label className="edit-profile-form-labels-name">First name
-                <input type="text" onChange={changeFirstName} value={firstName} className="edit-profile-form-inputs-name" />
-              </label>
-              <label className="edit-profile-form-labels-name" style={{ marginLeft: '8px'}}>Last name
-                <input type="text" onChange={changeLastName} value={lastName} className="edit-profile-form-inputs-name" />
-              </label>
-            </div>
+            <label className="edit-profile-form-labels">Username
+            <input type="text" onChange={changeUsername} value={username} maxLength={20} className="edit-profile-form-inputs" />
+            </label>
             <label className="edit-profile-form-labels">About
-              <input type="text" onChange={changeAbout} value={about} className="edit-profile-form-inputs"/>
+              <input type="text" onChange={changeAbout} value={about} maxLength={100} className="edit-profile-form-inputs"/>
             </label>
             <label className="edit-profile-form-labels">Website
-              <input type="text" onChange={changeWebsite} value={website} className="edit-profile-form-inputs"/>
-            </label>
-            <label className="edit-profile-form-labels">Username
-              <input type="text" onChange={changeUsername} value={username} className="edit-profile-form-inputs"/>
+              <input type="text" onChange={changeWebsite} value={website} maxLength={50} className="edit-profile-form-inputs"/>
             </label>
           </div>
+          {showMessage && <div className="profile-success-message">Profile saved!</div>} 
         </form>
 
         <EditProfileButtons 

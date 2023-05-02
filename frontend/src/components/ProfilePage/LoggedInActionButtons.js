@@ -19,7 +19,7 @@ const LoggedInActionButtons = ( ) => {
                 <div className="profile-edit-button-holder">
                 <div className="profile-edit-button">Edit</div>
                 </div>
-</NavLink>
+            </NavLink>
         </>
     )
 }

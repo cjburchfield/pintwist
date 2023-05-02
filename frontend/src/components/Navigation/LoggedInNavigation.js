@@ -1,16 +1,16 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState} from 'react';
+import { NavLink, useParams } from 'react-router-dom';
 import './LoggedInNavigation.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton'
 import SettingsMenu from './SettingsMenu';
 import LoggedInSocialLinks from './LoggedInSocialLinks';
 import SearchBar from './SearchBar';
-
+import { getCurrentUser } from '../../store/session';
+import { getUser, fetchUser } from '../../store/users';
 
 const LoggedInNavigation = () => {
-    const sessionUser = useSelector(state => state.session.user);
-    
+  const currentUser = useSelector(getCurrentUser);
 
     return (
         <nav>
@@ -36,8 +36,8 @@ const LoggedInNavigation = () => {
         </div>
         <div className="nav-right">
             <LoggedInSocialLinks />
-            <ProfileButton user={sessionUser} />
-            <SettingsMenu user={sessionUser} />
+            <ProfileButton user={currentUser} />
+            <SettingsMenu user={currentUser} />
         </div>
       </nav>
     )
