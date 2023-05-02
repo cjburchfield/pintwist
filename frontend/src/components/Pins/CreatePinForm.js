@@ -100,7 +100,7 @@ const CreatePinForm = () => {
                             <div className="pin-user-info-holder">
                                 <div className="pin-user-profile-pic">{(user.username).slice(0,1).toUpperCase()}</div>
                                 <div className="pin-user-name-and-followers">
-                                    <div className="pin-create-user-name">{userFullName}</div>
+                                    <div className="pin-create-user-name">{user.username}</div>
                                     {/* <div className="pin-create-user-follows">0 followers</div> */}
                                 </div>
                             </div>                                

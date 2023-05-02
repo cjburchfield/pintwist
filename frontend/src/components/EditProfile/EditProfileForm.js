@@ -42,25 +42,69 @@ const changeUsername = (e) => {
         setAbout(e.target.value);
     }
 
+    // const handleClick = (e) => {
+    //     e.preventDefault();
+
+    //     if (!username) {
+    //       alert("Your profile needs a username.");
+    //       return;
+    //     }
+
+    //     const updatedUser = {
+    //       id: userId,
+    //       username,
+    //       website,
+    //       about,
+    //     };
+    //     dispatch(updateUser(updatedUser))
+    //     .then(() => {
+    //       setShowMessage(true);
+    //       dispatch(updateSession(updatedUser));
+  
+    //       setTimeout(() => {
+    //         setShowMessage(false);
+    //       }, 3000);
+    //     })
+    //     .catch((error) => {
+    //       setErrorMessage("There was an error saving your changes.");
+    //     });
+    // };
+
     const handleClick = (e) => {
-        e.preventDefault();
-
-        if (!username) {
-          alert("Your profile needs a username.");
-          return;
-        }
-
-        const updatedUser = {
-          id: userId,
-          username,
-          website,
-          about,
-        };
-        dispatch(updateUser(updatedUser))
+      e.preventDefault();
+    
+      if (!username) {
+        setErrorMessage("Your profile needs a username.");
+        return;
+      }
+    
+      if (username.length > 20) {
+        setErrorMessage("Username cannot exceed 20 characters.");
+        return;
+      }
+    
+      if (website.length > 50) {
+        setErrorMessage("Website cannot exceed 50 characters.");
+        return;
+      }
+    
+      if (about.length > 100) {
+        setErrorMessage("About cannot exceed 100 characters.");
+        return;
+      }
+    
+      const updatedUser = {
+        id: userId,
+        username,
+        website,
+        about,
+      };
+    
+      dispatch(updateUser(updatedUser))
         .then(() => {
           setShowMessage(true);
           dispatch(updateSession(updatedUser));
-  
+    
           setTimeout(() => {
             setShowMessage(false);
           }, 3000);
@@ -70,6 +114,14 @@ const changeUsername = (e) => {
         });
     };
 
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setErrorMessage('');
+      }, 5000);
+    
+      return () => clearTimeout(timer);
+    }, [errorMessage]);
+    
 
       const handleReset = (e) => {
         e.preventDefault();
@@ -95,16 +147,17 @@ const changeUsername = (e) => {
           </div>
           <div className="edit-profile-form-fields-holder">
             <label className="edit-profile-form-labels">Username
-            <input type="text" onChange={changeUsername} value={username} maxLength={20} className="edit-profile-form-inputs" />
+            <input type="text" onChange={changeUsername} value={username} className="edit-profile-form-inputs" />
             </label>
             <label className="edit-profile-form-labels">About
-              <input type="text" onChange={changeAbout} value={about} maxLength={100} className="edit-profile-form-inputs"/>
+              <input type="text" onChange={changeAbout} value={about} className="edit-profile-form-inputs"/>
             </label>
             <label className="edit-profile-form-labels">Website
-              <input type="text" onChange={changeWebsite} value={website} maxLength={50} className="edit-profile-form-inputs"/>
+              <input type="text" onChange={changeWebsite} value={website} className="edit-profile-form-inputs"/>
             </label>
           </div>
           {showMessage && <div className="profile-success-message">Profile saved!</div>} 
+          {errorMessage && <div className="profile-error-message">{errorMessage}</div>}
         </form>
 
         <EditProfileButtons 

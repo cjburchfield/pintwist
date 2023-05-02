@@ -68,7 +68,7 @@ const PinShowPage = () => {
                 <div className="pin-show-description">{pin.description}</div>
                 <div className="pin-show-user-holder">
                     <div className="pin-show-user-picture">{(user.username).slice(0,1).toUpperCase()}</div>
-                    <div className="pin-show-user-name">{userFullName}</div>
+                    <div className="pin-show-user-name">{user.username}</div>
                 </div>
                 </div>
             </div>
