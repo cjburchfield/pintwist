@@ -8,9 +8,13 @@ import { useHistory } from "react-router-dom";
 const CreatePinForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-
+    // const state = useSelector(state => state)
+    // debugger
 
     const user = useSelector(getCurrentUser)
+    // const user = useSelector(state => state.session.user)
+    const user_id = user.id
+    // const user_id = 1
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [destination_link, setDestinationLink] = useState("");
@@ -21,19 +25,20 @@ const CreatePinForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // debugger
         try {
           await dispatch(createPin({
             title,
             description,
             destination_link,
             pin_photo,
-            user_id: user.id 
+            user_id
           }));
           setSuccessMessage("Pin created successfully!");
           setErrorMessage("");
         } catch (error) {
-          setErrorMessage("Error creating pin. Please try again.");
-          setSuccessMessage("");
+            setErrorMessage("Error creating pin. Please try again.");
+            setSuccessMessage("");
         }
       };
       

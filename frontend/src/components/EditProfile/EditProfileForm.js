@@ -42,34 +42,6 @@ const changeUsername = (e) => {
         setAbout(e.target.value);
     }
 
-    // const handleClick = (e) => {
-    //     e.preventDefault();
-
-    //     if (!username) {
-    //       alert("Your profile needs a username.");
-    //       return;
-    //     }
-
-    //     const updatedUser = {
-    //       id: userId,
-    //       username,
-    //       website,
-    //       about,
-    //     };
-    //     dispatch(updateUser(updatedUser))
-    //     .then(() => {
-    //       setShowMessage(true);
-    //       dispatch(updateSession(updatedUser));
-  
-    //       setTimeout(() => {
-    //         setShowMessage(false);
-    //       }, 3000);
-    //     })
-    //     .catch((error) => {
-    //       setErrorMessage("There was an error saving your changes.");
-    //     });
-    // };
-
     const handleClick = (e) => {
       e.preventDefault();
     

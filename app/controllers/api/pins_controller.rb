@@ -2,10 +2,14 @@ class Api::PinsController < ApplicationController
     wrap_parameters include: Pin.attribute_names + ['pin_photo']
 
     def create
-        # debugger
         @pin = Pin.new(pin_params)
+        # @pin.user_id = pin_params[:user_id]
+        # @pin.user_id = 1
+        # debugger
         # @pin.user_id = current_user.id
-
+        # puts current_user.id
+        # puts user.id
+        debugger
         if @pin.save!
           render 'api/pins/show'
         else
