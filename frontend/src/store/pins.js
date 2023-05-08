@@ -53,13 +53,14 @@ export const fetchPin = (pinId) => async(dispatch) => {
     }
 }
 
-export const createPin = ({ title, description, destination_link, pin_photo }) => async dispatch => {
+export const createPin = ({ title, description, destination_link, pin_photo, user_id }) => async dispatch => {
 
     const formData = new FormData();
     formData.append('pin[title]', title)
     formData.append('pin[description]', description);
     formData.append('pin[destination_link]', destination_link);
     formData.append('pin[pin_photo]', pin_photo);
+    formData.append('pin[user_id]', user_id);
 
     const response = await csrfFetch(`/api/pins`, {
       method: "POST",

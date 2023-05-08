@@ -1,17 +1,17 @@
 class ApplicationController < ActionController::API
     include ActionController::RequestForgeryProtection
   
+    helper_method :current_user
     rescue_from StandardError, with: :unhandled_error
     rescue_from ActionController::InvalidAuthenticityToken,
       with: :invalid_authenticity_token
     
     protect_from_forgery with: :exception
-    # protect_from_forgery with: :null_session
     before_action :snake_case_params, :attach_authenticity_token
 
     def current_user
         @current_user ||= User.find_by(session_token: session[:session_token])
-    end
+      end
     
     def login!(user)
         session[:session_token] = user.reset_session_token!

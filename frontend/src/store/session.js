@@ -32,6 +32,7 @@ const storeCurrentUser = user => {
 }
 
 export const getCurrentUser = (state) => {
+  // debugger
   if (state && state.session && state.session.user) {
     return state.session.user;
   } else {
