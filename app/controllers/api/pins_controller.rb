@@ -9,7 +9,7 @@ class Api::PinsController < ApplicationController
         # @pin.user_id = current_user.id
         # puts current_user.id
         # puts user.id
-        debugger
+        # debugger
         if @pin.save!
           render 'api/pins/show'
         else
