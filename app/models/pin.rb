@@ -14,6 +14,10 @@ class Pin < ApplicationRecord
     validates :title, presence: true
     
     belongs_to :user
+
+    has_many :board_pins
+    has_many :boards, through: :board_pins
+    
     has_one_attached :pin_photo
     
 end

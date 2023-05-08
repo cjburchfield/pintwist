@@ -29,9 +29,15 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..255 }, allow_nil: true
 
   has_one_attached :photo;
-  has_many :pins;
-
+  has_many :pins, dependent: :destroy;
+  has_many :boards, dependent: :destroy;
+  
   before_validation :ensure_session_token
+  after_create :create_default_board
+  
+  def all_pins_board
+    boards.find_by(name: 'All Pins')
+  end
 
   def self.find_by_credentials(credential, password)
     field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username
@@ -56,4 +62,9 @@ class User < ApplicationRecord
   def ensure_session_token
     self.session_token ||= generate_unique_session_token
   end
+
+  def create_default_board
+    self.boards.create(name: 'All Pins')
+  end
+
 end
