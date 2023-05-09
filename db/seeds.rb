@@ -98,25 +98,6 @@ end
     )
   end
 
-  # Pin.first(65).each_with_index do |pin, index|
-  #   pin.pin_photo.attach(
-  #     io: URI.open("https://pintwist-seeds.s3.amazonaws.com/1.jpg"),
-  #     filename: "1.jpg"
-  #   )
-  # end
-
-
-  
-
-
-
-  # Pin.first(65).each_with_index do |pin, _index|
-  #   pin.pin_photo.attach(
-  #     io: File.open(Rails.root.join('app', 'assets', 'images', 'opie.jpg')),
-  #     filename: "opie.jpg"
-  #   )
-  # end
-
   puts "Done!"
-# end
+
 
