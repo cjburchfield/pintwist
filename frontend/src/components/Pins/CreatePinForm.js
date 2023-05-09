@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCurrentUser } from "../../store/session";
 import { createPin } from "../../store/pins";
@@ -8,57 +8,73 @@ import { useHistory } from "react-router-dom";
 const CreatePinForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const state = useSelector(state => state)
-    // debugger
 
     const user = useSelector(getCurrentUser)
-    // const user = useSelector(state => state.session.user)
     const user_id = user.id
-    // const user_id = 1
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [destination_link, setDestinationLink] = useState("");
     const [pin_photo, setPinPhoto] = useState(null);
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    
+    const [showMessage, setShowMessage] = useState(false); 
+    const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        // debugger
-        try {
-          await dispatch(createPin({
+    useEffect(() => {
+      if (submitted) {
+          if (successMessage) {
+              setShowMessage(true);
+              setTimeout(() => {
+                  setShowMessage(false);
+                  setSuccessMessage("");
+                  history.push("/home");
+              }, 3000);
+          } else if (errorMessage) {
+              setShowMessage(true);
+              setTimeout(() => {
+                  setShowMessage(false);
+                  setErrorMessage("");
+              }, 3000);
+          }
+          setSubmitted(false);
+      }
+  }, [submitted, successMessage, errorMessage, history]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+        await dispatch(createPin({
             title,
             description,
             destination_link,
             pin_photo,
             user_id
-          }));
-          setSuccessMessage("Pin created successfully!");
-          setErrorMessage("");
-        } catch (error) {
-            setErrorMessage("Error creating pin. Please try again.");
-            setSuccessMessage("");
-        }
-      };
+        }));
+        setSuccessMessage("Pin created successfully!");
+        setErrorMessage("");
+    } catch (error) {
+        setErrorMessage("Error creating pin. Please try again.");
+        setSuccessMessage("");
+    } finally {
+        setSubmitted(true);
+    }
+};
       
 
     const preview = pin_photo ? URL.createObjectURL(pin_photo) : null;
 
     return (
         <>
-         {successMessage && <div className="success-message">{successMessage}</div>}
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
+ {showMessage && successMessage && <div className="success-message">{successMessage}</div>}
+            {showMessage && errorMessage && <div className="error-message">{errorMessage}</div>}
         <form onSubmit={handleSubmit}>
         <div className="full-pin-create-page">
             <div className="full-pin-create-holder">
                 <div className="pin-create-nav-header">
                     <div className="pin-create-ellisis">
-                        {/* <i className="fa-solid fa-ellipsis"></i> */}
                     </div>
                     <div className="pin-create-save-holder">
                         <div className="pin-create-board-holder">
-                            {/* <div className="pin-create-board-text"></div> */}
                         </div>
                         <button className="pin-create-save-button" type="submit">Save</button>
                     </div>
