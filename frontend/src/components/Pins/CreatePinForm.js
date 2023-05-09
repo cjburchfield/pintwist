@@ -24,22 +24,23 @@ const CreatePinForm = () => {
       if (submitted) {
           if (successMessage) {
               setShowMessage(true);
-              setTimeout(() => {
-                  setShowMessage(false);
-                  setSuccessMessage("");
-                  history.push("/home");
-              }, 3000);
+              history.push({
+                  pathname: '/home',
+                  state: { successMessage: 'Pin created successfully!' }
+              });
+              setShowMessage(false);
+              setSuccessMessage("");
           } else if (errorMessage) {
               setShowMessage(true);
               setTimeout(() => {
                   setShowMessage(false);
                   setErrorMessage("");
-              }, 3000);
+              }, 5000);
           }
           setSubmitted(false);
       }
   }, [submitted, successMessage, errorMessage, history]);
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
