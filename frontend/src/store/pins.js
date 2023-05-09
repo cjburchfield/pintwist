@@ -70,6 +70,7 @@ export const createPin = ({ title, description, destination_link, pin_photo, use
     if (response.ok) {
         const newPin = await response.json();
         dispatch(receivePin(newPin));
+        return newPin.pin.id;
     }
   };
 

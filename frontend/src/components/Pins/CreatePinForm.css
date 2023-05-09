@@ -501,7 +501,7 @@
     font-size: 16px;
     color: white;
 }
- .success-message {
+ .create-success-message {
     background-color: black;
     color: white;
     padding: 10px;
@@ -510,7 +510,7 @@
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 125px;
+    bottom: 75px;
     margin: 0 auto;
     text-align: center;
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
@@ -530,9 +530,11 @@
     padding-bottom: 12px;
     border: 0;
     min-width: 60px;
+
+    z-index: 99;
  }
 
-.error-message {
+.create-error-message {
     background-color: rgb(230, 0, 35);
     color: white;
     padding: 10px;
