@@ -48,27 +48,27 @@ ApplicationRecord.transaction do
 
   45.times do
     Pin.create!({
-    title: Faker::Lorem.sentence(word_count: 3),
-    description: Faker::Lorem.paragraph(sentence_count: 3),
-    user_id: rand(3..11),
-    destination_link: Faker::Internet.url
-  })
-    end
-
-    5.times do
-      Pin.create!({
+      title: Faker::Lorem.sentence(word_count: 3),
+      description: Faker::Lorem.paragraph(sentence_count: 3),
+      user_id: rand(3..11),
+      destination_link: Faker::Internet.url
+    })
+  end
+  
+  5.times do
+    Pin.create!({
       title: "London Flat",
       description: "Pinspiration for my London flat search",
       user_id: 2,
       destination_link: "https://nylottery.ny.gov/"
     })
-      end
+  end
 
   puts "Creating boards..."
   5.times do
     Board.create!({
       name: Faker::Address.street_name,
-      description: Faker::Quotes::Shakespeare,
+      description: Faker::Emotion.noun,
       user_id: 1
     })
   end
@@ -76,7 +76,7 @@ ApplicationRecord.transaction do
   20.times do
     Board.create!({
       name: Faker::Address.street_name,
-      description: Faker::Quotes::Shakespeare,
+      description: Faker::Emotion.noun,
       user_id: rand(3..11)
     })
   end
@@ -88,6 +88,7 @@ ApplicationRecord.transaction do
       pin_id: rand(1..28)
     })
   end
+end
 
   puts "Seeding pin photos..."
   Pin.first(65).each_with_index do |pin, index|
@@ -97,5 +98,25 @@ ApplicationRecord.transaction do
     )
   end
 
+  # Pin.first(65).each_with_index do |pin, index|
+  #   pin.pin_photo.attach(
+  #     io: URI.open("https://pintwist-seeds.s3.amazonaws.com/1.jpg"),
+  #     filename: "1.jpg"
+  #   )
+  # end
+
+
+  
+
+
+
+  # Pin.first(65).each_with_index do |pin, _index|
+  #   pin.pin_photo.attach(
+  #     io: File.open(Rails.root.join('app', 'assets', 'images', 'opie.jpg')),
+  #     filename: "opie.jpg"
+  #   )
+  # end
+
   puts "Done!"
-end
+# end
+

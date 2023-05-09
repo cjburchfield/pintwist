@@ -15,8 +15,8 @@ class Pin < ApplicationRecord
     
     belongs_to :user
 
-    has_many :board_pins
-    has_many :boards, through: :board_pins
+    has_many :board_pins, dependent: :destroy
+    has_many :boards, through: :board_pins, dependent: :destroy
     
     has_one_attached :pin_photo
     
