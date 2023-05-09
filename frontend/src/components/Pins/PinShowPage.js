@@ -2,38 +2,54 @@ import React, { useEffect, useState, useRef } from "react";
 import "./PinShowPage.css";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {getPin, fetchPin } from "../../store/pins";
+import { getPin, fetchPin } from "../../store/pins";
 import { getCurrentUser } from "../../store/session";
 import EditPinFormModal from "./EditPinFormModal";
 
 const PinShowPage = () => {
+  const { pinId } = useParams();
+  const pin = useSelector(getPin(pinId));
+  const dispatch = useDispatch();
 
-    const { pinId } = useParams();
-    const pin = useSelector(getPin(pinId));
-    const dispatch = useDispatch();
+  const user = useSelector(getCurrentUser);
 
-    const user = useSelector(getCurrentUser)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isEditPinModalOpen, setIsEditPinModalOpen] = useState(false);
 
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isEditPinModalOpen, setIsEditPinModalOpen] = useState(false);
+  const dropdownRef = useRef();
+  const ellipsisRef = useRef();
 
 
-    useEffect(() => {
-        dispatch(fetchPin(pinId))
-    }, [dispatch, pinId])
-
-    if (!pin) {
-        return null;
+  const handleClickOutsideDropdown = (event) => {
+    if (isDropdownOpen && !dropdownRef.current.contains(event.target) && !ellipsisRef.current.contains(event.target)) {
+      setIsDropdownOpen(false);
     }
+  };
 
-    const handleEllipsisClick = () => {
-        setIsDropdownOpen(!isDropdownOpen);
-    };
+  useEffect(() => {
+    dispatch(fetchPin(pinId));
+  }, [dispatch, pinId]);
 
-    const handleEditPinClick = () => {
-        setIsDropdownOpen(false);
-        setIsEditPinModalOpen(true);
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutsideDropdown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutsideDropdown);
     };
+  }, [isDropdownOpen]);
+
+  if (!pin) {
+    return null;
+  }
+
+  const handleEllipsisClick = (event) => {
+    event.stopPropagation();
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleEditPinClick = () => {
+    setIsDropdownOpen(false);
+    setIsEditPinModalOpen(true);
+  };
 
   return (
     <>
@@ -44,16 +60,16 @@ const PinShowPage = () => {
             </div>
             <div className="pin-show-right">
                 <div className="pin-show-nav-bar">
-                    <div className="pin-show-nav-bar-left">
-                        <div className="pin-show-nav-bar-left-ellipsis" onClick={handleEllipsisClick}>
-                        <i className="fa-solid fa-ellipsis"></i>
+                <div className="pin-show-nav-bar-left">
+                <div ref={ellipsisRef} className="pin-show-nav-bar-left-ellipsis" onClick={handleEllipsisClick}>
+                <i className="fa-solid fa-ellipsis"></i>
                         </div>
                         {isDropdownOpen && (
-                            <div className="pin-show-dropdown-menu">
-                                <div className="pin-show-dropdown-option" onClick={handleEditPinClick}>Edit Pin</div>
-                                </div>
-                        )}
-                    </div>
+      <div ref={dropdownRef} className="pin-show-dropdown-menu">
+        <div className="pin-show-dropdown-option" onClick={handleEditPinClick}>Edit Pin</div>
+      </div>
+    )}
+  </div>
                     <div className="pin-show-nav-bar-right"></div>
                 </div>
                 <div className="pin-show-details-holder">
@@ -65,17 +81,15 @@ const PinShowPage = () => {
                 <div className="pin-show-description">{pin.description}</div>
                 <div className="pin-show-user-holder">
                     <div className="pin-show-user-picture">{(user.username).slice(0,1).toUpperCase()}</div>
-                    <div className="pin-show-user-name">{user.username}</div>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {isEditPinModalOpen && <EditPinFormModal pin={pin} onClose={() =>setIsEditPinModalOpen(false)}/>}
-    </>
-  );
+<div className="pin-show-user-name">{user.username}</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{isEditPinModalOpen && <EditPinFormModal pin={pin} onClose={() =>setIsEditPinModalOpen(false)}/>}
+</>
+);
 }
 
 export default PinShowPage;
-
-

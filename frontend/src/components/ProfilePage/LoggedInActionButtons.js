@@ -17,7 +17,7 @@ const LoggedInActionButtons = ( ) => {
         <>
             <NavLink to={`/users/${userId}/edit`}>
                 <div className="profile-edit-button-holder">
-                <div className="profile-edit-button">Edit</div>
+                <div className="profile-edit-button">Edit Profile</div>
                 </div>
             </NavLink>
         </>

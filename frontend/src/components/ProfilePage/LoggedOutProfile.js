@@ -10,7 +10,7 @@ const LoggedOutProfile = () => {
     return (
         <>
         <UserDetails />
-        <LoggedInActionButtons />
+        {/* <LoggedInActionButtons /> */}
         <CreatedSavedBar />
         </>
     )

@@ -21,16 +21,16 @@ const EditProfile = () => {
     const [showMessage, setShowMessage] = useState(false); 
 
 
-useEffect(() => {
-  if (!user) {
-    dispatch(fetchUser(userId));
-  } else {
-    setUsername(user.username);
-    setWebsite(user.website);
-    setAbout(user.about);
-  }
-}, [dispatch, userId, user]);
-
+    useEffect(() => {
+      if (!user) {
+        dispatch(fetchUser(userId));
+      } else {
+        setUsername(user.username || '');
+        setWebsite(user.website || '');
+        setAbout(user.about || '');
+      }
+    }, [dispatch, userId, user]);
+    
 const changeUsername = (e) => {
   setUsername(e.target.value);
 }

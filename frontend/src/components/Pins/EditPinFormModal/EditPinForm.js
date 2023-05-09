@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getPin, fetchPin, fetchAllPins, updatePin, deletePin } from "../../../store/pins";
 import { useParams, useHistory } from "react-router-dom";
 import { getCurrentUser } from "../../../store/session";
-// import DeletePinModal from "./DeletePinModal";
 
 const EditPinForm = ({onClose}) => {
 
@@ -18,28 +17,9 @@ const EditPinForm = ({onClose}) => {
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [pin_photo, setPinPhoto] = useState("");
-    const [destination_link, setDestinationLink] = useState(pin?.destinationLink || '');
+    const [pin_photo, setPinPhoto] = useState(pin?.pin_photo || "");
+    const [destination_link, setDestinationLink] = useState(pin?.destinationLink || "");
 
-    // const [showDeleteModal, setShowDeleteModal] = useState(false);
-
-    // const handleDelete = () => {
-    // //   setShowDeleteModal(true);
-    // dispatch(deletePin(pin.id)).then(history.push("/home"))
-    // };
-
-    
-  
-    // const handleCloseDeleteModal = () => {
-    //   setShowDeleteModal(false);
-    // };
-
-//     const handleDelete = () => {
-//     dispatch(deletePin(pin.id)).then(() => {
-//         dispatch(fetchAllPins());
-//         history.push("/home");
-//     });
-// };
 
 const handleDelete = () => {
     dispatch(deletePin(pin.id)).then(dispatch(fetchAllPins())).then(history.push(`/users/${user.id}`));
@@ -54,7 +34,7 @@ const handleDelete = () => {
         setTitle(pin.title);
         setDescription(pin.description);
         setPinPhoto(pin.pin_photo);
-        setDestinationLink(pin.destination_link);
+        setDestinationLink(pin.destinationLink);
     }}, [dispatch, pinId, pin]);
 
     const changeTitle = (e) => {
@@ -64,10 +44,6 @@ const handleDelete = () => {
     const changeDescription = (e) => {
         setDescription(e.target.value);
     };
-
-    // const changePinPhoto = (e) => {
-    //     setPinPhoto(e.target.value);
-    // };
 
     const changeDestinationLink = (e) => {
         setDestinationLink(e.target.value);
@@ -101,7 +77,7 @@ const handleDelete = () => {
   return (
     <>
     <div id="testing-edit">
-        <form id="edit-pin-modal-bg">
+    <form id="edit-pin-modal-bg" onSubmit={handleSave}>
             <div className="edit-pin-form-header">Edit this Pin</div>
             <div className="edit-pin-form-body">
                 <div className="edit-pin-form-content">
@@ -124,7 +100,7 @@ const handleDelete = () => {
                 </div>
                 </div>
                 <div className="edit-pin-form-image-holder">
-                    <img src={pin?.pinPhoto} className="edit-pin-form-image"/>
+                <img src={pin?.pin_photo} className="edit-pin-form-image"/>
                 </div>
             </div>
             <div className="edit-pin-form-footer">
@@ -133,14 +109,13 @@ const handleDelete = () => {
                 </div>
                 <div className="edit-pin-form-footer-right">
                     <button className="edit-pin-form-cancel-button" onClick={onClose}>Cancel</button>
-                    <button className="edit-pin-form-save-button" onClick={handleSave}>Save</button>
+                    <button className="edit-pin-form-save-button" type="submit">Save</button>
                 </div>  
 
 
 
             </div>
         </form>
-        {/* {showDeleteModal && <DeletePinModal onClose={handleCloseDeleteModal} />} */}
         </div>
     </>
   );
