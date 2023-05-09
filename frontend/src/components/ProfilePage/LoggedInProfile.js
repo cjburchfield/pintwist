@@ -4,6 +4,7 @@ import UserDetails from "./UserDetails";
 import LoggedInActionButtons from "./LoggedInActionButtons";
 import CreatedSavedBar from "./CreatedSavedBar";
 import PinIndex from "../Pins/PinIndex";
+import CreateActions from "./CreateActions";
 
 
 const LoggedInProfile = () => {
@@ -24,14 +25,14 @@ const LoggedInProfile = () => {
     return (
       <>
         <div className="profile-container">
-          <UserDetails />
-          <LoggedInActionButtons />
-          <CreatedSavedBar />
-          {/* Display success message */}
           {showMessage && successMessage && (
-          <div className="delete-success-message">{successMessage}</div>
-        )}
+            <div className="delete-success-message">{successMessage}</div>
+            )}
         </div>
+        <UserDetails />
+        <LoggedInActionButtons />
+        <CreatedSavedBar />
+        <CreateActions />
       </>
     );
   };

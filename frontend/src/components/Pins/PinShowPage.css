@@ -118,25 +118,25 @@
     margin: 0 0 0 0;
     display: flex;
     box-sizing: border-box;
-    /* padding-left: 12px;
-    padding-right: 12px; */
     position: relative;
     border: 0;
     background-color: transparent;
-    /* padding: 0 0 0 0 ; */
     cursor: pointer;
-    /* z-index: 1; */
     height: 48px;
     width:48px;
     border-radius: 50%;
     justify-content: center;
-    color: #5f5f5f;
+    color: #111111;
     fill: currentColor;
     vertical-align: middle;
     font-size: 32px;
     font-weight: 700;
     line-height: 48px;
-    /* margin-left: 16px; */
+}
+
+.pin-show-nav-bar-left-ellipsis-active, .pin-show-nav-bar-left-ellipsis-active:hover {
+    background-color: #111111;
+    color: white;
 }
 .pin-show-nav-bar-right {
 

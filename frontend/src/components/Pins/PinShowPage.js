@@ -81,7 +81,7 @@ const PinShowPage = () => {
               <div className="pin-show-nav-bar-left">
                 <div
                   ref={ellipsisRef}
-                  className="pin-show-nav-bar-left-ellipsis"
+                  className={`pin-show-nav-bar-left-ellipsis ${isDropdownOpen ? 'pin-show-nav-bar-left-ellipsis-active' : ''}`}
                   onClick={handleEllipsisClick}
                 >
                   <i className="fa-solid fa-ellipsis"></i>

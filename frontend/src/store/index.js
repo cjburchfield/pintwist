@@ -5,12 +5,14 @@ import sessionReducer from './session';
 import usersReducer from './users';
 import pinsReducer from './pins';
 import searchReducer from './search';
+import boardsReducer from './boards'
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   users: usersReducer,
   pins: pinsReducer,
-  searchResults: searchReducer
+  searchResults: searchReducer,
+  boards: boardsReducer
 });
 
 let enhancer;

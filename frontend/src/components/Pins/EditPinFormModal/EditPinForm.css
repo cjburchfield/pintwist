@@ -2,9 +2,7 @@
     background-color: blue;
 }
 
-.edit-pin-form {
-    
-}
+
 
 #edit-pin-modal-bg > .modal {  
 background-color: pink ;
@@ -242,4 +240,15 @@ font-size: 16px;
 color: white;
 margin-left: 12px;
 
+}
+
+
+.edit-pin-form-save-button:hover{
+    background-color: #ad081b;
+    cursor: pointer;
+}
+
+.edit-pin-form-cancel-button:hover, .edit-pin-form-delete-button:hover{
+    background-color: #e2e2e2;
+    cursor: pointer;
 }

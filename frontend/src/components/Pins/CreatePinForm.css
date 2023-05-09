@@ -501,6 +501,11 @@
     font-size: 16px;
     color: white;
 }
+
+.pin-create-save-button:hover{
+    background-color: #ad081b;
+}
+
  .create-success-message {
     background-color: black;
     color: white;
