@@ -21,7 +21,7 @@ const PinIndex = () => {
             setTimeout(() => {
                 setShowMessage(false);
                 setSuccessMessage("");
-            }, 5000);
+            }, 4000);
         }
     }, [successMessage]);
 

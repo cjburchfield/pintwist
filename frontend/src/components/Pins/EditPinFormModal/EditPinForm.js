@@ -21,10 +21,22 @@ const EditPinForm = ({onClose}) => {
     const [destination_link, setDestinationLink] = useState(pin?.destinationLink || "");
 
 
+// const handleDelete = () => {
+//     dispatch(deletePin(pin.id)).then(dispatch(fetchAllPins())).then(history.push(`/users/${user.id}`));
+// }
+  
 const handleDelete = () => {
-    dispatch(deletePin(pin.id)).then(dispatch(fetchAllPins())).then(history.push(`/users/${user.id}`));
-}
-
+    dispatch(deletePin(pin.id))
+      .then(dispatch(fetchAllPins()))
+      .then(() => {
+        history.push({
+          pathname: `/users/${user.id}`,
+          state: { successMessage: "Pin deleted successfully!" },
+        });
+      });
+  };
+  
+  
 
 
     useEffect(() => {
@@ -49,26 +61,31 @@ const handleDelete = () => {
         setDestinationLink(e.target.value);
     };
 
-
     const handleSave = (e) => {
         e.preventDefault();
-
+      
         if (!title) {
-            alert("Your pin needs a title.");
-            return
+          alert("Your pin needs a title.");
+          return;
         }
-
+      
+        if (!pin) {
+          alert("The pin no longer exists.");
+          return;
+        }
+      
         const updatedPin = {
-            id: pinId,
-            user_id: user.id,
-            title,
-            description,
-            destination_link,
-            pin_photo
+          id: pinId,
+          user_id: user.id,
+          title,
+          description,
+          destination_link,
+          pin_photo
         };
         dispatch(updatePin(updatedPin)).then(() => dispatch(fetchPin(pinId))).then(onClose);
-
-    }      
+      };
+      
+        
 
     if (!pin) {
         return null;

@@ -113,4 +113,3 @@ const pinsReducer = (state = {}, action) => {
 }
 
 export default pinsReducer;
-
