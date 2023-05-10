@@ -1,14 +1,24 @@
 class Api::PinsController < ApplicationController
   wrap_parameters include: Pin.attribute_names + ['pin_photo']
 
+  # def create
+  #     @pin = Pin.new(pin_params)
+  #     if @pin.save!
+  #       render 'api/pins/show'
+  #     else
+  #       render json: @pin.errors, status: :unprocessable_entity
+  #     end
+  # end
+
   def create
-      @pin = Pin.new(pin_params)
-      if @pin.save!
-        # current_user.all_pins_board.board_pins.create(pin: @pin)
-        render 'api/pins/show'
-      else
-        render json: @pin.errors, status: :unprocessable_entity
-      end
+    @pin = Pin.new(pin_params)
+    if @pin.save!
+      user = User.find(@pin.user_id)
+      user.all_pins_board.board_pins.create(pin: @pin)
+      render 'api/pins/show'
+    else
+      render json: @pin.errors, status: :unprocessable_entity
+    end
   end
 
   def show

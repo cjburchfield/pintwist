@@ -83,10 +83,24 @@ ApplicationRecord.transaction do
 
   puts "Seeding boards with saved pins..."
   50.times do
+    board_id = rand(1..28)
+    pin_id = rand(1..28)
+    
     BoardPin.create!({
-      board_id: rand(1..28),
-      pin_id: rand(1..28)
+      board_id: board_id,
+      pin_id: pin_id
     })
+    
+    # Add the pin to the 'All Pins' board of the pin's user
+    all_pins_board = Board.find_by(user_id: Pin.find(pin_id).user_id, name: "All Pins")
+    if all_pins_board
+      unless all_pins_board.board_pins.where(pin_id: pin_id).exists? # Check if the pin is already in the 'All Pins' board
+        BoardPin.create!({
+          board_id: all_pins_board.id,
+          pin_id: pin_id
+        })
+      end
+    end
   end
 end
 

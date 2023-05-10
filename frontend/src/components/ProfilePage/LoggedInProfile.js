@@ -5,7 +5,7 @@ import LoggedInActionButtons from "./LoggedInActionButtons";
 import CreatedSavedBar from "./CreatedSavedBar";
 import PinIndex from "../Pins/PinIndex";
 import CreateActions from "./CreateActions";
-
+import BoardsIndex from "../Boards/BoardsIndex/BoardsIndex";
 
 const LoggedInProfile = () => {
     const location = useLocation();
@@ -33,6 +33,7 @@ const LoggedInProfile = () => {
         <LoggedInActionButtons />
         <CreatedSavedBar />
         <CreateActions />
+        <BoardsIndex />
       </>
     );
   };
