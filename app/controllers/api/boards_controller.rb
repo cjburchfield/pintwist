@@ -2,10 +2,10 @@ class Api::BoardsController < ApplicationController
     # before_action :require_login
     
     def index
-    # @boards = Board.where(user_id: params[:user_id])
-      @boards = Board.all
-    render 'api/boards/index'
+      @boards = Board.includes(board_pins: :pin).all
+      render 'api/boards/index'
     end
+    
   
     def create
     @board = Board.new(board_params)
@@ -18,8 +18,7 @@ class Api::BoardsController < ApplicationController
     end
 
     def show
-      @board = Board.find_by(id: params[:id])
-       
+    @board = Board.includes(:board_pins).find_by(id: params[:id])
     if @board
       render 'api/boards/show'
     else

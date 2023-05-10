@@ -18,14 +18,15 @@ const BoardsIndex = () => {
     return null;
   }
 
-  const boards = user.boards
-  console.log(boards)
+
+const filtered = allBoards.boards.filter(board => board.userId === (parseInt(userId)));
+// console.log(filtered);
 
   return (
     <div className="boards-index">
-      {/* {boards.map(board => (
+      {filtered.map(board => (
         <Board key={board.id} board={board} />
-      ))} */}
+      ))}
     </div>
   );
 };
