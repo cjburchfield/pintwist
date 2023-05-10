@@ -31,7 +31,7 @@ const LoggedInProfile = () => {
         </div>
         <UserDetails />
         <LoggedInActionButtons />
-        <CreatedSavedBar />
+        {/* <CreatedSavedBar /> */}
         <CreateActions />
         <BoardsIndex />
       </>

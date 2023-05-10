@@ -20,7 +20,6 @@ const BoardsIndex = () => {
 
 
 const filtered = allBoards.boards.filter(board => board.userId === (parseInt(userId)));
-// console.log(filtered);
 
   return (
     <div className="boards-index">
