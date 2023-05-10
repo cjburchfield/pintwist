@@ -8,6 +8,7 @@ import PinShowPage from "./components/Pins/PinShowPage";
 import PinIndex from "./components/Pins/PinIndex";
 import HomePage from "./components/HomePage";
 import Search from "./components/SearchShowPage/SearchShowPage";
+import BoardShow from "./components/Boards/BoardShowPage/BoardShow";
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route exact path="/search">
             <Search />
+          </Route>
+          <Route exact path="/users/:userId/boards/:boardId">
+            <BoardShow />
           </Route>
         </Switch>
     </>

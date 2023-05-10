@@ -4,6 +4,7 @@ class Api::PinsController < ApplicationController
   def create
       @pin = Pin.new(pin_params)
       if @pin.save!
+        # current_user.all_pins_board.board_pins.create(pin: @pin)
         render 'api/pins/show'
       else
         render json: @pin.errors, status: :unprocessable_entity

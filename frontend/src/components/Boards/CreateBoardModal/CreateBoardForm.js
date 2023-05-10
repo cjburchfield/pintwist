@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createBoard, fetchAllBoards } from '../../store/boards';
-import { getCurrentUser } from "../../store/session";
+import { createBoard, fetchAllBoards } from '../../../store/boards';
+import { getCurrentUser } from "../../../store/session";
 import './CreateBoardForm.css';
 
 const CreateBoardForm = ({ onClose }) => {
@@ -10,7 +10,7 @@ const CreateBoardForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   
-  const [name, setName] = useState('Places to go');
+  const [name, setName] = useState("");
   
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -27,27 +27,23 @@ const CreateBoardForm = ({ onClose }) => {
       .then(onClose);
   };
 
-  // This function will close the modal when clicking outside
-  const closeOnOutsideClick = (e) => {
-    if (e.target.id === 'create-board-modal-bg') {
-      onClose();
-    }
-  };
-
   return (
-    <div id="create-board-modal-bg" onClick={closeOnOutsideClick}>
-      <form className="create-board-form" onSubmit={handleSubmit}>
-        <div className="create-board-form-header">Create Board</div>
+    <>
+    <div id="modal">
+      <div id="modal-background" onClick={onClose}></div>
+      <form className="create-board-modal-content" onSubmit={handleSubmit}>
+        <div className="create-board-form-header">Create board</div>
         <div className="create-board-form-body">
-          <label className="modal-label">Name
-            <input type="text" onChange={handleNameChange} value={name} className="modal-input" />
+          <label className="create-board-modal-label">Name
+            <input type="text" onChange={handleNameChange} value={name} className="create-board-modal-input" placeholder="Like 'Places to Go' or 'Recipes to Make'" />
           </label>
         </div>
         <div className="create-board-form-footer">
-        <button className={`create-board-form-button ${name ? 'active-button' : ''}`} type="submit">Create</button>
+          <button className={`create-board-form-button ${name ? 'active-button' : ''}`} type="submit">Create</button>
         </div>
       </form>
     </div>
+    </>
   );
 }
 

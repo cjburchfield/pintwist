@@ -16,16 +16,16 @@ class Api::BoardsController < ApplicationController
         render json: @board.errors, status: :unprocessable_entity
       end
     end
-  
+
     def show
-        @board = Board.find_by(id: params[:id])
-         
-      if @board
-        render 'api/boards/show'
-      else
-        render json: { errors: ["This board does not exist"]}
-      end
+      @board = Board.find_by(id: params[:id])
+       
+    if @board
+      render 'api/boards/show'
+    else
+      render json: { errors: ["This board does not exist"]}
     end
+  end
   
     def update
         @board = Board.find_by(id: params[:id])

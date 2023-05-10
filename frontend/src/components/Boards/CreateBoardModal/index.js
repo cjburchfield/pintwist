@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
+import { Modal } from '../../../context/Modal';
 import CreateBoardForm from './CreateBoardForm';
 
 const CreateBoardFormModal = ({ onClose }) => {
@@ -13,7 +13,7 @@ const CreateBoardFormModal = ({ onClose }) => {
   return (
     <>
       {showModal && (
-        <Modal onClose={handleCloseModal} className="edit-pin-modal-bg">
+        <Modal onClose={handleCloseModal} className="create-board-modal-bg">
           <CreateBoardForm onClose={handleCloseModal}/>
         </Modal>
       )}
@@ -22,4 +22,3 @@ const CreateBoardFormModal = ({ onClose }) => {
 };
 
 export default CreateBoardFormModal;
-

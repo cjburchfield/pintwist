@@ -20,49 +20,6 @@ const CreatePinForm = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  // useEffect(() => {
-  //   if (submitted) {
-  //     if (successMessage) {
-  //       setShowMessage(true);
-  //       history.push({
-  //         pathname: "/home",
-  //         state: { successMessage: "Pin created successfully!" },
-  //       });
-  //       setShowMessage(false);
-  //       setSuccessMessage("");
-  //     } else if (errorMessage) {
-  //       setShowMessage(true);
-  //       setTimeout(() => {
-  //         setShowMessage(false);
-  //         setErrorMessage("");
-  //       }, 5000);
-  //     }
-  //     setSubmitted(false);
-  //   }
-  // }, [submitted, successMessage, errorMessage, history]);
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await dispatch(
-  //       createPin({
-  //         title,
-  //         description,
-  //         destination_link,
-  //         pin_photo,
-  //         user_id,
-  //       })
-  //     );
-  //     setSuccessMessage("Pin created successfully!");
-  //     setErrorMessage("");
-  //   } catch (error) {
-  //     setErrorMessage("Error creating pin. Please try again.");
-  //     setSuccessMessage("");
-  //   } finally {
-  //     setSubmitted(true);
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
