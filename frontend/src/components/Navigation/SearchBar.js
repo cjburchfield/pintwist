@@ -46,7 +46,7 @@ function handleSearchSubmit(e) {
     onChange={handleSearch} 
     onKeyDown={handleKeyDown} 
     type="text" 
-    placeholder="Trying searching for 'London' or 'New York'"
+    placeholder="Try searching for 'London' or 'New York'"
     value={searchText}>
 </input>
             </div>
