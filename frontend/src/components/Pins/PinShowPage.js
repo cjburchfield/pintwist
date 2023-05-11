@@ -3,7 +3,8 @@ import "./PinShowPage.css";
 import { useParams, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPin, fetchPin } from "../../store/pins";
-import { getCurrentUser } from "../../store/session";
+import { getUser } from "../../store/users";
+import { fetchUser } from "../../store/users";
 import EditPinFormModal from "./EditPinFormModal";
 import AddPinToBoard from "../Boards/AddPinToBoard/AddPinToBoard";
 
@@ -14,11 +15,13 @@ const PinShowPage = () => {
   const location = useLocation();
   const successMessage = location.state ? location.state.successMessage : null;
   const [showMessage, setShowMessage] = useState(false);
-  console.log(pin.userId)
+  const pinCreatorID = pin ? pin.userId : null;
 
-
-
-  const user = useSelector(getCurrentUser);
+  useEffect(() => {
+      dispatch(fetchUser(pinCreatorID));
+    }, [dispatch, pinCreatorID]);
+  
+  const user = useSelector(getUser(pinCreatorID));
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isEditPinModalOpen, setIsEditPinModalOpen] = useState(false);
@@ -56,7 +59,7 @@ const PinShowPage = () => {
     }
   }, [successMessage]);
 
-  if (!pin) {
+  if (!pin || !user || !pinCreatorID) {
     return null;
   }
 
