@@ -1,7 +1,13 @@
+
 .boards-index {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
-  }
-  
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  display: flex;
+  box-sizing: border-box;
+  margin-bottom: 48px;
+  margin-top: 4px;
+  margin-left: 0;
+  margin-right: 0;
+
+}

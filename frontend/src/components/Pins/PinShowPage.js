@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getPin, fetchPin } from "../../store/pins";
 import { getCurrentUser } from "../../store/session";
 import EditPinFormModal from "./EditPinFormModal";
+import AddPinToBoard from "../Boards/AddPinToBoard/AddPinToBoard";
 
 const PinShowPage = () => {
   const { pinId } = useParams();
@@ -106,6 +107,8 @@ const PinShowPage = () => {
               >
                 <div className="pin-show-url">{pin.destinationLink}</div>
               </a>
+
+              <AddPinToBoard pinId={pin.id} />
 
               <div className="pin-show-title">{pin.title}</div>
               <div className="pin-show-description">{pin.description}</div>

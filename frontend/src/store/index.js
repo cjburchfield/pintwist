@@ -6,13 +6,15 @@ import usersReducer from './users';
 import pinsReducer from './pins';
 import searchReducer from './search';
 import boardsReducer from './boards'
+import boardPinsReducer from './board_pins';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   users: usersReducer,
   pins: pinsReducer,
   searchResults: searchReducer,
-  boards: boardsReducer
+  boards: boardsReducer,
+  boardPins: boardPinsReducer
 });
 
 let enhancer;
