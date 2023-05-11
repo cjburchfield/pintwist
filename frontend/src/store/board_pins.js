@@ -14,27 +14,30 @@ export const removeBoardPin = (boardPinId) => ({
 });
 
 export const createBoardPin = (boardPin) => async (dispatch) => {
-  const response = await csrfFetch(`/api/boards/${boardPin.board_id}/board_pins`, {
+  const response = await csrfFetch(`/api/boards/${boardPin.boardId}/board_pins`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(boardPin),
+    body: JSON.stringify({ board_pin: boardPin }),
   });
 
   if (response.ok) {
     const newBoardPin = await response.json();
     dispatch(receiveBoardPin(newBoardPin));
+    return newBoardPin;  
   }
 };
 
-export const deleteBoardPin = (boardPinId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/board_pins/${boardPinId}`, {
+
+export const deleteBoardPin = (boardPin) => async (dispatch) => {
+  const response = await csrfFetch(`/api/boards/${boardPin.boardId}/board_pins/${boardPin.id}`, {
     method: "DELETE",
   });
 
   if (response.ok) {
-    dispatch(removeBoardPin(boardPinId));
+    dispatch(removeBoardPin(boardPin.id));
   }
 };
+
 
 export const fetchBoardPins = (pinId) => async (dispatch) => {
     const response = await csrfFetch(`/api/pins/${pinId}/boards`);

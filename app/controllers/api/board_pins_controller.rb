@@ -11,8 +11,10 @@ class Api::BoardPinsController < ApplicationController
       @pin = Pin.find_by(id: board_pin_params[:pin_id])
   
       all_pins_board = Board.find_by(name: "All Pins", user_id: @board.user_id)
-      BoardPin.create!(board_id: all_pins_board.id, pin_id: @pin.id)
-  
+      unless BoardPin.exists?(board_id: all_pins_board.id, pin_id: @pin.id)
+        BoardPin.create!(board_id: all_pins_board.id, pin_id: @pin.id)
+      end
+      
       if @board_pin.save
         render 'api/boards/show'
       else
