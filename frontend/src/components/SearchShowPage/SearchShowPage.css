@@ -1,14 +1,9 @@
-/* pinshomepage is same as searchresultpage 
-searchresults holder is pins holder
-pin indexitem is search result 
-search result imge ispin index item image */
-
-
 #search-result-page {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Add this line */
+  width: 100%;
+  height: 100%;
 }
 
 #search-results-holder {
@@ -26,23 +21,33 @@ search result imge ispin index item image */
   }
 }
 
-  .search-result {
-    display: inline-flex;
-    padding : 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    cursor: pointer;
-    width: 236px;
-  }
-  
-  .search-result-image {
-    display: flex;
-    width: 100%;
-    border-radius: 16px;
-    object-fit: cover;
-    opacity: 1;
-  }
-  
- 
+.search-result {
+  display: inline-flex;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 236px;
+}
+
+.search-result-image {
+  display: flex;
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  opacity: 1;
+}
+
+.no-pins-text {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  margin-top: 16px;
+  box-sizing: border-box;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 100%; /* Add this line */
+}

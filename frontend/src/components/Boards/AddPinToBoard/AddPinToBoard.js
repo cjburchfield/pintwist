@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllBoards, getBoards } from '../../../store/boards';
@@ -12,6 +11,8 @@ const AddPinToBoard = ({ pinId }) => {
   const allBoards = useSelector(state => state.boards);
   const userBoards = allBoards && allBoards.boards ? allBoards.boards.filter(board => board.userId === (parseInt(userId))) : [];
   const allPinsBoardId = userBoards.find(board => board.name === 'All Pins')?.id;
+  const [showBoards, setShowBoards] = useState(false); // Add this line
+
 
   useEffect(() => {
     dispatch(fetchAllBoards());
@@ -29,7 +30,7 @@ const AddPinToBoard = ({ pinId }) => {
     const board = userBoards.find(b => b.id === boardId);
     let successMessage;
     if (boardPin) {
-      await dispatch(deleteBoardPin(boardPin));  // Pass the full boardPin object
+      await dispatch(deleteBoardPin(boardPin));  
       setBoardPins(boardPins.filter((bp) => bp.id !== boardPin.id));
       successMessage = `Removed from ${board.name}`;
     }
@@ -43,23 +44,27 @@ const AddPinToBoard = ({ pinId }) => {
 
   return (
     <div className="add-pin-to-board">
-      <ul>
-        {userBoards.map((board) => {
-          if (board.name === 'All Pins') return null;
-          const isPinInBoard = boardPins.some((bp) => bp.boardId === board.id && bp.pinId === pinId);
-          return (
-            <li key={board.id}>
-              {board.name}
-              <button
-                className={`toggle-button`}
-                onClick={() => handleTogglePinOnBoard(board.id)}
-              >
-                {isPinInBoard ? 'Remove' : 'Save'}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      <button onClick={() => setShowBoards(!showBoards)}>Boards</button> {/* Add this button */}
+      {showBoards && (
+        <ul>
+          {userBoards.map((board) => {
+            if (board.name === 'All Pins') return null;
+            const isPinInBoard = boardPins.some((bp) => bp.boardId === board.id && bp.pinId === pinId);
+            return (
+              <li key={board.id}>
+                {board.name}
+                <button
+                  className={`toggle-button`}
+                  onClick={() => handleTogglePinOnBoard(board.id)}
+                >
+                  {isPinInBoard ? 'Remove' : 'Save'}
+                </button>
+              </li>
+            );
+          })}
+          <button onClick={() => setShowBoards(false)}>Close</button> {/* Add this button to close the board list */}
+        </ul>
+      )}
     </div>
   );
 };

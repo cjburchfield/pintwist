@@ -10,6 +10,7 @@ export const fetchSearchResults = (query) => async dispatch => {
     const data = await res.json();
     dispatch(receiveSearchResults(data));
 };
+
 const searchReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_SEARCH_RESULTS:
@@ -23,3 +24,4 @@ const searchReducer = (state = {}, action) => {
     }
 };
 export default searchReducer;
+

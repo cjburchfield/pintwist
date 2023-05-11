@@ -18,6 +18,7 @@
 .search-bar-body{
     box-sizing: border-box;
     display: flex;
+    width: 100%
 }
 
 .search-input {

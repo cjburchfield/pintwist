@@ -100,23 +100,35 @@ ApplicationRecord.transaction do
     })
   end
 
+  total_pins = Pin.count
+  total_boards = Board.count
+
   puts "Seeding boards with pins..."
-  65.times do
-    board_id = rand(1..25)
-    pin_id = rand(1..65)
-    
-    BoardPin.create!({
-      board_id: board_id,
-      pin_id: pin_id
-    })
-    
-    all_pins_board = Board.find_by(user_id: Pin.find(pin_id).user_id, name: "All Pins")
-    if all_pins_board
-      unless all_pins_board.board_pins.where(pin_id: pin_id).exists? 
-        BoardPin.create!({
-          board_id: all_pins_board.id,
-          pin_id: pin_id
-        })
+  
+  Board.all.each do |board|
+    random_pins = rand(5..10) # Random number of pins
+    pinned = [] # Array to keep track of the pinned ones
+
+    random_pins.times do
+      begin
+        pin_id = rand(1..total_pins)
+      end while pinned.include?(pin_id) # Retry if the pin is already assigned to the board
+
+      pinned << pin_id
+
+      BoardPin.create!({
+        board_id: board.id,
+        pin_id: pin_id
+      })
+
+      all_pins_board = Board.find_by(user_id: Pin.find(pin_id).user_id, name: "All Pins")
+      if all_pins_board
+        unless all_pins_board.board_pins.where(pin_id: pin_id).exists? 
+          BoardPin.create!({
+            board_id: all_pins_board.id,
+            pin_id: pin_id
+          })
+        end
       end
     end
   end
@@ -134,5 +146,4 @@ end
   end
 
   puts "Done!"
-
 
