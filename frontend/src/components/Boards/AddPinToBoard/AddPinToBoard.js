@@ -15,7 +15,6 @@ const AddPinToBoard = ({ pinId }) => {
   useEffect(() => {
     dispatch(fetchAllBoards());
     dispatch(fetchBoardPins(pinId)).then((fetchedBoardPins) => {
-      console.log('fetchedBoardPins:', fetchedBoardPins);  // add this line
       setBoardPins(fetchedBoardPins);
     });
   }, [dispatch, pinId]);

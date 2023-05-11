@@ -14,6 +14,7 @@ const PinShowPage = () => {
   const location = useLocation();
   const successMessage = location.state ? location.state.successMessage : null;
   const [showMessage, setShowMessage] = useState(false);
+  console.log(pin.userId)
 
 
 
