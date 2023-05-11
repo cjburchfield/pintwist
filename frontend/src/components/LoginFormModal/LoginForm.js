@@ -17,10 +17,13 @@ function LoginForm({ onClose }) {
 
 
   const handleSubmit = (e) => {
-    if (e) e.preventDefault(); 
+    if (e) e.preventDefault();
   
     setErrors([]);
-    dispatch(sessionActions.login({ credential, password })).then(history.replace("/home"))
+    dispatch(sessionActions.login({ credential, password }))
+      .then(() => {
+        history.replace("/home");
+      })
       .catch(async (res) => {
         let data;
         try {
@@ -33,6 +36,7 @@ function LoginForm({ onClose }) {
         else setErrors([res.statusText]);
       });
   };
+  
 
   const handleDemoLogin = (e) => {
     e.preventDefault();

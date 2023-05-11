@@ -102,7 +102,10 @@ const PinShowPage = () => {
                   </div>
                 )}
               </div>
-              <div className="pin-show-nav-bar-right"></div>
+              <div className="pin-show-nav-bar-right">
+                <AddPinToBoard pinId={pin.id} />
+
+              </div>
             </div>
             <div className="pin-show-details-holder">
               <a
@@ -112,7 +115,6 @@ const PinShowPage = () => {
                 <div className="pin-show-url">{pin.destinationLink}</div>
               </a>
 
-              <AddPinToBoard pinId={pin.id} />
 
               <div className="pin-show-title">{pin.title}</div>
               <div className="pin-show-description">{pin.description}</div>

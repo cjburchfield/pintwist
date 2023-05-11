@@ -11,8 +11,7 @@ const AddPinToBoard = ({ pinId }) => {
   const allBoards = useSelector(state => state.boards);
   const userBoards = allBoards && allBoards.boards ? allBoards.boards.filter(board => board.userId === (parseInt(userId))) : [];
   const allPinsBoardId = userBoards.find(board => board.name === 'All Pins')?.id;
-  const [showBoards, setShowBoards] = useState(false); // Add this line
-
+  const [showBoards, setShowBoards] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAllBoards());
@@ -42,31 +41,40 @@ const AddPinToBoard = ({ pinId }) => {
     alert(successMessage);
   };
 
+  const containerClassName = showBoards ? 'add-pin-to-board open' : 'add-pin-to-board';
+
   return (
-    <div className="add-pin-to-board">
-      <button onClick={() => setShowBoards(!showBoards)}>Boards</button> {/* Add this button */}
-      {showBoards && (
-        <ul>
-          {userBoards.map((board) => {
-            if (board.name === 'All Pins') return null;
-            const isPinInBoard = boardPins.some((bp) => bp.boardId === board.id && bp.pinId === pinId);
-            return (
-              <li key={board.id}>
-                {board.name}
-                <button
-                  className={`toggle-button`}
-                  onClick={() => handleTogglePinOnBoard(board.id)}
-                >
-                  {isPinInBoard ? 'Remove' : 'Save'}
-                </button>
-              </li>
-            );
-          })}
-          <button onClick={() => setShowBoards(false)}>Close</button> {/* Add this button to close the board list */}
-        </ul>
-      )}
+    <div className={containerClassName}>
+      <div className="add-pin-to-board">
+        <button className="board-button" onClick={() => setShowBoards(!showBoards)}>Boards</button>
+        {showBoards && (
+          <ul>
+            {userBoards.map((board) => {
+              if (board.name === 'All Pins') return null;
+              const isPinInBoard = boardPins.some(
+                (bp) => bp.boardId === board.id && bp.pinId === pinId
+              );
+
+              return (
+                <li key={board.id} className="board-menu-item">
+                  <span className="board-menu-name">{board.name}</span>
+                  <button
+                    className={`toggle-button ${isPinInBoard ? 'remove-button' : 'save-button'}`}
+                    onClick={() => handleTogglePinOnBoard(board.id)}
+                  >
+                    {isPinInBoard ? 'Remove' : 'Save'}
+                  </button>
+                </li>
+              );
+            })}
+            <div className="close-button-holder">
+             <button className="board-button" onClick={() => setShowBoards(false)}>Close</button>
+            </div>
+          </ul>
+        )}
+</div>
     </div>
   );
 };
-
 export default AddPinToBoard;
+
