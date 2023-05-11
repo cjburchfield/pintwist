@@ -1,60 +1,42 @@
-// import { Link } from 'react-router-dom';
-// import "./Board.css";
 
-// import React from 'react';
-
-// const Board = ({ board }) => {
-//   const pinPreviews = board.boardPins.slice(0, 3);
-
-//   return (
-//     <Link to={`/users/${board.userId}/boards/${board.id}`}>
-//       <div className="board-card">
-//         <h3>{board.name}</h3>
-//         <div className="board-preview">
-//           {pinPreviews.map((pin, index) => (
-//             <div key={index} className="pin-preview">
-//               <img src={pin.pinPhotoUrl} alt="" /> 
-//             </div>
-//           ))}
-//           {pinPreviews.length < 3 && 
-//             [...Array(3 - pinPreviews.length)].map((_, index) => (
-//               <div key={index} className="pin-placeholder"></div>
-//             ))}
-//         </div>
-//         {/* Add any other information you want to display for each board */}
-//       </div>
-//     </Link>
-//   );
-// };
-
-// export default Board;
 
 import { Link } from 'react-router-dom';
-import "./Board.css";
-
-import React from 'react';
+import './Board.css';
 
 const Board = ({ board }) => {
   const pinPreviews = board.boardPins.length ? board.boardPins.slice(0, 3) : [];
-  const placeholders = Array.from({ length: 3 - pinPreviews.length });
-  
+
   return (
     <Link to={`/users/${board.userId}/boards/${board.id}`}>
-      <div className="board-card">
-        <div className="board-preview">
-          {pinPreviews.map((pin, index) => (
-            <div key={index} className="pin-preview">
-              <img src={pin.pinPhotoUrl} alt="" /> 
-            </div>
-          ))}
-          {pinPreviews.length < 3 && 
-            [...Array(3 - pinPreviews.length)].map((_, index) => (
-              <div key={index} className="pin-placeholder"></div>
-            ))}
+      <div className="board-item">
+        <div className="board-image-holder">
+          <div className="first-image">
+            {pinPreviews.length > 0 ? (
+              <img src={pinPreviews[0].pinPhotoUrl} alt="" />
+            ) : (
+              <div className="pin-placeholder"></div>
+            )}
+          </div>
+          <div className="second-image-holder">
+            {pinPreviews.length > 1 ? (
+              <div className="secondary-image">
+                <img src={pinPreviews[1].pinPhotoUrl} alt="" />
+              </div>
+            ) : (
+              <div className="pin-placeholder"></div>
+            )}
+            {pinPreviews.length > 2 ? (
+              <div className="third-image">
+                <img src={pinPreviews[2].pinPhotoUrl} alt="" />
+              </div>
+            ) : (
+              <div className="pin-placeholder"></div>
+            )}
+          </div>
         </div>
         <div className="board-info">
-          <h3 className="board-title">{board.name}</h3>
-          <p className="board-pin-count">{board.boardPins.length} pins</p>
+          <div className="board-name">{board.name}</div>
+          <div className="board-pin-count">{board.boardPins.length} pins</div>
         </div>
       </div>
     </Link>

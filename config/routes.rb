@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
     resources :users, only: [:create, :show, :update, :index]
 
-    resources :pins, only: [:create, :show, :index, :update, :destroy]
-
+    resources :pins, only: [:create, :show, :index, :update, :destroy] do
+      resources :boards, only: [:index]
+    end
+    
     resources :boards, only: [:create, :show, :index, :update, :destroy] do
       resources :board_pins, only: [:create, :index, :destroy]
     end

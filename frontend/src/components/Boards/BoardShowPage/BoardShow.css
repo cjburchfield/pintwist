@@ -1,16 +1,39 @@
-.board-show-page {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+#board-show-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+
+.board-show-header {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 588px;
+  padding-left: 32px;
+  padding-right: 32px;
+  margin-bottom: 16px;
 }
 
 .board-title {
-
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 16px;
+  box-sizing: border-box;
+  margin-bottom: -16px;
 }
 
 .board-description {
-
+  text-align: center;
+  margin-top: 16px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 #board-pins-holder {
@@ -47,4 +70,10 @@
     border-radius: 16px;
     object-fit: cover;
     opacity: 1;
+}
+
+.board-pins-count {
+  box-sizing: border-box;
+  padding-left: 32px;
+  padding-right: 32px;
 }

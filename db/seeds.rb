@@ -37,7 +37,7 @@ ApplicationRecord.transaction do
   end
 
   puts "Creating pins..."
-  15.times do
+  20.times do
     Pin.create!({
       title: Faker::Lorem.sentence(word_count: 3),
       description: Faker::Lorem.paragraph(sentence_count: 3),
@@ -46,7 +46,7 @@ ApplicationRecord.transaction do
     })
   end
 
-  45.times do
+  30.times do
     Pin.create!({
       title: Faker::Lorem.sentence(word_count: 3),
       description: Faker::Lorem.paragraph(sentence_count: 3),
@@ -54,47 +54,65 @@ ApplicationRecord.transaction do
       destination_link: Faker::Internet.url
     })
   end
+
   
+  5.times do
+    Pin.create!({
+      title: "New York Apartment",
+      description: "Pinspiration for my New York apartment search",
+      user_id: 1,
+      destination_link: "https://nylottery.ny.gov/"
+      })
+    end
+
+    5.times do
+      Pin.create!({
+        title: "Vermont",
+        description: "Pinspiration for my Vermont home search",
+        user_id: 1,
+        destination_link: "https://nylottery.ny.gov/"
+      })
+    end
+    
   5.times do
     Pin.create!({
       title: "London Flat",
       description: "Pinspiration for my London flat search",
-      user_id: 2,
+      user_id: 1,
       destination_link: "https://nylottery.ny.gov/"
     })
   end
 
   puts "Creating boards..."
-  5.times do
+  9.times do
     Board.create!({
       name: Faker::Address.street_name,
-      description: Faker::Emotion.noun,
+      description: Faker::Quotes::Shakespeare.as_you_like_it_quote,
       user_id: 1
     })
   end
 
-  20.times do
+  16.times do
     Board.create!({
       name: Faker::Address.street_name,
-      description: Faker::Emotion.noun,
+      description: Faker::Quotes::Shakespeare.as_you_like_it_quote,
       user_id: rand(3..11)
     })
   end
 
-  puts "Seeding boards with saved pins..."
-  50.times do
-    board_id = rand(1..28)
-    pin_id = rand(1..28)
+  puts "Seeding boards with pins..."
+  65.times do
+    board_id = rand(1..25)
+    pin_id = rand(1..65)
     
     BoardPin.create!({
       board_id: board_id,
       pin_id: pin_id
     })
     
-    # Add the pin to the 'All Pins' board of the pin's user
     all_pins_board = Board.find_by(user_id: Pin.find(pin_id).user_id, name: "All Pins")
     if all_pins_board
-      unless all_pins_board.board_pins.where(pin_id: pin_id).exists? # Check if the pin is already in the 'All Pins' board
+      unless all_pins_board.board_pins.where(pin_id: pin_id).exists? 
         BoardPin.create!({
           board_id: all_pins_board.id,
           pin_id: pin_id
@@ -103,6 +121,9 @@ ApplicationRecord.transaction do
     end
   end
 end
+
+
+
 
   puts "Seeding pin photos..."
   Pin.first(65).each_with_index do |pin, index|

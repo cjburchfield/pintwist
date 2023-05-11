@@ -47,6 +47,13 @@ class Api::PinsController < ApplicationController
 
   end
 
+  def boards
+    @pin = Pin.find(params[:pin_id])
+    @boards = @pin.boards
+    render 'api/board_pins/index'
+  end
+  
+
   def destroy
     @pin = Pin.find_by(id: params[:id])
     if @pin 

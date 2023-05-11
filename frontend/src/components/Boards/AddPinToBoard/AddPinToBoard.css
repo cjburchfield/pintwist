@@ -1,0 +1,33 @@
+.board-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .board-name {
+    margin-right: 10px;
+  }
+  
+  .saved-here {
+    font-size: 0.8em;
+    color: grey;
+  }
+  
+  .save-button {
+    visibility: hidden;
+  }
+  
+  .board-option:hover .save-button {
+    visibility: visible;
+  }
+  
+  .save-button.save {
+    background-color: green;
+    color: white;
+  }
+  
+  .save-button.remove {
+    background-color: red;
+    color: white;
+  }
+  

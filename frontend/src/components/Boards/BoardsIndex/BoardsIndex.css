@@ -1,13 +1,20 @@
 
 .boards-index {
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: row;
   display: flex;
-  box-sizing: border-box;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 48px;
   margin-top: 4px;
-  margin-left: 0;
-  margin-right: 0;
+}
 
+.board-row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.board-column {
+  flex-basis: 20%;
+  min-width: 20%;
+  padding: 8px;
+  box-sizing: border-box;
 }
