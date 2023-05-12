@@ -66,70 +66,129 @@ const BoardShow = () => {
     setIsEditBoardModalOpen(true);
   };
 
+  // return (
+  //   <>
+  //   <div id="board-show-page">
+  //     <div className="board-show-header">
+
+
+
+
+  //       <div className="board-title">{board.name}</div>
+  //       <div className="pin-show-user-holder">
+  //         <div className="pin-show-user-picture">
+  //           {user.username.slice(0, 1).toUpperCase()}
+  //         </div>
+  //         <div className="pin-show-user-name">{user.username}</div>
+  //       </div>
+  //       <div className="board-description">{board.description}</div>
+       
+  //       <div
+  //         ref={ellipsisRef}
+  //         className={`pin-show-nav-bar-left-ellipsis ${isDropdownOpen ? 'pin-show-nav-bar-left-ellipsis-active' : ''}`}
+  //         onClick={handleEllipsisClick}
+  //       >
+  //         <i className="fa-solid fa-ellipsis"></i>
+  //       </div>
+  //       {isDropdownOpen && (
+  //         <div ref={dropdownRef} className="pin-show-dropdown-menu">
+  //           <div
+  //             className="pin-show-dropdown-option"
+  //             onClick={handleEditBoardClick}
+  //           >
+  //           Edit Board
+  //           </div>
+  //         </div>
+  //       )}
+    
+    
+    
+  //   </div>
+
+  //     <div className="board-pins-count-holder">
+  //       <div className="board-pins-count">{`${board.boardPins?.length || 0} pin(s)`}</div>
+  //     </div>
+
+  //     <div
+  //       id="board-pins-holder"
+  //       style={{ columnCount: getNumberOfColumns() }}
+  //     >
+  //       {board.boardPins &&
+  //         board.boardPins.map((boardPin) => (
+  //           <div className="board-pin" key={boardPin.id}>
+  //             <Link to={`/pin/${boardPin.pinId}`}>
+  //               <img className="board-pin-image" src={boardPin.pinPhotoUrl} />
+  //             </Link>
+  //           </div>
+  //         ))}
+  //     </div>
+  //   </div>
+  //   {isEditBoardModalOpen && (
+  //               <EditBoardFormModal board={board} onClose={() => setIsEditBoardModalOpen(false)} />
+
+  //     )}
+  //   </>
+
+  // );
+
   return (
     <>
-    <div id="board-show-page">
-      <div className="board-show-header">
-
-
-
-
-        <div className="board-title">{board.name}</div>
-        <div className="pin-show-user-holder">
-          <div className="pin-show-user-picture">
-            {user.username.slice(0, 1).toUpperCase()}
+      <div id="board-show-page">
+        <div className="board-show-header">
+          <div className="board-title">{board.name}</div>
+          <div className="pin-show-user-holder">
+            <div className="pin-show-user-picture">
+              {user.username.slice(0, 1).toUpperCase()}
+            </div>
+            <div className="pin-show-user-name">{user.username}</div>
           </div>
-          <div className="pin-show-user-name">{user.username}</div>
+          <div className="board-description">{board.description}</div>
         </div>
-        <div className="board-description">{board.description}</div>
-       
+  
+        <div className="board-pins-count-holder">
+  <div className="board-pins-count">{`${board.boardPins?.length || 0} pin(s)`}</div>
+  <div className="ellipsis-wrapper">
+    <div
+      ref={ellipsisRef}
+      className={`pin-show-nav-bar-left-ellipsis ${isDropdownOpen ? 'pin-show-nav-bar-left-ellipsis-active' : ''}`}
+      onClick={handleEllipsisClick}
+    >
+      <i className="fa-solid fa-ellipsis"></i>
+    </div>
+    {isDropdownOpen && (
+      <div ref={dropdownRef} className="board-show-dropdown-menu">
         <div
-          ref={ellipsisRef}
-          className={`pin-show-nav-bar-left-ellipsis ${isDropdownOpen ? 'pin-show-nav-bar-left-ellipsis-active' : ''}`}
-          onClick={handleEllipsisClick}
+          className="board-show-dropdown-option"
+          onClick={handleEditBoardClick}
         >
-          <i className="fa-solid fa-ellipsis"></i>
+        Edit Board
         </div>
-        {isDropdownOpen && (
-          <div ref={dropdownRef} className="pin-show-dropdown-menu">
-            <div
-              className="pin-show-dropdown-option"
-              onClick={handleEditBoardClick}
-            >
-            Edit Board
-            </div>
-          </div>
-        )}
-    
-    
-    
-    </div>
-
-      <div className="board-pins-count-holder">
-        <div className="board-pins-count">{`${board.boardPins?.length || 0} pin(s)`}</div>
       </div>
+    )}
+  </div>
+</div>
 
-      <div
-        id="board-pins-holder"
-        style={{ columnCount: getNumberOfColumns() }}
-      >
-        {board.boardPins &&
-          board.boardPins.map((boardPin) => (
-            <div className="board-pin" key={boardPin.id}>
-              <Link to={`/pin/${boardPin.pinId}`}>
-                <img className="board-pin-image" src={boardPin.pinPhotoUrl} />
-              </Link>
-            </div>
-          ))}
+  
+        <div
+          id="board-pins-holder"
+          style={{ columnCount: getNumberOfColumns() }}
+        >
+          {board.boardPins &&
+            board.boardPins.map((boardPin) => (
+              <div className="board-pin" key={boardPin.id}>
+                <Link to={`/pin/${boardPin.pinId}`}>
+                  <img className="board-pin-image" src={boardPin.pinPhotoUrl} />
+                </Link>
+              </div>
+            ))}
+        </div>
       </div>
-    </div>
-    {isEditBoardModalOpen && (
-                <EditBoardFormModal board={board} onClose={() => setIsEditBoardModalOpen(false)} />
-
+      {isEditBoardModalOpen && (
+        <EditBoardFormModal board={board} onClose={() => setIsEditBoardModalOpen(false)} />
       )}
     </>
-
   );
+  
 };
 
 export default BoardShow;
