@@ -162,8 +162,6 @@
 }
 .pin-show-title {
     box-sizing: border-box;
-    /* color: #444; */
-    /* font-weight: 700; */
     margin-top: 16px;
     font-weight: 600;
     text-align: left;
@@ -172,23 +170,20 @@
 }
 .pin-show-description {
     align-items: baseline;
-    flex-direction: row;
-    display: flex;
     max-width: 444px;
     box-sizing: border-box;
     text-align: left;
     font-weight: 400;
     font-size: 16px;
-    /* margin-bottom: 16px; */
     margin-top: 16px;
-
+    overflow-wrap: break-word; /* Add this line */
 }
+
+
 .pin-show-user-holder {
     box-sizing: border-box;
     margin-top: 16px;
     pointer-events: auto;
-    /* margin-right: -4px;
-    margin-left: -4px; */
     align-items: center;
     display: flex;
     flex-direction: row;

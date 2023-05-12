@@ -69,15 +69,35 @@
   border-radius: 0 0 16px 0;
 }
 
-.pin-placeholder {
+
+
+.first-placeholder {
   width: calc(33.333% - 8px);
   height: 0;
   padding-bottom: 33.333%;
   margin-right: 8px;
   margin-bottom: 8px;
-  background-color: #eee;
   border-radius: 4px;
+  /* background-color: #808080;  */
 }
+
+.second-placeholder {
+  width: 77px;
+  height: 77.5px;
+  background-color: rgb(238, 238, 238);
+  border-top-right-radius: 16px;
+  margin-bottom: 2px;
+  overflow: hidden;
+}
+
+.third-placeholder {
+  width: 77px;
+  height: 77.5px;
+  background-color: rgb(238, 238, 238);
+  border-bottom-right-radius: 16px;
+  overflow: hidden;
+}
+
 
 .board-info {
   margin: 8px;

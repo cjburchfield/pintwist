@@ -14,7 +14,7 @@ const Board = ({ board }) => {
             {pinPreviews.length > 0 ? (
               <img src={pinPreviews[0].pinPhotoUrl} alt="" />
             ) : (
-              <div className="pin-placeholder"></div>
+              <div className="pin-placeholder first-placeholder"></div>
             )}
           </div>
           <div className="second-image-holder">
@@ -23,14 +23,14 @@ const Board = ({ board }) => {
                 <img src={pinPreviews[1].pinPhotoUrl} alt="" />
               </div>
             ) : (
-              <div className="pin-placeholder"></div>
+              <div className="pin-placeholder second-placeholder"></div>
             )}
             {pinPreviews.length > 2 ? (
               <div className="third-image">
                 <img src={pinPreviews[2].pinPhotoUrl} alt="" />
               </div>
             ) : (
-              <div className="pin-placeholder"></div>
+              <div className="pin-placeholder third-placeholder"></div>
             )}
           </div>
         </div>

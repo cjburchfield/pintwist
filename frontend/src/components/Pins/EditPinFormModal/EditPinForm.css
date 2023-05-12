@@ -125,6 +125,9 @@ flex-direction: column;
     max-width: 100%;
     line-height: normal;
     display: inline-block;
+
+    overflow: auto; 
+
 }
 
 
@@ -252,3 +255,8 @@ margin-left: 12px;
     background-color: #e2e2e2;
     cursor: pointer;
 }
+
+.error-message {
+    color: red;
+    font-size: 12px;
+  }

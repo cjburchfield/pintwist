@@ -19,10 +19,35 @@ const CreatePinForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [titleErrorMessage, setTitleErrorMessage] = useState(""); 
+  const [descriptionErrorMessage, setDescriptionErrorMessage] = useState("");
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    if (title.length > 25) {
+      setTitleErrorMessage("Title cannot exceed 25 characters.");
+      setTimeout(() => {
+        setTitleErrorMessage("");
+      }, 4000);
+      return;
+    } else {
+      setTitleErrorMessage("");
+    }
+
+    if (description.length > 300) {
+      setDescriptionErrorMessage("Description cannot exceed 300 characters.");
+      setTimeout(() => {
+        setDescriptionErrorMessage("");
+      }, 4000);
+      return;
+    } else {
+      setDescriptionErrorMessage("");
+    }
+  
     try {
+      setSubmitted(true); 
       const createdPinId = await dispatch(createPin({
         title,
         description,
@@ -38,11 +63,15 @@ const CreatePinForm = () => {
       });
     } catch (error) {
       setErrorMessage("Error creating pin. Please try again.");
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 4000); 
       setSuccessMessage("");
     } finally {
-      setSubmitted(true);
+      setSubmitted(false);
     }
   };
+  
   
   
 
@@ -50,12 +79,18 @@ const CreatePinForm = () => {
 
 return (
   <>
-    {showMessage && successMessage && (
-      <div className="create-success-message">{successMessage}</div>
-    )}
-    {showMessage && errorMessage && (
-      <div className="create-error-message">{errorMessage}</div>
-    )}
+      {showMessage && successMessage && (
+        <div className="create-success-message">{successMessage}</div>
+      )}
+      {showMessage && errorMessage && (
+        <div className="create-error-message">{errorMessage}</div>
+      )}
+      {titleErrorMessage && ( 
+        <div className="create-error-message">{titleErrorMessage}</div>
+      )}
+       {descriptionErrorMessage && ( 
+        <div className="create-error-message">{descriptionErrorMessage}</div>
+      )}
     <form onSubmit={handleSubmit}>
       <div className="full-pin-create-page">
         <div className="full-pin-create-holder">
@@ -63,8 +98,8 @@ return (
             <div className="pin-create-ellisis"></div>
             <div className="pin-create-save-holder">
               <div className="pin-create-board-holder"></div>
-              <button className="pin-create-save-button" type="submit">
-                Save
+              <button className="pin-create-save-button" type="submit" disabled={submitted}>
+                {submitted ? "Submitting..." : "Save"}
               </button>
             </div>
           </div>

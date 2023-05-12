@@ -14,7 +14,7 @@
 
 .board-column {
   flex-basis: 20%;
-  min-width: 20%;
+  /* min-width: 20%; */
   padding: 8px;
   box-sizing: border-box;
 }

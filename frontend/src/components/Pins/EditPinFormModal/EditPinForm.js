@@ -20,10 +20,9 @@ const EditPinForm = ({onClose}) => {
     const [pin_photo, setPinPhoto] = useState(pin?.pin_photo || "");
     const [destination_link, setDestinationLink] = useState(pin?.destinationLink || "");
 
+    const [titleErrorMessage, setTitleErrorMessage] = useState(""); 
+    const [descriptionErrorMessage, setDescriptionErrorMessage] = useState(""); 
 
-// const handleDelete = () => {
-//     dispatch(deletePin(pin.id)).then(dispatch(fetchAllPins())).then(history.push(`/users/${user.id}`));
-// }
   
 const handleDelete = () => {
     dispatch(deletePin(pin.id))
@@ -64,6 +63,20 @@ const handleDelete = () => {
     const handleSave = (e) => {
         e.preventDefault();
       
+        if (title.length > 25) {
+          setTitleErrorMessage("Title cannot exceed 25 characters.");
+          return;
+        } else {
+          setTitleErrorMessage("");
+        }
+      
+        if (description.length > 200) {
+          setDescriptionErrorMessage("Description cannot exceed 200 characters.");
+          return;
+        } else {
+          setDescriptionErrorMessage("");
+        }
+      
         if (!title) {
           alert("Your pin needs a title.");
           return;
@@ -82,6 +95,7 @@ const handleDelete = () => {
           destination_link,
           pin_photo
         };
+      
         dispatch(updatePin(updatedPin)).then(() => dispatch(fetchPin(pinId))).then(onClose);
       };
       
@@ -102,12 +116,16 @@ const handleDelete = () => {
                     <label className="modal-label">Title
                         <input type="text" onChange={changeTitle} value={title} className="modal-input" />
                     </label>
+                    {titleErrorMessage && <div className="error-message">{titleErrorMessage}</div>}
+
                 </div>
                 <div className="edit-pin-form-divider"></div>
                 <div className="edit-pin-text-holder">
                     <label className="modal-label">Description
                         <input type="text" onChange={changeDescription} value={description} className="modal-input" />
                     </label>
+                    {descriptionErrorMessage && <div className="error-message">{descriptionErrorMessage}</div>}
+
                 </div>
                 <div className="edit-pin-form-divider"></div>
                 <div className="edit-pin-text-holder">
