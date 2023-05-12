@@ -28,6 +28,8 @@
   margin-bottom: -16px;
 }
 
+
+
 .board-description {
   text-align: center;
   margin-top: 16px;
@@ -35,21 +37,6 @@
   font-size: 16px;
   font-weight: 400;
 }
-/* 
-#board-pins-holder {
-    height: 100%;
-    margin: 0 auto;
-    column-gap: 10px;
-    background-color: white;
-    columns: 5;
-  }
-  
-  @media (min-width: 0px) and (max-width: 755px) {
-    #board-pins-holder {
-      width: 504px;
-      column-count: 2;
-    }
-  } */
 
 
 

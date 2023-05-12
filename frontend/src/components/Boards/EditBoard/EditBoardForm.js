@@ -99,22 +99,19 @@ const EditBoardForm = ({ board, onClose }) => {
             <div className="edit-pin-form-body">
                 <div className="edit-pin-form-content">
                 <div className="edit-pin-text-holder">
-                    <label className="modal-label">Name
-                        <input type="text" onChange={changeName} value={name} className="modal-input" />
+                    <label className="edit-board-modal-label">Name
+                        <input type="text" onChange={changeName} value={name} className="edit-board-modal-input" />
                     </label>
                     {nameErrorMessage && <div className="error-message">{nameErrorMessage}</div>}
 
                 </div>
-                <div className="edit-pin-form-divider"></div>
                 <div className="edit-pin-text-holder">
-                    <label className="modal-label">Description
-                        <input type="text" onChange={changeDescription} value={description} className="modal-input" />
+                    <label className="edit-board-modal-label">Description
+                        <input type="text" onChange={changeDescription} value={description} className="edit-board-modal-input" />
                     </label>
                     {descriptionErrorMessage && <div className="error-message">{descriptionErrorMessage}</div>}
 
-                </div>
-                <div className="edit-pin-form-divider"></div>
-    
+                </div>    
                 </div>
             </div>
             <div className="edit-pin-form-footer">

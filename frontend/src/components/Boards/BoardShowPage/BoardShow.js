@@ -72,6 +72,8 @@ const BoardShow = () => {
       <div className="board-show-header">
 
 
+
+
         <div className="board-title">{board.name}</div>
         <div className="pin-show-user-holder">
           <div className="pin-show-user-picture">

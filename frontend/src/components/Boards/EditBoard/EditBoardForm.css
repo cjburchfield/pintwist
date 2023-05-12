@@ -1,0 +1,40 @@
+.edit-board-modal-label {
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    color: #111;
+    display: block;
+    margin-left: 8px;
+    margin-bottom: 4px;
+    width: 400px;
+    box-sizing: border-box;
+    position: relative;
+    margin: auto;
+    display: inline-block;
+  }
+  
+  .edit-board-modal-input {
+    font-size: 14px;
+    border: 1px solid #ccc;
+    padding: 8px 16px; 
+    border: #cdcdcd;
+    box-sizing: border-box;
+    min-height: 48px; 
+    color:  #111;
+    background-color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    white-space: nowrap;
+    appearance: none;
+    border-radius: 16px;
+    border-style: solid;
+    border-width: 2px;
+    vertical-align: middle;
+    margin: 0px auto;
+    margin-bottom: 7px;
+    width: 100%;
+    display: inline-block;
+    margin-top: 4px;
+  
+  }
