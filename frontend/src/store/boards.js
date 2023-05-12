@@ -67,6 +67,30 @@ export const createBoard = ({ name, user_id }) => async dispatch => {
     }
 };
 
+export const updateBoard = (board) => async(dispatch) => {
+    const response = await csrfFetch(`/api/boards/${board.id}`, {
+        method: "PATCH",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(board)
+    })
+
+    if (response.ok) {
+        const updatedBoard = await response.json();
+        dispatch(receiveBoard(updatedBoard));
+        return updatedBoard.id;
+    }
+}
+
+export const deleteBoard = (boardId) => async(dispatch) => {
+    const response = await csrfFetch(`/api/boards/${boardId}`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        dispatch(removeBoard(boardId));
+    }
+}
+
 const boardsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_BOARD:

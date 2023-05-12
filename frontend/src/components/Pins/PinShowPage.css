@@ -149,7 +149,7 @@
     box-sizing: border-box;
     flex-direction: row;
     display: flex;
-    position: relative;
+    /* position: relative; */
     display: inline-block;
     align-items: center;
     text-decoration: underline;

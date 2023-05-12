@@ -3,28 +3,47 @@
 
 ```css
 .add-pin-to-board {
-  border: 1px solid white;
-  border-radius: 16px;
-  display: flex;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  flex: 1 1 auto;
-  align-items: center;
-  margin: 8px 8px 8px 8px;
-  flex-direction: column;
-  background-color: white;
-  padding: 4px 4px 4px 4px;
-  padding-bottom: 10px;
-  z-index: 1;
+ /* border: 1px solid white; */
+ border-radius: 16px;
+ display: flex;
+ box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+ box-sizing: border-box;
+ flex: 1 1 auto;
+ align-items: center;
+ margin: 8px 8px 8px 8px;
+ flex-direction: column;
+ background-color: white;
+ padding: 4px 4px 4px 4px;
+ padding-bottom: 10px;
+ z-index: 1;
+ /* width: 100%; */
+ position: relative;
 }
 
 .add-pin-to-board.open {
   z-index: 10;
   min-width: 300px;
-  padding: 8px 16px 8px 16px;
+  padding: 8px 16px 0 16px; 
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 16px;
+  margin-bottom: 0; 
+}
 
+.add-pin-to-board.open ul {
+  position: absolute;
+  z-index: 1000; 
+  width: 100%; 
+  background-color: white;
+  padding: 8px 16px 8px 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border: none; 
+  border-radius: 0 0 16px 16px;
+  box-sizing: border-box;
+  margin: 0;
+  margin-left: -16px;
+  width: 87%;
+
+  max-height: 200px; 
+  overflow-y: auto; 
 }
 
 .board-option {
