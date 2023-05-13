@@ -62,7 +62,7 @@ const CreatePinForm = () => {
         state: { successMessage: "Pin created successfully!" },
       });
     } catch (error) {
-      setErrorMessage("Error creating pin. Please try again.");
+      setErrorMessage("Error creating pin. Please try again!");
       setTimeout(() => {
         setErrorMessage("");
       }, 4000); 
