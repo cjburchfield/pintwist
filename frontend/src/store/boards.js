@@ -54,18 +54,22 @@ export const fetchBoard = (boardId) => async(dispatch) => {
 }
 
 export const createBoard = ({ name, user_id }) => async dispatch => {
+    const formData = new FormData();
+    formData.append('board[name]', name);
+    formData.append('board[user_id]', user_id);
+  
     const response = await csrfFetch(`/api/boards`, {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({ name, user_id })
+      body: formData
     });
-
+  
     if (response.ok) {
         const newBoard = await response.json();
         dispatch(receiveBoard(newBoard));
         return newBoard.board.id;
     }
-};
+  };
+  
 
 export const updateBoard = (board) => async(dispatch) => {
     const response = await csrfFetch(`/api/boards/${board.id}`, {

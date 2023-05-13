@@ -7,6 +7,7 @@ import './CreateBoardForm.css';
 
 const CreateBoardForm = ({ onClose }) => {
   const user = useSelector(getCurrentUser);
+  const user_id = user.id;
   const dispatch = useDispatch();
   const history = useHistory();
   
@@ -19,7 +20,7 @@ const CreateBoardForm = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newBoard = {
-      user_id: user.id,
+      user_id,
       name,
     };
     dispatch(createBoard(newBoard))
